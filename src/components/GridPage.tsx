@@ -78,13 +78,47 @@ const GridPage = () => {
   const [hoveredCells, setHoveredCells] = useState<Set<number>>(new Set());
   const [images, setImages] = useState<string[]>([]);
 
+  const getAdjacentIndices = (index: number, cols: number, rows: number): number[] => {
+    const col = index % cols;
+    const row = Math.floor(index / cols);
+    const adjacent: number[] = [];
+
+    // Check all 8 directions
+    const directions = [
+      [-1, -1], [0, -1], [1, -1],  // Top-left, Top, Top-right
+      [-1, 0],           [1, 0],   // Left, Right
+      [-1, 1],  [0, 1],  [1, 1]    // Bottom-left, Bottom, Bottom-right
+    ];
+
+    for (const [dx, dy] of directions) {
+      const newCol = col + dx;
+      const newRow = row + dy;
+      if (newCol >= 0 && newCol < cols && newRow >= 0 && newRow < rows) {
+        adjacent.push(newRow * cols + newCol);
+      }
+    }
+
+    return adjacent;
+  };
+
   useEffect(() => {
-    // Generate random images for each cell
-    const totalCells = 13 * 6;
-    const randomImages = Array.from({ length: totalCells }, () => {
-      const randomNum = Math.floor(Math.random() * 18) + 1;
-      return `/image${randomNum}.png`;
-    });
+    const cols = 13;
+    const rows = 6;
+    const totalCells = cols * rows;
+    const randomImages: string[] = [];
+
+    for (let i = 0; i < totalCells; i++) {
+      const adjacentIndices = getAdjacentIndices(i, cols, rows);
+      const usedImages = new Set(adjacentIndices.map(idx => randomImages[idx]));
+      
+      let randomNum;
+      do {
+        randomNum = Math.floor(Math.random() * 18) + 1;
+      } while (usedImages.has(`/image${randomNum}.png`));
+      
+      randomImages.push(`/image${randomNum}.png`);
+    }
+
     setImages(randomImages);
   }, []);
 

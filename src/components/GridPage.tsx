@@ -5,9 +5,11 @@ const GridContainer = styled.div`
   width: 100vw;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   position: relative;
+  padding-top: 70px;
+  overflow-y: auto;
 `;
 
 const Grid = styled.div`
@@ -72,6 +74,76 @@ const TextContainer = styled.div`
   padding: clamp(0.5rem, 1vw, 1rem);
   width: 100%;
   height: 100%;
+`;
+
+const CreditsContainer = styled.div`
+  margin-top: 50px;
+  text-align: center;
+  color: black;
+  font-family: 'Almanach Test', sans-serif;
+  font-size: clamp(14px, 2vw, 28px);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 50px;
+  max-width: 800px;
+  padding: 0 20px;
+`;
+
+const HeaderImage = styled.img`
+  position: absolute;
+  left: 35px;
+  height: 250px;
+  width: auto;
+  object-fit: contain;
+`;
+
+const HeaderSection = styled.div`
+  width: calc(100% - 70px);
+  height: 88px;
+  background-color: #C9DE9D;
+  border-radius: 20px;
+  margin: 50px 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`;
+
+const HeaderText = styled.div`
+  font-family: 'Barlow', sans-serif;
+  font-size: 40px;
+  font-weight: 900;
+  color: black;
+`;
+
+const BodyText = styled.div`
+  color: black;
+  font-family: 'Almanach Test', sans-serif;
+  font-size: clamp(14px, 2vw, 28px);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 50px 175px;
+  text-align: left;
+`;
+
+const HeaderImageLeft = styled.img`
+  position: absolute;
+  left: 35px;
+  height: 250px;
+  width: auto;
+  object-fit: contain;
+`;
+
+const HeaderImageRight = styled.img`
+  position: absolute;
+  right: 35px;
+  height: 250px;
+  width: auto;
+  object-fit: contain;
+`;
+
+const HeaderTextItalic = styled(HeaderText)`
+  font-style: italic;
 `;
 
 const GridPage = () => {
@@ -173,6 +245,42 @@ const GridPage = () => {
       <Grid>
         {Array.from({ length: 13 * 6 }).map((_, index) => renderCell(index))}
       </Grid>
+      <CreditsContainer>
+        Reporting by Chloe Kim, Liam McGlynn, and Noah Hrung
+        <br />
+        Development by [contributors]
+        <br />
+        Design & Illustration by Noah Hrung
+      </CreditsContainer>
+      <HeaderSection>
+        <HeaderImage src="/image11.png" alt="Header decoration" />
+        <HeaderText>Intro</HeaderText>
+      </HeaderSection>
+      <BodyText>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </BodyText>
+      <HeaderSection style={{ backgroundColor: '#FCBFD6' }}>
+        <HeaderImageRight src="/image4.png" alt="Header decoration" />
+        <HeaderText>Individual Performance</HeaderText>
+      </HeaderSection>
+      <BodyText>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </BodyText>
+      <HeaderSection style={{ backgroundColor: '#BFDDFC' }}>
+        <HeaderImageLeft src="/image3.png" alt="Header decoration" />
+        <HeaderText>Phasing Out</HeaderText>
+      </HeaderSection>
+      <BodyText>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </BodyText>
+      <HeaderSection style={{ backgroundColor: '#EDDCAE' }}>
+        <HeaderImageLeft src="/image12.png" alt="Header decoration" />
+        <HeaderImageRight src="/image9.png" alt="Header decoration" />
+        <HeaderTextItalic>FOOD TRUCK SHOWDOWN!</HeaderTextItalic>
+      </HeaderSection>
+      <BodyText>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.
+      </BodyText>
     </GridContainer>
   );
 };

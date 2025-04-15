@@ -99,10 +99,10 @@ const HeaderImage = styled.img`
 
 const HeaderSection = styled.div`
   width: calc(100% - 70px);
-  height: 88px;
+  height: clamp(44px, 8vw, 88px);
   background-color: #C9DE9D;
   border-radius: 20px;
-  margin: 50px 35px;
+  margin: clamp(25px, 4vw, 50px) 35px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,7 +111,7 @@ const HeaderSection = styled.div`
 
 const HeaderText = styled.div`
   font-family: 'Barlow', sans-serif;
-  font-size: 40px;
+  font-size: clamp(20px, 4vw, 40px);
   font-weight: 900;
   color: black;
 `;
@@ -122,28 +122,76 @@ const BodyText = styled.div`
   font-size: clamp(14px, 2vw, 28px);
   font-weight: 400;
   line-height: 1.2;
-  margin: 50px 175px;
+  margin: clamp(25px, 4vw, 50px) 175px;
   text-align: left;
 `;
 
 const HeaderImageLeft = styled.img`
   position: absolute;
-  left: 35px;
-  height: 250px;
+  left: clamp(17.5px, 2.5vw, 35px);
+  height: clamp(125px, 20vw, 250px);
   width: auto;
   object-fit: contain;
 `;
 
 const HeaderImageRight = styled.img`
   position: absolute;
-  right: 35px;
-  height: 250px;
+  right: clamp(17.5px, 2.5vw, 35px);
+  height: clamp(125px, 20vw, 250px);
   width: auto;
   object-fit: contain;
 `;
 
 const HeaderTextItalic = styled(HeaderText)`
   font-style: italic;
+`;
+
+const ThreeColumnSection = styled.div`
+  display: flex;
+  gap: 25px;
+  margin: clamp(25px, 4vw, 50px) 175px;
+  width: calc(100% - 350px);
+`;
+
+const Column = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12.5px, 2vw, 25px);
+`;
+
+const ColumnTitle = styled.div`
+  color: black;
+  font-family: 'Almanach Test', sans-serif;
+  font-size: clamp(14px, 2vw, 28px);
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+`;
+
+const Dropdown = styled.select`
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #CBCBCB;
+  border-radius: 20px;
+  font-family: 'Almanach Test', sans-serif;
+  font-size: clamp(14px, 2vw, 28px);
+  background-color: white;
+  cursor: pointer;
+`;
+
+const ColumnImage = styled.img`
+  width: 90%;
+  height: auto;
+  align-self: center;
+  object-fit: contain;
+`;
+
+const StatsBox = styled.div`
+  height: 400px;
+  width: 100%;
+  border: 2px solid #CBCBCB;
+  border-radius: 20px;
 `;
 
 const GridPage = () => {
@@ -253,7 +301,7 @@ const GridPage = () => {
         Design & Illustration by Noah Hrung
       </CreditsContainer>
       <HeaderSection>
-        <HeaderImage src="/image11.png" alt="Header decoration" />
+        <HeaderImageLeft src="/image11.png" alt="Header decoration" />
         <HeaderText>Intro</HeaderText>
       </HeaderSection>
       <BodyText>
@@ -281,6 +329,28 @@ const GridPage = () => {
       <BodyText>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.
       </BodyText>
+      <ThreeColumnSection>
+        <Column>
+          <ColumnTitle>TRUCK 1</ColumnTitle>
+          <Dropdown>
+            <option value="">Select a truck</option>
+            {/* Add more options as needed */}
+          </Dropdown>
+          <ColumnImage src="/image13.png" alt="Truck 1" />
+        </Column>
+        <Column>
+          <ColumnTitle>Average $ / Visit</ColumnTitle>
+          <StatsBox />
+        </Column>
+        <Column>
+          <ColumnTitle>TRUCK 2</ColumnTitle>
+          <Dropdown>
+            <option value="">Select a truck</option>
+            {/* Add more options as needed */}
+          </Dropdown>
+          <ColumnImage src="/image17.png" alt="Truck 2" />
+        </Column>
+      </ThreeColumnSection>
     </GridContainer>
   );
 };

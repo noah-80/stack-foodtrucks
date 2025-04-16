@@ -233,7 +233,7 @@ const GridPage = () => {
       
       let randomNum;
       do {
-        randomNum = Math.floor(Math.random() * 18) + 1;
+        randomNum = Math.floor(Math.random() * 20) + 1;
       } while (usedImages.has(`/image${randomNum}.png`));
       
       randomImages.push(`/image${randomNum}.png`);

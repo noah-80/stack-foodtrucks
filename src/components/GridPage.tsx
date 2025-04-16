@@ -158,6 +158,7 @@ const Column = styled.div`
   display: flex;
   flex-direction: column;
   gap: clamp(12.5px, 2vw, 25px);
+  position: relative;
 `;
 
 const ColumnTitle = styled.div`
@@ -188,10 +189,10 @@ const ColumnImage = styled.img`
 `;
 
 const StatsBox = styled.div`
-  height: 400px;
   width: 100%;
   border: 2px solid #CBCBCB;
   border-radius: 20px;
+  flex-grow: 1;
 `;
 
 const GridPage = () => {
@@ -334,7 +335,6 @@ const GridPage = () => {
           <ColumnTitle>TRUCK 1</ColumnTitle>
           <Dropdown>
             <option value="">Select a truck</option>
-            {/* Add more options as needed */}
           </Dropdown>
           <ColumnImage src="/image13.png" alt="Truck 1" />
         </Column>
@@ -346,7 +346,6 @@ const GridPage = () => {
           <ColumnTitle>TRUCK 2</ColumnTitle>
           <Dropdown>
             <option value="">Select a truck</option>
-            {/* Add more options as needed */}
           </Dropdown>
           <ColumnImage src="/image17.png" alt="Truck 2" />
         </Column>

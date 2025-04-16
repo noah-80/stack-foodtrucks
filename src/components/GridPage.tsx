@@ -51,7 +51,7 @@ const TitleText = styled.div`
   color: black;
   font-family: 'Barlow', sans-serif;
   font-size: clamp(20px, 3vw, 40px);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.2;
   margin-bottom: 0.5rem;
   letter-spacing: -0.02em;
@@ -112,7 +112,7 @@ const HeaderSection = styled.div`
 const HeaderText = styled.div`
   font-family: 'Barlow', sans-serif;
   font-size: clamp(20px, 4vw, 40px);
-  font-weight: 900;
+  font-weight: 800;
   color: black;
 `;
 

@@ -461,11 +461,13 @@ const GridPage = () => {
           <ColumnTitle>TRUCK 1</ColumnTitle>
           <Dropdown value={selectedTruck1} onChange={handleTruck1Change}>
             <option value="">Select a truck</option>
-            {TRUCK_DATA.map(truck => (
-              <option key={truck.name} value={truck.name} disabled={truck.name === selectedTruck2}>
-                {truck.name}
-              </option>
-            ))}
+            {[...TRUCK_DATA]
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map(truck => (
+                <option key={truck.name} value={truck.name} disabled={truck.name === selectedTruck2}>
+                  {truck.name}
+                </option>
+              ))}
           </Dropdown>
           {selectedTruck1 && (
             <ColumnImage src={getTruckData(selectedTruck1)?.image} alt={selectedTruck1} />
@@ -496,11 +498,13 @@ const GridPage = () => {
           <ColumnTitle>TRUCK 2</ColumnTitle>
           <Dropdown value={selectedTruck2} onChange={handleTruck2Change}>
             <option value="">Select a truck</option>
-            {TRUCK_DATA.map(truck => (
-              <option key={truck.name} value={truck.name} disabled={truck.name === selectedTruck1}>
-                {truck.name}
-              </option>
-            ))}
+            {[...TRUCK_DATA]
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map(truck => (
+                <option key={truck.name} value={truck.name} disabled={truck.name === selectedTruck1}>
+                  {truck.name}
+                </option>
+              ))}
           </Dropdown>
           {selectedTruck2 && (
             <ColumnImage src={getTruckData(selectedTruck2)?.image} alt={selectedTruck2} />

@@ -148,16 +148,16 @@ const HeaderTextItalic = styled(HeaderText)`
 
 const ThreeColumnSection = styled.div`
   display: flex;
-  gap: 25px;
-  margin: clamp(25px, 4vw, 50px) 175px;
-  width: calc(100% - 350px);
+  gap: clamp(15px, 3vw, 30px);
+  margin: clamp(25px, 4vw, 50px) clamp(35px, 5vw, 70px);
+  width: calc(100% - clamp(70px, 10vw, 140px));
 `;
 
 const Column = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: clamp(12.5px, 2vw, 25px);
+  gap: clamp(10px, 2vw, 20px);
   position: relative;
 `;
 
@@ -172,11 +172,11 @@ const ColumnTitle = styled.div`
 
 const Dropdown = styled.select`
   width: 100%;
-  padding: 10px;
+  padding: clamp(8px, 1.5vw, 12px);
   border: 2px solid #CBCBCB;
   border-radius: 20px;
   font-family: 'Almanach Test', sans-serif;
-  font-size: clamp(14px, 2vw, 28px);
+  font-size: clamp(12px, 1.5vw, 24px);
   background-color: white;
   cursor: pointer;
 `;
@@ -186,6 +186,7 @@ const ColumnImage = styled.img`
   height: auto;
   align-self: center;
   object-fit: contain;
+  max-height: clamp(150px, 25vw, 300px);
 `;
 
 const StatsBox = styled.div`
@@ -193,11 +194,108 @@ const StatsBox = styled.div`
   border: 2px solid #CBCBCB;
   border-radius: 20px;
   flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: clamp(20px, 4vw, 40px) clamp(10px, 2vw, 20px);
+  gap: clamp(10px, 2vw, 20px);
+  min-height: clamp(200px, 40vw, 400px);
 `;
+
+const BarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  width: clamp(80px, 15vw, 160px);
+`;
+
+const BarLabel = styled.div`
+  font-family: 'Almanach Test', sans-serif;
+  font-size: clamp(10px, 1.2vw, 20px);
+  color: black;
+  text-align: center;
+  width: 100%;
+  min-height: clamp(30px, 6vw, 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(5px, 1vw, 10px) 0;
+`;
+
+const Bar = styled.div<{ height: number }>`
+  width: clamp(12px, 2.5vw, 25px);
+  height: ${props => props.height}%;
+  min-height: 20px;
+  background-color: #CBCBCB;
+  border-radius: clamp(6px, 1.25vw, 12.5px);
+  transition: height 0.5s ease;
+  position: relative;
+  margin-bottom: clamp(10px, 2vw, 20px);
+`;
+
+const BarValue = styled.div`
+  position: absolute;
+  top: clamp(-30px, -3.5vw, -40px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Almanach Test', sans-serif;
+  font-size: clamp(10px, 1.2vw, 20px);
+  color: black;
+  white-space: nowrap;
+  width: max-content;
+  text-align: center;
+  padding-bottom: clamp(5px, 1vw, 10px);
+  z-index: 1;
+`;
+
+interface TruckData {
+  name: string;
+  image: string;
+  sales: number;
+}
+
+const TRUCK_DATA: TruckData[] = [
+  { name: "8e8 Thai Street Food", image: "/image1.png", sales: 1697808.50 },
+  { name: "Aloha Fridays", image: "/image2.png", sales: 929447.50 },
+  { name: "BittieBitez Mini-Donuts", image: "/image3.png", sales: 669556.00 },
+  { name: "Creamy Boys", image: "/image4.png", sales: 877343.00 },
+  { name: "Dina's Dumpling", image: "/image5.png", sales: 676227.50 },
+  { name: "Flamin' Hot Chicken", image: "/image6.png", sales: 420000.50 },
+  { name: "Habibi Shack", image: "/image7.png", sales: 353196.00 },
+  { name: "Kalamaki Greek Street Food", image: "/image8.png", sales: 599550.50 },
+  { name: "Perro 1-10 Tacos", image: "/image9.png", sales: 1472432.50 },
+  { name: "Pinch of Flavor", image: "/image10.png", sales: 838715.50 },
+  { name: "Salpicon", image: "/image11.png", sales: 1231521.50 },
+  { name: "Smile Hotdog", image: "/image12.png", sales: 954465.00 },
+  { name: "StopBye Cafe", image: "/image13.png", sales: 536844.00 },
+  { name: "The Taco Cartel", image: "/image14.png", sales: 556608.00 },
+  { name: "Uncle Al's BBQ", image: "/image15.png", sales: 301097.00 },
+  { name: "Cerda Vega Tacos", image: "/image16.png", sales: 644553.00 },
+  { name: "Wafl", image: "/image17.png", sales: 572072.00 },
+  { name: "Yuna's Bob", image: "/image18.png", sales: 553192.00 },
+  { name: "Dulce Europa Shaved Ice", image: "/image19.png", sales: 288439.50 },
+  { name: "DD's Chick & Cat Shack", image: "/image20.png", sales: 270972.00 }
+];
+
+const formatCurrency = (value: number) => {
+  // Check if the number has any decimal places
+  const hasDecimals = value % 1 !== 0;
+  
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: hasDecimals ? 2 : 0,
+    maximumFractionDigits: 2
+  }).format(value);
+};
 
 const GridPage = () => {
   const [hoveredCells, setHoveredCells] = useState<Set<number>>(new Set());
   const [images, setImages] = useState<string[]>([]);
+  const [selectedTruck1, setSelectedTruck1] = useState<string>("");
+  const [selectedTruck2, setSelectedTruck2] = useState<string>("");
 
   const getAdjacentIndices = (index: number, cols: number, rows: number): number[] => {
     const col = index % cols;
@@ -289,6 +387,34 @@ const GridPage = () => {
     );
   };
 
+  const handleTruck1Change = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    if (value !== selectedTruck2) {
+      setSelectedTruck1(value);
+    }
+  };
+
+  const handleTruck2Change = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    if (value !== selectedTruck1) {
+      setSelectedTruck2(value);
+    }
+  };
+
+  const getTruckData = (name: string) => {
+    return TRUCK_DATA.find(truck => truck.name === name);
+  };
+
+  const getMaxSales = () => {
+    return Math.max(...TRUCK_DATA.map(truck => truck.sales));
+  };
+
+  const calculateBarHeight = (sales: number) => {
+    const maxSales = getMaxSales();
+    // Reduce the maximum height to 60% to leave more room for the value and spacing
+    return (sales / maxSales) * 60;
+  };
+
   return (
     <GridContainer>
       <Grid>
@@ -333,21 +459,52 @@ const GridPage = () => {
       <ThreeColumnSection>
         <Column>
           <ColumnTitle>TRUCK 1</ColumnTitle>
-          <Dropdown>
+          <Dropdown value={selectedTruck1} onChange={handleTruck1Change}>
             <option value="">Select a truck</option>
+            {TRUCK_DATA.map(truck => (
+              <option key={truck.name} value={truck.name} disabled={truck.name === selectedTruck2}>
+                {truck.name}
+              </option>
+            ))}
           </Dropdown>
-          <ColumnImage src="/image13.png" alt="Truck 1" />
+          {selectedTruck1 && (
+            <ColumnImage src={getTruckData(selectedTruck1)?.image} alt={selectedTruck1} />
+          )}
         </Column>
         <Column>
-          <ColumnTitle>Average $ / Visit</ColumnTitle>
-          <StatsBox />
+          <ColumnTitle>All-time Sales (Fall 2022 - Fall 2024)</ColumnTitle>
+          <StatsBox>
+            {selectedTruck1 && (
+              <BarContainer>
+                <Bar height={calculateBarHeight(getTruckData(selectedTruck1)?.sales || 0)}>
+                  <BarValue>{formatCurrency(getTruckData(selectedTruck1)?.sales || 0)}</BarValue>
+                </Bar>
+                <BarLabel>{selectedTruck1}</BarLabel>
+              </BarContainer>
+            )}
+            {selectedTruck2 && (
+              <BarContainer>
+                <Bar height={calculateBarHeight(getTruckData(selectedTruck2)?.sales || 0)}>
+                  <BarValue>{formatCurrency(getTruckData(selectedTruck2)?.sales || 0)}</BarValue>
+                </Bar>
+                <BarLabel>{selectedTruck2}</BarLabel>
+              </BarContainer>
+            )}
+          </StatsBox>
         </Column>
         <Column>
           <ColumnTitle>TRUCK 2</ColumnTitle>
-          <Dropdown>
+          <Dropdown value={selectedTruck2} onChange={handleTruck2Change}>
             <option value="">Select a truck</option>
+            {TRUCK_DATA.map(truck => (
+              <option key={truck.name} value={truck.name} disabled={truck.name === selectedTruck1}>
+                {truck.name}
+              </option>
+            ))}
           </Dropdown>
-          <ColumnImage src="/image17.png" alt="Truck 2" />
+          {selectedTruck2 && (
+            <ColumnImage src={getTruckData(selectedTruck2)?.image} alt={selectedTruck2} />
+          )}
         </Column>
       </ThreeColumnSection>
     </GridContainer>

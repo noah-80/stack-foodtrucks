@@ -474,7 +474,7 @@ const GridPage = () => {
           )}
         </Column>
         <Column>
-          <ColumnTitle>All-time Sales (Fall 2022 - Fall 2024)</ColumnTitle>
+          <ColumnTitle>All-time Profits (Fall 2022 - Fall 2024)</ColumnTitle>
           <StatsBox>
             {selectedTruck1 && (
               <BarContainer>
@@ -511,6 +511,20 @@ const GridPage = () => {
           )}
         </Column>
       </ThreeColumnSection>
+      <HeaderSection style={{ backgroundColor: '#FBAD79' }}>
+        <HeaderImageRight src="/image1.png" alt="Header decoration" />
+        <HeaderText>Conclusion</HeaderText>
+      </HeaderSection>
+      <BodyText>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </BodyText>
+      <HeaderSection style={{ backgroundColor: '#EBB1EE' }}>
+        <HeaderImageLeft src="/image5.png" alt="Header decoration" style={{ height: 'clamp(150px, 25vw, 300px)' }} />
+        <HeaderText>About the Data</HeaderText>
+      </HeaderSection>
+      <BodyText>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </BodyText>
     </GridContainer>
   );
 };

@@ -475,7 +475,7 @@ const GridPage = () => {
           )}
         </Column>
         <Column>
-          <ColumnTitle>All-time Profits (Fall 2022 - Fall 2024)</ColumnTitle>
+          <ColumnTitle>All-time Sales (Fall 2022 - Fall 2024)</ColumnTitle>
           <StatsBox>
             {selectedTruck1 && (
               <BarContainer>

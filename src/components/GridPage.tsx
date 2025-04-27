@@ -229,7 +229,8 @@ const Bar = styled.div<{ height: number }>`
   height: ${props => props.height}%;
   min-height: 20px;
   background-color: #CBCBCB;
-  border-radius: clamp(6px, 1.25vw, 12.5px);
+  border-top-left-radius: clamp(6px, 1.25vw, 12.5px);
+  border-top-right-radius: clamp(6px, 1.25vw, 12.5px);
   transition: height 0.5s ease;
   position: relative;
   margin-bottom: clamp(10px, 2vw, 20px);

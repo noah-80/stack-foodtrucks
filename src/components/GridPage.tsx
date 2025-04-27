@@ -257,17 +257,17 @@ interface TruckData {
 }
 
 const TRUCK_DATA: TruckData[] = [
-  { name: "8e8 Thai Street Food", image: "/image1.png", sales: 1697808.50 },
-  { name: "Aloha Fridays", image: "/image2.png", sales: 929447.50 },
+  { name: "8e8 Thai Street Food", image: "/image1.png", sales: 1697809 },
+  { name: "Aloha Fridays", image: "/image2.png", sales: 929448 },
   { name: "BittieBitez Mini-Donuts", image: "/image3.png", sales: 669556.00 },
   { name: "Creamy Boys", image: "/image4.png", sales: 877343.00 },
-  { name: "Dina's Dumpling", image: "/image5.png", sales: 676227.50 },
-  { name: "Flamin' Hot Chicken", image: "/image6.png", sales: 420000.50 },
+  { name: "Dina's Dumpling", image: "/image5.png", sales: 676228 },
+  { name: "Flamin' Hot Chicken", image: "/image6.png", sales: 420001 },
   { name: "Habibi Shack", image: "/image7.png", sales: 353196.00 },
-  { name: "Kalamaki Greek Street Food", image: "/image8.png", sales: 599550.50 },
-  { name: "Perro 1-10 Tacos", image: "/image9.png", sales: 1472432.50 },
-  { name: "Pinch of Flavor", image: "/image10.png", sales: 838715.50 },
-  { name: "Salpicon", image: "/image11.png", sales: 1231521.50 },
+  { name: "Kalamaki Greek Street Food", image: "/image8.png", sales: 599551 },
+  { name: "Perro 1-10 Tacos", image: "/image9.png", sales: 1472433 },
+  { name: "Pinch of Flavor", image: "/image10.png", sales: 838716 },
+  { name: "Salpicon", image: "/image11.png", sales: 1231522 },
   { name: "Smile Hotdog", image: "/image12.png", sales: 954465.00 },
   { name: "StopBye Cafe", image: "/image13.png", sales: 536844.00 },
   { name: "The Taco Cartel", image: "/image14.png", sales: 556608.00 },
@@ -275,7 +275,7 @@ const TRUCK_DATA: TruckData[] = [
   { name: "Cerda Vega Tacos", image: "/image16.png", sales: 644553.00 },
   { name: "Wafl", image: "/image17.png", sales: 572072.00 },
   { name: "Yuna's Bob", image: "/image18.png", sales: 553192.00 },
-  { name: "Dulce Europa Shaved Ice", image: "/image19.png", sales: 288439.50 },
+  { name: "Dulce Europa Shaved Ice", image: "/image19.png", sales: 288440 },
   { name: "DD's Chick & Cat Shack", image: "/image20.png", sales: 270972.00 }
 ];
 

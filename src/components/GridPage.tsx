@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import styled from '@emotion/styled';
 
 const GridContainer = styled.div`
@@ -10,6 +10,40 @@ const GridContainer = styled.div`
   position: relative;
   padding-top: 70px;
   overflow-y: auto;
+`;
+
+const BarsAndLineWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+`;
+
+const BarDivider = styled.div`
+  width: 100%; /* matches Bar width since Bar is 100% of its container */
+  border-bottom: 2px solid #CBCBCB;
+  margin-bottom: clamp(5px, 0.8vw, 12px); /* space between line and label */
+`;
+
+const BarsBaselineWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(10px, 2vw, 20px);
+  width: 100%;
+  height: clamp(150px, 25vw, 300px);
+  position: relative;
+`;
+
+const BarsRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(10px, 2vw, 20px);
+  width: 100%;
+  flex: 1 1 auto;
 `;
 
 const Grid = styled.div`
@@ -196,18 +230,36 @@ const StatsBox = styled.div`
   flex-grow: 1;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: stretch;
   padding: clamp(20px, 4vw, 40px) clamp(10px, 2vw, 20px);
   gap: clamp(10px, 2vw, 20px);
   min-height: clamp(200px, 40vw, 400px);
+  position: relative;
+`;
+
+const StatsBoxLine = styled.div`
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border-bottom: 2px solid #CBCBCB;
+  pointer-events: none;
+  bottom:0;
+`;
+
+const BarWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width:100%;
+  height: clamp(150px, 25vw, 300px);
 `;
 
 const BarContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
-  justify-content: flex-end;
+    justify-content: flex-end;
   width: clamp(80px, 15vw, 160px);
 `;
 
@@ -218,10 +270,12 @@ const BarLabel = styled.div`
   text-align: center;
   width: 100%;
   min-height: clamp(30px, 6vw, 60px);
-  display: flex;
+  height: clamp(44px, 4vw, 48px);
+  display: flex; 
   align-items: center;
   justify-content: center;
   padding: clamp(5px, 1vw, 10px) 0;
+  overflow: hidden;
 `;
 
 const Bar = styled.div<{ height: number }>`
@@ -234,6 +288,7 @@ const Bar = styled.div<{ height: number }>`
   transition: height 0.5s ease;
   position: relative;
   margin-bottom: clamp(10px, 2vw, 20px);
+  margin-bottom: 0;
 `;
 
 const BarValue = styled.div`
@@ -477,23 +532,31 @@ const GridPage = () => {
         <Column>
           <ColumnTitle>All-time Sales (Fall 2022 - Fall 2024)</ColumnTitle>
           <StatsBox>
-            {selectedTruck1 && (
-              <BarContainer>
-                <Bar height={calculateBarHeight(getTruckData(selectedTruck1)?.sales || 0)}>
-                  <BarValue>{formatCurrency(getTruckData(selectedTruck1)?.sales || 0)}</BarValue>
-                </Bar>
-                <BarLabel>{selectedTruck1}</BarLabel>
-              </BarContainer>
-            )}
-            {selectedTruck2 && (
-              <BarContainer>
-                <Bar height={calculateBarHeight(getTruckData(selectedTruck2)?.sales || 0)}>
-                  <BarValue>{formatCurrency(getTruckData(selectedTruck2)?.sales || 0)}</BarValue>
-                </Bar>
-                <BarLabel>{selectedTruck2}</BarLabel>
-              </BarContainer>
-            )}
-          </StatsBox>
+  <BarsAndLineWrapper>
+    <BarsBaselineWrapper>
+      {selectedTruck1 && (
+        <BarWrapper>
+          <Bar height={calculateBarHeight(getTruckData(selectedTruck1)?.sales || 0)}>
+            <BarValue>{formatCurrency(getTruckData(selectedTruck1)?.sales || 0)}</BarValue>
+          </Bar>
+        </BarWrapper>
+      )}
+      {selectedTruck2 && (
+        <BarWrapper>
+          <Bar height={calculateBarHeight(getTruckData(selectedTruck2)?.sales || 0)}>
+            <BarValue>{formatCurrency(getTruckData(selectedTruck2)?.sales || 0)}</BarValue>
+          </Bar>
+        </BarWrapper>
+      )}
+      {(selectedTruck1 || selectedTruck2) && <StatsBoxLine />}
+    </BarsBaselineWrapper>
+    <div style={{ display: 'flex', justifyContent: 'center', gap: 'clamp(10px, 2vw, 20px)', width: '100%' }}>
+      {selectedTruck1 && <BarLabel>{selectedTruck1}</BarLabel>}
+      {selectedTruck2 && <BarLabel>{selectedTruck2}</BarLabel>}
+    </div>
+  </BarsAndLineWrapper>
+</StatsBox>
+
         </Column>
         <Column>
           <ColumnTitle>TRUCK 2</ColumnTitle>

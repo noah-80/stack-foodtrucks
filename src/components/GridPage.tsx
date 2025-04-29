@@ -8,7 +8,7 @@ const GridContainer = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding-top: 70px;
+  // padding-top: 70px;
   overflow-y: auto;
 `;
 

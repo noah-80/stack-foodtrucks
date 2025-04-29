@@ -1,6 +1,8 @@
 import React from 'react'
 import GridPage from './components/GridPage'
 import './App.css'
+import BarChartRace from './components/BarChartRace'; // Adjust the path as needed
+import './BarIndex.css';
 
 function App() {
   return (
@@ -10,4 +12,4 @@ function App() {
   )
 }
 
-export default App 
+export default App

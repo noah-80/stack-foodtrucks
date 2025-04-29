@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'Almanach Test';
+  src: url('./fonts/AlmanachTest-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/Inter-Regular.woff2') format('woff2'),
+       url('./fonts/Inter-Regular.woff') format('woff'),
+       url('./fonts/Inter-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Almanach Test', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* Add to existing CSS */
+.bar-chart-container {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+}
+
+.bar-chart {
+  width: 100%;
+  height: 100%;
+}

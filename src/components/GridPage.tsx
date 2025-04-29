@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import styled from '@emotion/styled';
+import Section from "./Section";
+import BarChartRace from './BarChartRace';
 
 const GridContainer = styled.div`
   width: 100vw;
@@ -96,7 +98,7 @@ const SubtitleText = styled.div`
   color: black;
   font-family: 'Almanach Test', sans-serif;
   font-size: clamp(14px, 2vw, 28px);
-  font-weight: 400;
+  font-weight:300;
   line-height: 1.2;
 `;
 
@@ -116,7 +118,7 @@ const CreditsContainer = styled.div`
   color: black;
   font-family: 'Almanach Test', sans-serif;
   font-size: clamp(14px, 2vw, 28px);
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.2;
   margin-bottom: 50px;
   max-width: 800px;
@@ -154,8 +156,8 @@ const BodyText = styled.div`
   color: black;
   font-family: 'Almanach Test', sans-serif;
   font-size: clamp(14px, 2vw, 28px);
-  font-weight: 400;
   line-height: 1.2;
+  font-weight: 300;
   margin: clamp(25px, 4vw, 50px) 175px;
   text-align: left;
 `;
@@ -199,7 +201,7 @@ const ColumnTitle = styled.div`
   color: black;
   font-family: 'Almanach Test', sans-serif;
   font-size: clamp(14px, 2vw, 28px);
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.2;
   text-align: center;
 `;
@@ -283,8 +285,6 @@ const Bar = styled.div<{ height: number }>`
   height: ${props => props.height}%;
   min-height: 20px;
   background-color: #CBCBCB;
-  border-top-left-radius: clamp(6px, 1.25vw, 12.5px);
-  border-top-right-radius: clamp(6px, 1.25vw, 12.5px);
   transition: height 0.5s ease;
   position: relative;
   margin-bottom: clamp(10px, 2vw, 20px);
@@ -437,7 +437,7 @@ const GridPage = () => {
             <SubtitleText>A Data-Driven Look at UCLA's Food Trucks</SubtitleText>
           </TextContainer>
         ) : (
-          <img src={images[index]} alt={`Grid cell ${index + 1}`} />
+          <img src={images[index]} />
         )}
       </GridCell>
     );
@@ -497,6 +497,13 @@ const GridPage = () => {
       <BodyText>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
       </BodyText>
+      <Section>
+      <BarChartRace>
+        
+      </BarChartRace>
+      </Section>
+      
+
       <HeaderSection style={{ backgroundColor: '#BFDDFC' }}>
         <HeaderImageLeft src="/image3.png" alt="Header decoration" />
         <HeaderText>Phasing Out</HeaderText>
@@ -589,6 +596,7 @@ const GridPage = () => {
       <BodyText>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
       </BodyText>
+      <BodyText></BodyText>
     </GridContainer>
   );
 };

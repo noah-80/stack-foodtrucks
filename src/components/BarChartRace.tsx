@@ -61,12 +61,12 @@ const BarChartRace: React.FC = () => {
     const xScale = d3
       .scaleLinear()
       .domain([0, 10000])
-      .range([margin.left, width - margin.right]);
+      .range([margin.left, width - margin.right ]);
 
     const yScale = d3
       .scaleBand()
       .domain(currentData.map((d) => d.name))
-      .range([margin.top, height - margin.bottom])
+      .range([margin.top, height - margin.bottom - 50])
       .padding(0.1);
 
     const xAxis = d3.axisBottom(xScale).tickFormat((d) => {
@@ -74,7 +74,7 @@ const BarChartRace: React.FC = () => {
     });
 
     svg.select(".x-axis")
-      .attr("transform", `translate(0, ${height - margin.bottom})`)
+      .attr("transform", `translate(0, ${height - margin.bottom - 45})`)
       .call(xAxis as any)
       .selectAll("text")
       .html(function () {

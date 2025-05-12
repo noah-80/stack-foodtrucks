@@ -10,7 +10,7 @@ const GridContainer = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding-top: 70px;
+  // padding-top: 70px;
   overflow-y: auto;
 `;
 
@@ -113,16 +113,24 @@ const TextContainer = styled.div`
 `;
 
 const CreditsContainer = styled.div`
-  margin-top: 50px;
+  // margin-top: 50px;
+  margin-top: -4px;
   text-align: center;
   color: black;
+  // font-family: 'Barlow', sans-serif;
+  // font-size: clamp(14px, 2vw, 20px);
+  // font-weight: 400;
+
   font-family: 'Almanach Test', sans-serif;
   font-size: clamp(14px, 2vw, 28px);
   font-weight: 300;
   line-height: 1.2;
-  margin-bottom: 50px;
-  max-width: 800px;
-  padding: 0 20px;
+  margin-bottom: 40px;
+  // max-width: 800px;
+  padding-top: 19px;
+  padding-bottom: 21px;
+  width: 100%;
+  background-color: #DBDBDB;
 `;
 
 const HeaderImage = styled.img`
@@ -134,7 +142,7 @@ const HeaderImage = styled.img`
 `;
 
 const HeaderSection = styled.div`
-  width: calc(100% - 70px);
+  width: calc(100% - 350px);
   height: clamp(44px, 8vw, 88px);
   background-color: #C9DE9D;
   border-radius: 20px;
@@ -155,11 +163,15 @@ const HeaderText = styled.div`
 const BodyText = styled.div`
   color: black;
   font-family: 'Almanach Test', sans-serif;
+//   font-size: clamp(12px, 2vw, 20px);
+  // font-weight: 400;
+  // line-height: 1.4;
   font-size: clamp(14px, 2vw, 28px);
   line-height: 1.2;
   font-weight: 300;
   margin: clamp(25px, 4vw, 50px) 175px;
   text-align: left;
+  width: 65%;
 `;
 
 const HeaderImageLeft = styled.img`
@@ -218,22 +230,22 @@ const Dropdown = styled.select`
 `;
 
 const ColumnImage = styled.img`
-  width: 90%;
+  width: 95%;
   height: auto;
   align-self: center;
   object-fit: contain;
-  max-height: clamp(150px, 25vw, 300px);
+  max-height: clamp(150px, 25vw, 500px);
 `;
 
 const StatsBox = styled.div`
   width: 100%;
-  border: 2px solid #CBCBCB;
+  border: 4px solid #CBCBCB;
   border-radius: 20px;
   flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: stretch;
-  padding: clamp(20px, 4vw, 40px) clamp(10px, 2vw, 20px);
+  padding: clamp(10px, 4vw, 20px) clamp(10px, 2vw, 20px);
   gap: clamp(10px, 2vw, 20px);
   min-height: clamp(200px, 40vw, 400px);
   position: relative;
@@ -477,11 +489,11 @@ const GridPage = () => {
         {Array.from({ length: 13 * 6 }).map((_, index) => renderCell(index))}
       </Grid>
       <CreditsContainer>
-        Reporting by Chloe Kim, Liam McGlynn, and Noah Hrung
-        <br />
+        Reporting by Noah Hrung, Chloe Kim, and Liam McGlynn
+        {/* <br />
         Development by [contributors]
         <br />
-        Design & Illustration by Noah Hrung
+        Design & Illustration by Noah Hrung */}
       </CreditsContainer>
       <HeaderSection>
         <HeaderImageLeft src="/image11.png" alt="Header decoration" />
@@ -514,7 +526,7 @@ const GridPage = () => {
       <HeaderSection style={{ backgroundColor: '#EDDCAE' }}>
         <HeaderImageLeft src="/image12.png" alt="Header decoration" />
         <HeaderImageRight src="/image9.png" alt="Header decoration" />
-        <HeaderTextItalic>FOOD TRUCK SHOWDOWN!</HeaderTextItalic>
+        <HeaderTextItalic>FOOD TRUCK SHOWDOWN</HeaderTextItalic>
       </HeaderSection>
       <BodyText>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.
@@ -596,6 +608,9 @@ const GridPage = () => {
       <BodyText>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
       </BodyText>
+      <CreditsContainer style={{ fontStyle: 'italic', marginBottom: '0px' }}>
+        Contributing reports from Sydney Tomsick and Cassidy Sadowski, Stack contributors.
+      </CreditsContainer>
       <BodyText></BodyText>
     </GridContainer>
   );

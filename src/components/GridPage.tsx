@@ -142,22 +142,38 @@ const HeaderImage = styled.img`
 `;
 
 const HeaderSection = styled.div`
-  width: calc(100% - 350px);
+  width: calc(100% - clamp(35px, 5vw, 70px));
   height: clamp(44px, 8vw, 88px);
   background-color: #C9DE9D;
-  border-radius: 20px;
-  margin: clamp(25px, 4vw, 50px) 35px;
+  border-radius: clamp(10px, 2vw, 20px);
+  margin: clamp(25px, 4vw, 50px) clamp(17.5px, 2.5vw, 35px);
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+
+  @media (max-width: 768px) {
+    width: calc(100% - clamp(20px, 4vw, 40px));
+    margin: clamp(20px, 3vw, 40px) clamp(10px, 2vw, 20px);
+  }
 `;
 
 const HeaderText = styled.div`
   font-family: 'Barlow', sans-serif;
-  font-size: clamp(20px, 4vw, 40px);
+  font-size: clamp(16px, 3vw, 40px);
   font-weight: 800;
   color: black;
+  text-align: center;
+  padding: 0 clamp(10px, 2vw, 20px);
+  z-index: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80%;
+
+  @media (max-width: 768px) {
+    font-size: clamp(14px, 2.5vw, 32px);
+  }
 `;
 
 const BodyText = styled.div`
@@ -177,21 +193,34 @@ const BodyText = styled.div`
 const HeaderImageLeft = styled.img`
   position: absolute;
   left: clamp(17.5px, 2.5vw, 35px);
-  height: clamp(125px, 20vw, 250px);
+  height: clamp(100px, 15vw, 250px);
   width: auto;
   object-fit: contain;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @media (max-width: 768px) {
+    height: clamp(120px, 18vw, 220px);
+  }
 `;
 
 const HeaderImageRight = styled.img`
   position: absolute;
   right: clamp(17.5px, 2.5vw, 35px);
-  height: clamp(125px, 20vw, 250px);
+  height: clamp(100px, 15vw, 250px);
   width: auto;
   object-fit: contain;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @media (max-width: 768px) {
+    height: clamp(120px, 18vw, 220px);
+  }
 `;
 
 const HeaderTextItalic = styled(HeaderText)`
   font-style: italic;
+  letter-spacing: -0.02em;
 `;
 
 const ThreeColumnSection = styled.div`
@@ -239,7 +268,7 @@ const ColumnImage = styled.img`
 
 const StatsBox = styled.div`
   width: 100%;
-  border: 4px solid #CBCBCB;
+  border: 2px solid #CBCBCB;
   border-radius: 20px;
   flex-grow: 1;
   display: flex;

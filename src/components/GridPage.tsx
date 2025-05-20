@@ -96,9 +96,9 @@ const TitleText = styled.div`
 const SubtitleText = styled.div`
   text-align: center;
   color: black;
-  font-family: 'Almanach Test', sans-serif;
+  font-family: 'Hanken Grotesk', sans-serif;
   font-size: clamp(14px, 2vw, 28px);
-  font-weight:300;
+  font-weight: 400;
   line-height: 1.2;
 `;
 
@@ -121,9 +121,9 @@ const CreditsContainer = styled.div`
   // font-size: clamp(14px, 2vw, 20px);
   // font-weight: 400;
 
-  font-family: 'Almanach Test', sans-serif;
+  font-family: 'Hanken Grotesk', sans-serif;
   font-size: clamp(14px, 2vw, 28px);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.2;
   margin-bottom: 40px;
   // max-width: 800px;
@@ -178,13 +178,13 @@ const HeaderText = styled.div`
 
 const BodyText = styled.div`
   color: black;
-  font-family: 'Almanach Test', sans-serif;
+  font-family: 'Hanken Grotesk', sans-serif;
 //   font-size: clamp(12px, 2vw, 20px);
   // font-weight: 400;
   // line-height: 1.4;
   font-size: clamp(14px, 2vw, 28px);
   line-height: 1.2;
-  font-weight: 300;
+  font-weight: 400;
   margin: clamp(25px, 4vw, 50px) 175px;
   text-align: left;
   width: 65%;
@@ -240,11 +240,15 @@ const Column = styled.div`
 
 const ColumnTitle = styled.div`
   color: black;
-  font-family: 'Almanach Test', sans-serif;
+  font-family: 'Hanken Grotesk', sans-serif;
   font-size: clamp(14px, 2vw, 28px);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.2;
   text-align: center;
+`;
+
+const SmallerColumnTitle = styled(ColumnTitle)`
+  font-size: clamp(12px, 1.8vw, 24px);
 `;
 
 const Dropdown = styled.select`
@@ -252,8 +256,9 @@ const Dropdown = styled.select`
   padding: clamp(8px, 1.5vw, 12px);
   border: 2px solid #CBCBCB;
   border-radius: 20px;
-  font-family: 'Almanach Test', sans-serif;
+  font-family: 'Hanken Grotesk', sans-serif;
   font-size: clamp(12px, 1.5vw, 24px);
+  font-weight: 400;
   background-color: white;
   cursor: pointer;
 `;
@@ -307,7 +312,7 @@ const BarContainer = styled.div`
 `;
 
 const BarLabel = styled.div`
-  font-family: 'Almanach Test', sans-serif;
+  font-family: 'Hanken Grotesk', sans-serif;
   font-size: clamp(10px, 1.2vw, 20px);
   color: black;
   text-align: center;
@@ -337,8 +342,9 @@ const BarValue = styled.div`
   top: clamp(-30px, -3.5vw, -40px);
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Almanach Test', sans-serif;
+  font-family: 'Hanken Grotesk', sans-serif;
   font-size: clamp(10px, 1.2vw, 20px);
+  font-weight: 400;
   color: black;
   white-space: nowrap;
   width: max-content;
@@ -526,16 +532,16 @@ const GridPage = () => {
       </CreditsContainer>
       <HeaderSection>
         <HeaderImageLeft src="/image11.png" alt="Header decoration" />
-        <HeaderText>Intro</HeaderText>
+        <HeaderText>Rolling into Campus</HeaderText>
       </HeaderSection>
       <BodyText>
       UCLA Dining prides itself on serving the best food across college campuses, defending its #1 placement in the Niche Best College Food in America ranking for over half a decade.
 
-But the UCLA Dining experience extends beyond the traditional college dining hall experience, tapping into Los Angeles food truck culture through contracting a variety of food trucks. From international flavors to late night sweets, students exchange a meal swipe valued at $9 for a food truck’s take-out meal.
+But the UCLA Dining experience extends beyond the traditional college dining hall experience, tapping into Los Angeles food truck culture through contracting a variety of food trucks. From international flavors to late night sweets, students exchange a meal swipe valued at $9 for a food truck's take-out meal.
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#FCBFD6' }}>
         <HeaderImageRight src="/image4.png" alt="Header decoration" />
-        <HeaderText>Individual Performance</HeaderText>
+        <HeaderText>Food Truck Performance</HeaderText>
       </HeaderSection>
       <BodyText>
       From September 2022 to December 2024, a total of 66 different food trucks have visited UCLA. These are the top five food trucks based on average sales per visit for the 2022-2023 and 2023-2024 academic years:
@@ -553,13 +559,7 @@ But the UCLA Dining experience extends beyond the traditional college dining hal
       </Section>
       
 
-      <HeaderSection style={{ backgroundColor: '#BFDDFC' }}>
-        <HeaderImageLeft src="/image3.png" alt="Header decoration" />
-        <HeaderText>Phasing Out</HeaderText>
-      </HeaderSection>
-      <BodyText>
-      Decrease in food trucks is most evident when looking at the number of food trucks in a given day’s Dinner meal period. During Fall Quarter 2023, the number of food trucks during a single Dinner meal period maxed out at six food trucks. By the following Winter and Spring Quarters during the 2023-2024 academic year, this number was halved, with a maximum of three food trucks visiting during a single day’s Dinner meal period. During Fall Quarter 2024, a new peak of four food trucks was reached on 6 days, though a vast majority of days only received two food trucks.
-      </BodyText>
+
       <HeaderSection style={{ backgroundColor: '#EDDCAE' }}>
         <HeaderImageLeft src="/image12.png" alt="Header decoration" />
         <HeaderImageRight src="/image9.png" alt="Header decoration" />
@@ -586,7 +586,7 @@ But the UCLA Dining experience extends beyond the traditional college dining hal
           )}
         </Column>
         <Column>
-          <ColumnTitle>All-time Sales (Fall 2022 - Fall 2024)</ColumnTitle>
+          <SmallerColumnTitle>All-time Sales (Fall 2022 - Fall 2024)</SmallerColumnTitle>
           <StatsBox>
   <BarsAndLineWrapper>
     <BarsBaselineWrapper>
@@ -631,9 +631,16 @@ But the UCLA Dining experience extends beyond the traditional college dining hal
           )}
         </Column>
       </ThreeColumnSection>
+      <HeaderSection style={{ backgroundColor: '#BFDDFC' }}>
+        <HeaderImageLeft src="/image3.png" alt="Header decoration" />
+        <HeaderText>The Fate of Food Trucks</HeaderText>
+      </HeaderSection>
+      <BodyText>
+      Decrease in food trucks is most evident when looking at the number of food trucks in a given day's Dinner meal period. During Fall Quarter 2023, the number of food trucks during a single Dinner meal period maxed out at six food trucks. By the following Winter and Spring Quarters during the 2023-2024 academic year, this number was halved, with a maximum of three food trucks visiting during a single day's Dinner meal period. During Fall Quarter 2024, a new peak of four food trucks was reached on 6 days, though a vast majority of days only received two food trucks.
+      </BodyText>
       <HeaderSection style={{ backgroundColor: '#FBAD79' }}>
         <HeaderImageRight src="/image1.png" alt="Header decoration" />
-        <HeaderText>Conclusion</HeaderText>
+        <HeaderText>Food for Thought</HeaderText>
       </HeaderSection>
       <BodyText>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.

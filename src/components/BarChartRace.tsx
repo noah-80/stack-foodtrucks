@@ -82,8 +82,9 @@ const BarChartRace: React.FC = () => {
         const text = d3.select(this).text();
         return `<tspan style="font-family: Arial;">$</tspan>${text.slice(1)}`; // Replace the dollar sign with Arial
       })
-      .style("font-family", "Almanach Test")
+      .style("font-family", "Hanken Grotesk")
       .style("font-size", "14px")
+      .style("font-weight", "400")
       .style("fill", "black"); // Make tick labels black
 
     // Style the x-axis line and ticks
@@ -103,7 +104,8 @@ const BarChartRace: React.FC = () => {
       .attr("y", height - margin.bottom + 45)
       .attr("text-anchor", "middle")
       .style("font-size", "14px")
-      .style("font-family", "Almanach Test")
+      .style("font-family", "Hanken Grotesk")
+      .style("font-weight", "400")
       .html(`Average <tspan style="font-family: Arial;">$</tspan>/Visit`);
 
     const yAxis = d3.axisLeft(yScale).tickSize(0).tickFormat(() => "");
@@ -181,7 +183,8 @@ const BarChartRace: React.FC = () => {
       .attr("text-anchor", "end")
       .attr("fill", "white")
       .style("font-size", "14px")
-      .style("font-family", "Almanach Test")
+      .style("font-family", "Hanken Grotesk")
+      .style("font-weight", "400")
       .each(function(d) {
         const textElement = d3.select(this);
         textElement.selectAll("tspan").remove();
@@ -192,7 +195,7 @@ const BarChartRace: React.FC = () => {
         textElement
           .append("tspan")
           .text(d.value.toFixed(2))
-          .style("font-family", "Almanach Test");
+          .style("font-family", "Hanken Grotesk");
       });
 
     // Update sales labels
@@ -242,7 +245,8 @@ const BarChartRace: React.FC = () => {
         return d.name; // Display the full name if no prefix is present
       })
       .style("font-size", "14px")
-      .style("font-family", "Almanach Test");
+      .style("font-family", "Hanken Grotesk")
+      .style("font-weight", "400");
 
     names
       .transition()
@@ -257,7 +261,8 @@ const BarChartRace: React.FC = () => {
       .attr("y", 30) // Position title higher up
       .attr("text-anchor", "middle")
       .style("font-size", "16px")
-      .style("font-family", "Almanach Test")
+      .style("font-family", "Hanken Grotesk")
+      .style("font-weight", "400")
       .text("Top 5 Food Trucks");
   }, [currentData]);
 
@@ -293,7 +298,8 @@ const BarChartRace: React.FC = () => {
                 style={{
                   padding: "5px 10px",
                   fontSize: "14px",
-                  fontFamily: "Almanach Test",
+                  fontFamily: "Hanken Grotesk",
+                  fontWeight: "400",
                   backgroundColor: currentData === data2022 ? "#CBCBCB" : "white",
                   color: "black",
                   border: "2px solid #CBCBCB",
@@ -309,7 +315,8 @@ const BarChartRace: React.FC = () => {
                 style={{
                   padding: "5px 10px",
                   fontSize: "14px",
-                  fontFamily: "Almanach Test",
+                  fontFamily: "Hanken Grotesk",
+                  fontWeight: "400",
                   backgroundColor: currentData === data2023 ? "#CBCBCB" : "white",
                   color: "black",
                   border: "2px solid #CBCBCB",

@@ -529,19 +529,27 @@ const GridPage = () => {
         <HeaderText>Intro</HeaderText>
       </HeaderSection>
       <BodyText>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      UCLA Dining prides itself on serving the best food across college campuses, defending its #1 placement in the Niche Best College Food in America ranking for over half a decade.
+
+But the UCLA Dining experience extends beyond the traditional college dining hall experience, tapping into Los Angeles food truck culture through contracting a variety of food trucks. From international flavors to late night sweets, students exchange a meal swipe valued at $9 for a food truck’s take-out meal.
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#FCBFD6' }}>
         <HeaderImageRight src="/image4.png" alt="Header decoration" />
         <HeaderText>Individual Performance</HeaderText>
       </HeaderSection>
       <BodyText>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      From September 2022 to December 2024, a total of 66 different food trucks have visited UCLA. These are the top five food trucks based on average sales per visit for the 2022-2023 and 2023-2024 academic years:
       </BodyText>
       <Section>
-      <BarChartRace>
-        
-      </BarChartRace>
+        <div style={{ 
+          width: "100%", 
+          maxWidth: "1200px", 
+          margin: "0 auto", 
+          padding: "20px",
+          background: "white"
+        }}>
+          <BarChartRace />
+        </div>
       </Section>
       
 
@@ -550,7 +558,7 @@ const GridPage = () => {
         <HeaderText>Phasing Out</HeaderText>
       </HeaderSection>
       <BodyText>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      Decrease in food trucks is most evident when looking at the number of food trucks in a given day’s Dinner meal period. During Fall Quarter 2023, the number of food trucks during a single Dinner meal period maxed out at six food trucks. By the following Winter and Spring Quarters during the 2023-2024 academic year, this number was halved, with a maximum of three food trucks visiting during a single day’s Dinner meal period. During Fall Quarter 2024, a new peak of four food trucks was reached on 6 days, though a vast majority of days only received two food trucks.
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#EDDCAE' }}>
         <HeaderImageLeft src="/image12.png" alt="Header decoration" />

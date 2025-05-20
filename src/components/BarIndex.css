@@ -1,0 +1,47 @@
+/* Bar Chart Race Styles */
+
+.bar {
+  transition: all 0.5s ease;
+}
+
+.bar-label {
+  font-family: 'Almanach Test', sans-serif;
+  fill: white;
+  text-anchor: end;
+  dominant-baseline: middle;
+}
+
+.truck-name {
+  font-family: 'Almanach Test', sans-serif;
+  fill: black;
+  text-anchor: end;
+  dominant-baseline: middle;
+}
+
+.truck-image {
+  transition: all 0.5s ease;
+}
+
+.x-axis path,
+.x-axis line {
+  stroke: #CBCBCB;
+}
+
+.x-axis text {
+  font-family: 'Almanach Test', sans-serif;
+  fill: black;
+}
+
+.chart-title {
+  font-family: 'Almanach Test', sans-serif;
+  fill: black;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.x-axis-title {
+  font-family: 'Almanach Test', sans-serif;
+  fill: black;
+  text-anchor: middle;
+  dominant-baseline: middle;
+} 

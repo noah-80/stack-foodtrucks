@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import styled from '@emotion/styled';
 import Section from "./Section";
-import BarChartRace from './BarChartRace';
+import BarChartRace from './BarChartRace/BarChartRace';
+import './BarChartRace/BarIndex.css';
+
 
 const GridContainer = styled.div`
   width: 100vw;
@@ -548,8 +550,7 @@ But the UCLA Dining experience extends beyond the traditional college dining hal
       </BodyText>
       <Section>
         <div style={{ 
-          width: "100%", 
-          maxWidth: "1200px", 
+          width: "1200px", 
           margin: "0 auto", 
           padding: "20px",
           background: "white"
@@ -563,7 +564,7 @@ But the UCLA Dining experience extends beyond the traditional college dining hal
       <HeaderSection style={{ backgroundColor: '#EDDCAE' }}>
         <HeaderImageLeft src="/image12.png" alt="Header decoration" />
         <HeaderImageRight src="/image9.png" alt="Header decoration" />
-        <HeaderTextItalic>FOOD TRUCK SHOWDOWN</HeaderTextItalic>
+        <HeaderTextItalic>FOOD TRUCK SHOWDOWN!</HeaderTextItalic>
       </HeaderSection>
       <BodyText>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.

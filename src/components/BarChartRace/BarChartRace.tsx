@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
+import "@fontsource/hanken-grotesk/500.css";
 import "./BarIndex.css"; // Import custom styles for the font
 
 interface DataPoint {
@@ -19,8 +20,8 @@ const data2023: DataPoint[] = [
   { name: "8e8 Thai Street Food", value: 8000.17 },
   { name: "(+2) Salpicon", value: 7834.0 },
   { name: "(+3) Perro 1-10 Tacos", value: 6809.13 },
-  { name: "(-2) Aloha Fridays", value: 5775.88 },
-  { name: "Smile Hotdog", value: 4914.29 },
+  { name: "(NEW) Vchos Pupusería Moderna", value: 6235.20 },
+  { name: "(+2) Yuna's Bob", value: 5964.23 },
 ];
 
 const BarChartRace: React.FC = () => {
@@ -35,24 +36,35 @@ const BarChartRace: React.FC = () => {
     "Dina's Dumpling": "#f287b7",
     "Salpicon": "#a6b83a",
     "Smile Hotdog": "#f26324",
-    "Perro 1-10 Tacos": "#73524d", // No prefix here
+    "Perro 1-10 Tacos": "#73524d",
+    "Yuna's Bob": "#B76937",
+    "Vchos Pupusería Moderna": "#4A90E2",
   };
 
   const imageMapping: { [key: string]: string } = {
-    "8e8 Thai Street Food": "image1.png",
-    "Aloha Fridays": "image2.png",
-    "Dina's Dumpling": "image5.png",
-    "Salpicon": "image11.png",
-    "Smile Hotdog": "image12.png",
-    "Perro 1-10 Tacos": "image9.png", // No prefix here
+    "8e8 Thai Street Food": "/image1.png",
+    "Aloha Fridays": "/image2.png",
+    "Dina's Dumpling": "/image5.png",
+    "Salpicon": "/image11.png",
+    "Smile Hotdog": "/image12.png",
+    "Perro 1-10 Tacos": "/image9.png",
+    "Yuna's Bob": "/image18.png",
+    "Vchos Pupusería Moderna": "/image1.png",  // Use base name without (NEW)
   };
 
   // Helper function to strip prefixes
-  const stripPrefix = (name: string) => name.replace(/^\(\+?\d+\)\s|\(-\d+\)\s/, "");
+  const stripPrefix = (name: string) => name.replace(/^\(\+?\d+\)\s|\(-\d+\)\s|\(NEW\)\s/, "");
+
+  // Helper function to get image path
+  const getImagePath = (name: string) => {
+    const strippedName = stripPrefix(name);
+    console.log("Name:", name, "Stripped:", strippedName); // Debug log
+    return imageMapping[strippedName];
+  };
 
   useEffect(() => {
     const svg = d3.select(svgRef.current);
-    const width = 800;
+    const width = 800; // Increased by 1.2px
     const height = 400;
     const margin = { top: 100, right: 150, bottom: 60, left: 180 }; // Increased top margin to accommodate buttons
     const cornerRadius = 8;
@@ -83,18 +95,7 @@ const BarChartRace: React.FC = () => {
         return `<tspan style="font-family: Arial;">$</tspan>${text.slice(1)}`; // Replace the dollar sign with Arial
       })
       .style("font-family", "Hanken Grotesk")
-      .style("font-size", "14px")
-      .style("font-weight", "400")
-      .style("fill", "black"); // Make tick labels black
-
-    // Style the x-axis line and ticks
-    svg.select(".x-axis")
-      .select(".domain")
-      .style("stroke", "black"); // Make the main axis line black
-
-    svg.select(".x-axis")
-      .selectAll(".tick line")
-      .style("stroke", "black"); // Make the tick lines black
+      .style("font-size", "14px");
 
     // Add X-axis title
     svg.select(".x-axis-title").remove();
@@ -105,7 +106,6 @@ const BarChartRace: React.FC = () => {
       .attr("text-anchor", "middle")
       .style("font-size", "14px")
       .style("font-family", "Hanken Grotesk")
-      .style("font-weight", "400")
       .html(`Average <tspan style="font-family: Arial;">$</tspan>/Visit`);
 
     const yAxis = d3.axisLeft(yScale).tickSize(0).tickFormat(() => "");
@@ -116,26 +116,18 @@ const BarChartRace: React.FC = () => {
       .select(".domain") // Select the main axis line
       .attr("d", `M0,${margin.top}H0V${height - margin.bottom + 10}H0`); // Extend the line 10px longer
 
-    // Clear any existing transitions before starting new ones
-    svg.selectAll("*").interrupt();
+    // Bind data to bars
+    const bars = svg.selectAll(".bar").data(currentData, (d: any) => stripPrefix(d.name));
 
-    // Bind data to all elements using the same key function
-    const keyFn = (d: any) => stripPrefix(d.name);
-    const bars = svg.selectAll(".bar").data(currentData, keyFn);
-    const salesLabels = svg.selectAll(".sales-label").data(currentData, keyFn);
-    const images = svg.selectAll(".bar-image").data(currentData, keyFn);
-    const names = svg.selectAll("text.name").data(currentData, (d: any) => d.name);
-
-    // Enter new elements
     bars
       .enter()
       .append("path")
       .attr("class", "bar")
       .attr("d", (d) => {
         const x = margin.left;
-        const y = yScale(d.name)! + 4;
+        const y = yScale(d.name)! + 4; // Add padding to the top
         const barWidth = xScale(d.value) - margin.left;
-        const barHeight = yScale.bandwidth() - 8;
+        const barHeight = yScale.bandwidth() - 8; // Reduce height by 4 (2px padding on top and bottom)
 
         return `
           M${x},${y} 
@@ -149,15 +141,14 @@ const BarChartRace: React.FC = () => {
       })
       .attr("fill", (d) => colorMapping[stripPrefix(d.name)]);
 
-    // Update all elements with the same transition
     bars
       .transition()
       .duration(1000)
       .attr("d", (d) => {
         const x = margin.left;
-        const y = yScale(d.name)! + 4;
+        const y = yScale(d.name)! + 4; // Add padding to the top
         const barWidth = xScale(d.value) - margin.left;
-        const barHeight = yScale.bandwidth() - 8;
+        const barHeight = yScale.bandwidth() - 8; // Reduce height by 4 (2px padding on top and bottom)
 
         return `
           M${x},${y} 
@@ -172,7 +163,9 @@ const BarChartRace: React.FC = () => {
 
     bars.exit().remove();
 
-    // Enter new sales labels
+    // Add sales data inside each bar
+    const salesLabels = svg.selectAll(".sales-label").data(currentData, (d: any) => stripPrefix(d.name));
+
     salesLabels
       .enter()
       .append("text")
@@ -184,50 +177,93 @@ const BarChartRace: React.FC = () => {
       .attr("fill", "white")
       .style("font-size", "14px")
       .style("font-family", "Hanken Grotesk")
-      .style("font-weight", "400")
-      .each(function(d) {
+      .each(function (d) {
         const textElement = d3.select(this);
+
+        // Clear any existing tspans to avoid duplication
         textElement.selectAll("tspan").remove();
+
+        // Add a tspan for the dollar sign
         textElement
           .append("tspan")
           .text("$")
           .style("font-family", "Arial");
+
+        // Add a tspan for the numeric value
         textElement
           .append("tspan")
           .text(d.value.toFixed(2))
           .style("font-family", "Hanken Grotesk");
       });
 
-    // Update sales labels
     salesLabels
       .transition()
       .duration(1000)
       .attr("x", (d) => xScale(d.value) - 5)
-      .attr("y", (d) => yScale(d.name)! + yScale.bandwidth() / 2);
+      .attr("y", (d) => yScale(d.name)! + yScale.bandwidth() / 2)
+      .each(function (d) {
+        const textElement = d3.select(this);
+
+        // Clear any existing tspans to avoid duplication
+        textElement.selectAll("tspan").remove();
+
+        // Add a tspan for the dollar sign
+        textElement
+          .append("tspan")
+          .text("$")
+          .style("font-family", "Arial");
+
+        // Add a tspan for the numeric value
+        textElement
+          .append("tspan")
+          .text(d.value.toFixed(2))
+          .style("font-family", "Hanken Grotesk");
+      });
 
     salesLabels.exit().remove();
 
-    // Enter new images
-    images
-      .enter()
-      .append("image")
-      .attr("class", "bar-image")
-      .attr("x", (d) => xScale(d.value) + 10)
-      .attr("y", (d) => yScale(d.name)! + (yScale.bandwidth() - yScale.bandwidth() * 1.8) / 2)
-      .attr("width", yScale.bandwidth() * 1.8)
-      .attr("height", yScale.bandwidth() * 1.8)
-      .attr("href", (d) => imageMapping[stripPrefix(d.name)]);
+    // Bind data to images
+    const images = svg.selectAll(".bar-image-group").data(currentData, (d: any) => stripPrefix(d.name)); // Use same key function as bars
 
-    // Update images
+    // Remove old images
+    images.exit().remove();
+
+    // Update existing images
     images
       .transition()
       .duration(1000)
-      .attr("x", (d) => xScale(d.value) + 10)
-      .attr("y", (d) => yScale(d.name)! + (yScale.bandwidth() - yScale.bandwidth() * 1.8) / 2);
+      .attr("transform", (d) => {
+        const x = xScale(d.value) + 10;
+        const y = yScale(d.name)! + (yScale.bandwidth() - yScale.bandwidth() * 1.5) / 2;
+        return `translate(${x},${y})`;
+      });
 
-    images.exit().remove();
+    // Add new images
+    images
+      .enter()
+      .append("g")
+      .attr("class", "bar-image-group")
+      .attr("transform", (d) => {
+        const x = xScale(d.value) + 10;
+        const y = yScale(d.name)! + (yScale.bandwidth() - yScale.bandwidth() * 1.5) / 2;
+        return `translate(${x},${y})`;
+      })
+      .each(function(d) {
+        const g = d3.select(this);
+        const width = yScale.bandwidth() * 1.8;
+        const height = yScale.bandwidth() * 1.8;
+        
+        // Add image
+        g.append("image")
+          .attr("class", "bar-image")
+          .attr("width", width)
+          .attr("height", height)
+          .attr("href", (d) => getImagePath(d.name));
+      });
 
     // Bind data to names
+    const names = svg.selectAll("text.name").data(currentData, (d: any) => d.name); // Use full name with prefix
+
     names
       .enter()
       .append("text")
@@ -241,12 +277,14 @@ const BarChartRace: React.FC = () => {
         if (d.name.includes("(+2)") || d.name.includes("(-2)") || d.name.includes("(+3)")) {
           const [prefix, rest] = d.name.split(") ");
           return `<tspan style="fill: ${prefix.includes("+") ? "#3CB371" : "#FF0000"};">${prefix})</tspan> ${rest}`;
+        } else if (d.name.includes("(NEW)")) {
+          const [prefix, rest] = d.name.split(") ");
+          return `<tspan style="fill: #4A90E2;">${prefix})</tspan> ${rest}`;
         }
         return d.name; // Display the full name if no prefix is present
       })
       .style("font-size", "14px")
-      .style("font-family", "Hanken Grotesk")
-      .style("font-weight", "400");
+      .style("font-family", "Hanken Grotesk");
 
     names
       .transition()
@@ -262,7 +300,6 @@ const BarChartRace: React.FC = () => {
       .attr("text-anchor", "middle")
       .style("font-size", "16px")
       .style("font-family", "Hanken Grotesk")
-      .style("font-weight", "400")
       .text("Top 5 Food Trucks");
   }, [currentData]);
 
@@ -299,7 +336,6 @@ const BarChartRace: React.FC = () => {
                   padding: "5px 10px",
                   fontSize: "14px",
                   fontFamily: "Hanken Grotesk",
-                  fontWeight: "400",
                   backgroundColor: currentData === data2022 ? "#CBCBCB" : "white",
                   color: "black",
                   border: "2px solid #CBCBCB",
@@ -316,7 +352,6 @@ const BarChartRace: React.FC = () => {
                   padding: "5px 10px",
                   fontSize: "14px",
                   fontFamily: "Hanken Grotesk",
-                  fontWeight: "400",
                   backgroundColor: currentData === data2023 ? "#CBCBCB" : "white",
                   color: "black",
                   border: "2px solid #CBCBCB",

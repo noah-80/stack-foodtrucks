@@ -537,9 +537,34 @@ const GridPage = () => {
         <HeaderText>Rolling into Campus</HeaderText>
       </HeaderSection>
       <BodyText>
-      UCLA Dining prides itself on serving the best food across college campuses, defending its #1 placement in the Niche Best College Food in America ranking for over half a decade.
+      For over half a decade, UCLA has defended its #1 placement in the Niche Best College Food in America ranking.
 
-But the UCLA Dining experience extends beyond the traditional college dining hall experience, tapping into Los Angeles food truck culture through contracting a variety of food trucks. From international flavors to late night sweets, students exchange a meal swipe valued at $9 for a food truck's take-out meal.
+      <br></br>
+      <br></br>
+
+The UCLA Dining experience, however, extends beyond traditional college dining halls. Tapping into Los Angeles food truck culture, UCLA Dining invites a variety of food trucks onto campus. From international flavors to late-night sweets, students exchange a meal swipe valued at $9 for a food truck’s take-out meal.
+
+      <br></br>
+      <br></br>
+
+“I think it’s good cause it gets to show a little slice of L.A. in terms of cuisine,” fourth-year labor studies student Jason Xavier Osorio said. “It’s just marvelous to see how L.A. has come to evolve with the food truck business.”
+
+<br></br>
+<br></br>
+
+Since 2021, food trucks serve students on the Hill, the heart of UCLA’s undergraduate housing. Around 13% of dining swipes used on the Hill are used on food trucks, just under the amount of swipes used at Rendezvous, the second most popular take-out location on the Hill. Throughout the school year, food trucks serve a steady supply of students.
+
+<br></br>
+<br></br>
+
+Following students’ return to on-campus housing in 2021, UCLA introduced food trucks to temporarily address staffing shortages, and to alleviate lines. In the time since, the future of food truck operations at UCLA is uncertain. Cynthia Ho, a second-year mechanical engineering student, shared her experiences as a former On-Campus Housing Council Representative.
+
+<br></br>
+<br></br>
+
+“We actually talked about the phasing out of food trucks, and there were a lot of people frustrated,” Ho said. “Ever since COVID, we had to lay off a lot of staff. The money that would’ve been going to that staff is going to food trucks instead. As we’re going back to our pre-COVID levels, we’re able to hire more people, but that means the money will have to be shifted to these new dining staff hires.”
+
+
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#FCBFD6' }}>
         <HeaderImageRight src="/image4.png" alt="Header decoration" />

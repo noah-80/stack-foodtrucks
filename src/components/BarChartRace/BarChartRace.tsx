@@ -49,7 +49,7 @@ const BarChartRace: React.FC = () => {
     "Smile Hotdog": "/image12.png",
     "Perro 1-10 Tacos": "/image9.png",
     "Yuna's Bob": "/image18.png",
-    "Vchos Pupusería Moderna": "/image1.png",  // Use base name without (NEW)
+    "Vchos Pupusería Moderna": "/imagenew.png",  // Use base name without (NEW)
   };
 
   // Helper function to strip prefixes

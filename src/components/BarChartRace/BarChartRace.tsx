@@ -38,7 +38,7 @@ const BarChartRace: React.FC = () => {
     "Smile Hotdog": "#f26324",
     "Perro 1-10 Tacos": "#73524d",
     "Yuna's Bob": "#B76937",
-    "Vchos Pupusería Moderna": "#4A90E2",
+    "Vchos Pupusería Moderna": "#54a9c4",
   };
 
   const imageMapping: { [key: string]: string } = {

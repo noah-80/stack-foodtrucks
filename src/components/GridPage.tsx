@@ -526,7 +526,7 @@ const GridPage = () => {
         {Array.from({ length: 13 * 6 }).map((_, index) => renderCell(index))}
       </Grid>
       <CreditsContainer>
-        Reporting by Noah Hrung, Chloe Kim, and Liam McGlynn
+        Reporting by Noah Hrung and Chloe Kim
         {/* <br />
         Development by [contributors]
         <br />
@@ -679,7 +679,7 @@ Following students’ return to on-campus housing in 2021, UCLA introduced food 
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
       </BodyText>
       <CreditsContainer style={{ fontStyle: 'italic', marginBottom: '0px' }}>
-        Contributing reports from Sydney Tomsick and Cassidy Sadowski, Stack contributors.
+        Contributing reports from Liam McGlynn, Sydney Tomsick and Cassidy Sadowski, Stack contributors.
       </CreditsContainer>
       <BodyText></BodyText>
     </GridContainer>

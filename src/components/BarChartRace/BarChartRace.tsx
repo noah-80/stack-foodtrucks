@@ -9,19 +9,19 @@ interface DataPoint {
 }
 
 const data2022: DataPoint[] = [
-  { name: "8e8 Thai Street Food", value: 9795.11 },
-  { name: "Aloha Fridays", value: 8020.68 },
-  { name: "Dina's Dumpling", value: 6822.06 },
-  { name: "Salpicon", value: 6431.97 },
-  { name: "Smile Hotdog", value: 5942.47 },
+  { name: "8e8 Thai Street Food", value: 1031 },
+  { name: "Aloha Fridays", value: 844 },
+  { name: "Dina's Dumpling", value: 718 },
+  { name: "Salpicon", value: 677 },
+  { name: "Smile Hotdog", value: 626 },
 ];
 
 const data2023: DataPoint[] = [
-  { name: "8e8 Thai Street Food", value: 8000.17 },
-  { name: "(+2) Salpicon", value: 7834.0 },
-  { name: "(+3) Perro 1-10 Tacos", value: 6809.13 },
-  { name: "(NEW) Vchos Pupusería Moderna", value: 6235.20 },
-  { name: "(+2) Yuna's Bob", value: 5964.23 },
+  { name: "8e8 Thai Street Food", value: 889 },
+  { name: "(+2) Salpicon", value: 870 },
+  { name: "(+3) Perro 1-10 Tacos", value: 757 },
+  { name: "(NEW) Vchos Pupusería Moderna", value: 693 },
+  { name: "(+2) Yuna's Bob", value: 663 },
 ];
 
 const BarChartRace: React.FC = () => {
@@ -73,7 +73,7 @@ const BarChartRace: React.FC = () => {
 
     const xScale = d3
       .scaleLinear()
-      .domain([0, 10000])
+      .domain([0, 1100])
       .range([margin.left, width - margin.right]);
 
     const yScale = d3
@@ -82,18 +82,14 @@ const BarChartRace: React.FC = () => {
       .range([margin.top, height - margin.bottom])
       .padding(0.1);
 
-    const xAxis = d3.axisBottom(xScale).tickFormat((d) => {
-      return `$${d / 1000}k`;
-    });
+    const xAxis = d3.axisBottom(xScale)
+      .ticks(12) // This will create ticks at intervals of 100
+      .tickFormat((d) => d.toString());
 
     svg.select(".x-axis")
       .attr("transform", `translate(0, ${height - margin.bottom + 10})`)
       .call(xAxis as any)
       .selectAll("text")
-      .html(function () {
-        const text = d3.select(this).text();
-        return `<tspan style="font-family: Arial;">$</tspan>${text.slice(1)}`; // Replace the dollar sign with Arial
-      })
       .style("font-family", "Hanken Grotesk")
       .style("font-size", "14px");
 
@@ -106,7 +102,7 @@ const BarChartRace: React.FC = () => {
       .attr("text-anchor", "middle")
       .style("font-size", "14px")
       .style("font-family", "Hanken Grotesk")
-      .html(`Average Swipes/Visit`);
+      .text("Average Swipes/Visit");
 
     const yAxis = d3.axisLeft(yScale).tickSize(0).tickFormat(() => "");
 
@@ -177,48 +173,14 @@ const BarChartRace: React.FC = () => {
       .attr("fill", "white")
       .style("font-size", "14px")
       .style("font-family", "Hanken Grotesk")
-      .each(function (d) {
-        const textElement = d3.select(this);
-
-        // Clear any existing tspans to avoid duplication
-        textElement.selectAll("tspan").remove();
-
-        // Add a tspan for the dollar sign
-        textElement
-          .append("tspan")
-          .text("$")
-          .style("font-family", "Arial");
-
-        // Add a tspan for the numeric value
-        textElement
-          .append("tspan")
-          .text(d.value.toFixed(2))
-          .style("font-family", "Hanken Grotesk");
-      });
+      .text((d) => d.value.toString());
 
     salesLabels
       .transition()
       .duration(1000)
       .attr("x", (d) => xScale(d.value) - 5)
       .attr("y", (d) => yScale(d.name)! + yScale.bandwidth() / 2)
-      .each(function (d) {
-        const textElement = d3.select(this);
-
-        // Clear any existing tspans to avoid duplication
-        textElement.selectAll("tspan").remove();
-
-        // Add a tspan for the dollar sign
-        textElement
-          .append("tspan")
-          .text("$")
-          .style("font-family", "Arial");
-
-        // Add a tspan for the numeric value
-        textElement
-          .append("tspan")
-          .text(d.value.toFixed(2))
-          .style("font-family", "Hanken Grotesk");
-      });
+      .text((d) => d.value.toString());
 
     salesLabels.exit().remove();
 

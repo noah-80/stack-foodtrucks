@@ -675,7 +675,7 @@ const GridPage = () => {
         </Column>
       </ThreeColumnSection>
       <HeaderSection style={{ backgroundColor: '#BFDDFC' }}>
-        <HeaderImageLeft src="/image3.png" alt="Header decoration" />
+        <HeaderImageLeft src="/image5.png" alt="Header decoration" style={{ height: 'clamp(150px, 25vw, 300px)' }} />
         <HeaderText>The Fate of Food Trucks</HeaderText>
       </HeaderSection>
       <BodyText>
@@ -759,7 +759,7 @@ const GridPage = () => {
         "I would love to have a say with the university ... to ask us what you think ... they just kind of let us know what they're planning to do," Parsons said.
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#EBB1EE' }}>
-        <HeaderImageLeft src="/image5.png" alt="Header decoration" style={{ height: 'clamp(150px, 25vw, 300px)' }} />
+        <HeaderImageLeft src="/image8.png" alt="Header decoration"  />
         <HeaderText>Food for Thought</HeaderText>
       </HeaderSection>
       <BodyText>

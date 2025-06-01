@@ -12,9 +12,9 @@ const DBHeader = styled("div")`
   width: 100%;
   padding: 0.2em 0.2em;
   color: white;
-  font-family: "Courier Prime", monospace;
+  font-family: "Source Code Pro", monospace;
   // font-family: "ITC Century";
-  font-weight: 700;
+  font-weight: 200;
   font-style: italic;
   text-align: center;
   // text-transform: uppercase;

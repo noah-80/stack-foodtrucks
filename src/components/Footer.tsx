@@ -8,7 +8,7 @@ import email from "../Img/email.svg";
 import styled from "styled-components";
 
 const Container = styled.div`
-  background-color: black;
+  background-color: rgb(39, 39, 39);
   height: auto;
   color: white;
   padding: 60px 0 10px 0;

@@ -86,7 +86,7 @@ const GridCell = styled.div<{ isHovered: boolean; isMerged?: boolean }>`
 
 const TitleText = styled.div`
   text-align: center;
-  color: black;
+  color: rgb(39, 39, 39);
   font-family: 'Barlow', sans-serif;
   font-size: clamp(20px, 3vw, 40px);
   font-weight: 800;
@@ -97,7 +97,7 @@ const TitleText = styled.div`
 
 const SubtitleText = styled.div`
   text-align: center;
-  color: black;
+  color: rgb(39, 39, 39);
   font-family: 'Hanken Grotesk', sans-serif;
   font-size: clamp(14px, 2vw, 28px);
   font-weight: 400;
@@ -164,7 +164,7 @@ const HeaderText = styled.div`
   font-family: 'Barlow', sans-serif;
   font-size: clamp(16px, 3vw, 40px);
   font-weight: 800;
-  color: black;
+  color: rgb(39, 39, 39);
   text-align: center;
   padding: 0 clamp(10px, 2vw, 20px);
   z-index: 1;
@@ -179,17 +179,14 @@ const HeaderText = styled.div`
 `;
 
 const BodyText = styled.div`
-  color: black;
+  color:rgb(39, 39, 39);
   font-family: 'Hanken Grotesk', sans-serif;
-//   font-size: clamp(12px, 2vw, 20px);
-  // font-weight: 400;
-  // line-height: 1.4;
-  font-size: clamp(14px, 2vw, 28px);
-  line-height: 1.2;
+  font-size: clamp(12px, 2vw, 26px);
+  line-height: 1.5em;
   font-weight: 400;
   margin: clamp(25px, 4vw, 50px) 175px;
   text-align: left;
-  width: 65%;
+  width: 50vw;
 `;
 
 const HeaderImageLeft = styled.img`
@@ -526,7 +523,7 @@ const GridPage = () => {
         {Array.from({ length: 13 * 6 }).map((_, index) => renderCell(index))}
       </Grid>
       <CreditsContainer>
-        Reporting by Noah Hrung and Chloe Kim
+        Reporting by Noah Hrung, Chloe Kim and Liam McGlynn
         {/* <br />
         Development by [contributors]
         <br />
@@ -666,22 +663,22 @@ Following students’ return to on-campus housing in 2021, UCLA introduced food 
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#FBAD79' }}>
         <HeaderImageRight src="/image1.png" alt="Header decoration" />
-        <HeaderText>Food for Thought</HeaderText>
+        <HeaderText>Behind the Bite</HeaderText>
       </HeaderSection>
       <BodyText>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#EBB1EE' }}>
         <HeaderImageLeft src="/image5.png" alt="Header decoration" style={{ height: 'clamp(150px, 25vw, 300px)' }} />
-        <HeaderText>About the Data</HeaderText>
+        <HeaderText>Food for Thought</HeaderText>
       </HeaderSection>
       <BodyText>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
       </BodyText>
-      <CreditsContainer style={{ fontStyle: 'italic', marginBottom: '0px' }}>
-        Contributing reports from Liam McGlynn, Sydney Tomsick and Cassidy Sadowski, Stack contributors.
-      </CreditsContainer>
       <BodyText></BodyText>
+      <CreditsContainer style={{ fontStyle: 'italic', marginBottom: '0px' }}>
+        Contributing reports from Sydney Tomsick and Cassidy Sadowski, Stack contributors.
+      </CreditsContainer>
     </GridContainer>
   );
 };

@@ -239,15 +239,15 @@ const Column = styled.div`
 
 const ColumnTitle = styled.div`
   color: black;
-  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: 'Barlow', sans-serif;
   font-size: clamp(14px, 2vw, 28px);
-  font-weight: 400;
+  font-weight: 800;
   line-height: 1.2;
   text-align: center;
 `;
 
 const SmallerColumnTitle = styled(ColumnTitle)`
-  font-size: clamp(12px, 1.8vw, 24px);
+  font-size: 1.5vw;
 `;
 
 const Dropdown = styled.select`
@@ -603,7 +603,7 @@ Vchos Pupuseria Moderna ranked fourth in the 2023-2024 academic year, its first 
           )}
         </Column>
         <Column>
-          <SmallerColumnTitle>All-time Sales (Fall 2022 - Fall 2024)</SmallerColumnTitle>
+          <SmallerColumnTitle>All-time Swipes (Fall 2022 - Fall 2024)</SmallerColumnTitle>
           <StatsBox>
   <BarsAndLineWrapper>
     <BarsBaselineWrapper>

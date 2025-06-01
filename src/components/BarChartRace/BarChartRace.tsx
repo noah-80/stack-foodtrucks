@@ -106,7 +106,7 @@ const BarChartRace: React.FC = () => {
       .attr("text-anchor", "middle")
       .style("font-size", "14px")
       .style("font-family", "Hanken Grotesk")
-      .html(`Average <tspan style="font-family: Arial;">$</tspan>/Visit`);
+      .html(`Average Swipes/Visit`);
 
     const yAxis = d3.axisLeft(yScale).tickSize(0).tickFormat(() => "");
 
@@ -299,7 +299,8 @@ const BarChartRace: React.FC = () => {
       .attr("y", 30) // Position title higher up
       .attr("text-anchor", "middle")
       .style("font-size", "16px")
-      .style("font-family", "Hanken Grotesk")
+      .style("font-family", "Barlow")
+      .style("font-weight", "800")
       .text("Top 5 Food Trucks");
   }, [currentData]);
 

@@ -21,8 +21,21 @@ interface TruckDataPoint {
   rate: number;
 }
 
+const backgroundColorPlugin = {
+  id: 'customCanvasBackgroundColor',
+  beforeDraw: (chart: any) => {
+    const { ctx, chartArea } = chart;
+    ctx.save();
+    ctx.fillStyle = 'rgba(0, 192, 225, 0.25)'; // Light blue background
+    ctx.fillRect(chartArea.left, chartArea.top, chartArea.width, chartArea.height);
+    ctx.restore();
+  }
+};
+
 const Correlation: React.FC = () => {
   const [chartData, setChartData] = useState<ChartData<'scatter', TruckDataPoint[]> | null>(null);
+
+  
 
   useEffect(() => {
     Papa.parse('/foodtruckCorrelationData.csv', {
@@ -77,8 +90,8 @@ const Correlation: React.FC = () => {
             return `${point.truck}: ${point.rate.toFixed(2)} swipes/hour`;
           }
         }
-      }
-    },
+      },
+    }, 
     scales: {
       x: {
         title: {
@@ -95,8 +108,12 @@ const Correlation: React.FC = () => {
             size: 12,
           },
         },
+        border: {
+           dash: [5, 5],
+         },
       },
       y: {
+        max: 180000,
         title: {
           display: true,
           text: 'Swipes',
@@ -111,13 +128,17 @@ const Correlation: React.FC = () => {
             size: 12,
           },
         },
+        border: {
+           dash: [5, 5],
+         },
       },
-    }
+    },
+    
   };
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '500px' }}>
-      {chartData ? <Scatter data={chartData} options={options} /> : <p>Loading chart...</p>}
+    <div style={{ position: 'relative', width: '60%', height: '100%', display: 'flex', justifyContent: 'center', }}>
+      {chartData ? <Scatter data={chartData}  options={options} plugins={[backgroundColorPlugin]} /> : <p>Loading chart...</p>}
     </div>
   );
 };

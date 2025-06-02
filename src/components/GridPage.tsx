@@ -183,7 +183,7 @@ const HeaderText = styled.div`
 const BodyText = styled.div`
   color:rgb(39, 39, 39);
   font-family: 'Hanken Grotesk', sans-serif;
-  font-size: clamp(12px, 2vw, 26px);
+  font-size: clamp(12px, 2vw, 20px);
   line-height: 1.5em;
   font-weight: 400;
   margin: clamp(25px, 4vw, 50px) 175px;

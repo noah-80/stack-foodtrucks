@@ -196,12 +196,13 @@ const BodyText = styled.div`
     width: 80vw;
   }
 
-  img {
-    width: 100%;
-    height: auto;
-    margin: clamp(20px, 3vw, 40px) 0;
-    display: block;
-  }
+  // img {
+  //   width: 100%;
+  //   // margin: clamp(20px, 3vw, 40px) 0;
+  //   display: block;
+  //   object-fit: contain;
+  //   max-height: 80vh;
+  // }
 `;
 
 const CenteredBodyText = styled(BodyText)`
@@ -616,7 +617,7 @@ const GridPage = () => {
       <BodyText>
         For over half a decade, UCLA has defended its #1 placement in the Niche Best College Food in America ranking. The UCLA Dining experience, however, extends beyond traditional college dining halls. Tapping into Los Angeles food truck culture, UCLA Dining invites a variety of food trucks onto campus. From international flavors to late-night sweets, students exchange a meal swipe for a food truck's take-out meal.<br></br>
         
-        <img src="Trucks.png" alt="An assortment of UCLA's food truck offerings." />
+        <img src="Trucks.png" alt="An assortment of UCLA's food truck offerings." style={{display: 'block', width:'100%', maxHeight: '80vh', objectFit: 'contain'}}/>
         
 
         "I think it's good because it gets to show a little slice of L.A. in terms of cuisine," fourth-year labor studies student Jason Xavier Osorio said. "It's just marvelous to see how L.A. has come to evolve with the food truck business."<br></br><br></br>
@@ -659,7 +660,7 @@ const GridPage = () => {
         Vchos Pupuseria Moderna ranked fourth in the 2023-2024 academic year, its first year visiting UCLA.
 
         <FullWidthImageWrapper>
-          <FullWidthImage src="Top20.png" alt="Top 20 food trucks, based off all-time swipes (Fall 2022 - Fall 2024)" />
+          <FullWidthImage src="Top20.png" alt="Top 20 food trucks, based off all-time swipes (Fall 2022 - Fall 2024)"  />
         </FullWidthImageWrapper>
       </BodyText>
 
@@ -741,7 +742,7 @@ const GridPage = () => {
       <BodyText>
         Over time, UCLA Dining has decreased the presence of food trucks on the Hill. This decline in food trucks' availability is evident when looking at the number of food trucks in a given day's Dinner meal period. During Fall Quarter 2023, the number of food trucks during a Dinner meal period reached up to six food trucks. By the following Winter and Spring Quarters of the 2023-2024 academic year, this number was halved, with a maximum of three food trucks visiting during a single day's Dinner meal period. During Fall Quarter 2024, a new peak of four food trucks was reached on six different days, though a vast majority of days only received two food trucks.<br></br>
         
-        <img src="DinnerDecrease.png" alt="Daily Number of Food Trucks During Dinner Meal Period" />
+        <img src="DinnerDecreaseCrop.png" alt="Daily Number of Food Trucks During Dinner Meal Period" width={"100%"} max-height={"80vh"} object-fit={"contain"} style={{display: 'block', width:'100%', maxHeight: '80vh', objectFit: 'contain'}} />
         
 
         "I don't know if they're willing to accommodate all these students with dining halls only. Sometimes it gets too busy and there's no place to sit," Osorio said.<br></br><br></br>

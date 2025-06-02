@@ -64,17 +64,23 @@ const BarChartRace: React.FC = () => {
 
   useEffect(() => {
     const svg = d3.select(svgRef.current);
-    const width = 800; // Increased by 1.2px
+    const contentWidth = 800;
     const height = 400;
-    const margin = { top: 100, right: 150, bottom: 60, left: 180 }; // Increased top margin to accommodate buttons
+    const margin = { top: 100, right: 150, bottom: 60, left: 180 };
     const cornerRadius = 8;
 
-    svg.attr("viewBox", `0 0 ${width} ${height}`); // Extend the height of the viewBox
+    // Set viewBox with extra width for text
+    const viewBoxWidth = contentWidth + 200; // Add 200px to ensure text fits
+    svg.attr("viewBox", `0 0 ${viewBoxWidth} ${height}`);
 
+    // Calculate offset to center content in viewBox
+    const offset = (viewBoxWidth - contentWidth) / 2;
+
+    // Keep xScale using the fixed content width but offset by the centering amount
     const xScale = d3
       .scaleLinear()
       .domain([0, 1100])
-      .range([margin.left, width - margin.right]);
+      .range([margin.left + offset, contentWidth - margin.right + offset]);
 
     const yScale = d3
       .scaleBand()
@@ -97,7 +103,7 @@ const BarChartRace: React.FC = () => {
     svg.select(".x-axis-title").remove();
     svg.append("text")
       .attr("class", "x-axis-title")
-      .attr("x", width / 2)
+      .attr("x", contentWidth / 2)
       .attr("y", height - margin.bottom + 45)
       .attr("text-anchor", "middle")
       .style("font-size", "14px")
@@ -107,10 +113,10 @@ const BarChartRace: React.FC = () => {
     const yAxis = d3.axisLeft(yScale).tickSize(0).tickFormat(() => "");
 
     svg.select(".y-axis")
-      .attr("transform", `translate(${margin.left}, 0)`)
+      .attr("transform", `translate(${margin.left + offset}, 0)`)
       .call(yAxis as any)
-      .select(".domain") // Select the main axis line
-      .attr("d", `M0,${margin.top}H0V${height - margin.bottom + 10}H0`); // Extend the line 10px longer
+      .select(".domain")
+      .attr("d", `M0,${margin.top}H0V${height - margin.bottom + 10}H0`);
 
     // Bind data to bars
     const bars = svg.selectAll(".bar").data(currentData, (d: any) => stripPrefix(d.name));
@@ -120,10 +126,10 @@ const BarChartRace: React.FC = () => {
       .append("path")
       .attr("class", "bar")
       .attr("d", (d) => {
-        const x = margin.left;
-        const y = yScale(d.name)! + 4; // Add padding to the top
-        const barWidth = xScale(d.value) - margin.left;
-        const barHeight = yScale.bandwidth() - 8; // Reduce height by 4 (2px padding on top and bottom)
+        const x = margin.left + offset;
+        const y = yScale(d.name)! + 4;
+        const barWidth = xScale(d.value) - (margin.left + offset);
+        const barHeight = yScale.bandwidth() - 8;
 
         return `
           M${x},${y} 
@@ -141,10 +147,10 @@ const BarChartRace: React.FC = () => {
       .transition()
       .duration(1000)
       .attr("d", (d) => {
-        const x = margin.left;
-        const y = yScale(d.name)! + 4; // Add padding to the top
-        const barWidth = xScale(d.value) - margin.left;
-        const barHeight = yScale.bandwidth() - 8; // Reduce height by 4 (2px padding on top and bottom)
+        const x = margin.left + offset;
+        const y = yScale(d.name)! + 4;
+        const barWidth = xScale(d.value) - (margin.left + offset);
+        const barHeight = yScale.bandwidth() - 8;
 
         return `
           M${x},${y} 
@@ -224,29 +230,33 @@ const BarChartRace: React.FC = () => {
       });
 
     // Bind data to names
-    const names = svg.selectAll("text.name").data(currentData, (d: any) => d.name); // Use full name with prefix
+    const names = svg.selectAll("text.name").data(currentData, (d: any) => d.name);
 
     names
       .enter()
       .append("text")
       .attr("class", "name")
-      .attr("x", margin.left - 10) // Position slightly to the left of the bars
+      .attr("x", margin.left + offset - 10)
       .attr("y", (d) => yScale(d.name)! + yScale.bandwidth() / 2)
-      .attr("dy", "0.35em") // Center vertically
-      .attr("text-anchor", "end") // Align text to the end
+      .attr("dy", "0.35em")
+      .attr("text-anchor", "end")
       .attr("fill", "black")
       .html((d) => {
         if (d.name.includes("(+2)") || d.name.includes("(-2)") || d.name.includes("(+3)")) {
           const [prefix, rest] = d.name.split(") ");
-          return `<tspan style="fill: ${prefix.includes("+") ? "#3CB371" : "#FF0000"};">${prefix})</tspan> ${rest}`;
+          return `<tspan style="fill: ${prefix.includes("+") ? "#3CB371" : "#FF0000"}">${prefix})</tspan> ${rest}`;
         } else if (d.name.includes("(NEW)")) {
           const [prefix, rest] = d.name.split(") ");
-          return `<tspan style="fill: #4A90E2;">${prefix})</tspan> ${rest}`;
+          return `<tspan style="fill: #4A90E2">${prefix})</tspan> ${rest}`;
         }
-        return d.name; // Display the full name if no prefix is present
+        return d.name;
       })
       .style("font-size", "14px")
       .style("font-family", "Hanken Grotesk");
+
+    // Remove debug rectangles
+    svg.select(".debug-rect").remove();
+    svg.selectAll(".debug-text-rect").remove();
 
     names
       .transition()
@@ -257,13 +267,20 @@ const BarChartRace: React.FC = () => {
 
     // Update the chart title position
     svg.select(".chart-title")
-      .attr("x", width / 2)
-      .attr("y", 30) // Position title higher up
+      .attr("x", viewBoxWidth / 2)
+      .attr("y", 30)
       .attr("text-anchor", "middle")
       .style("font-size", "16px")
       .style("font-family", "Barlow")
       .style("font-weight", "800")
       .text("Top 5 Food Trucks");
+
+    // Update button position
+    svg.select("foreignObject")
+      .attr("x", viewBoxWidth / 2 - 100)
+      .attr("y", 45)
+      .attr("width", "200")
+      .attr("height", "40");
   }, [currentData]);
 
   const handleYearChange = (year: '2022' | '2023') => {
@@ -275,7 +292,7 @@ const BarChartRace: React.FC = () => {
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", background: "white" }}>
+    <div style={{ position: "relative", width: "100%", background: "white", overflow: "hidden" }}>
       <div style={{ height: "500px" }}>
         <svg ref={svgRef} style={{ width: "100%", height: "100%" }}>
           <g className="x-axis" />

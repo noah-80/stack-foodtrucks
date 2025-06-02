@@ -377,6 +377,11 @@ const FullWidthImage = styled.img`
   width: 100%;
   height: auto;
   max-width: 100vw;
+  content: url("Top20.png");
+
+  @media (max-width: 768px) {
+    content: url("Top20Mobile.png");
+  }
 `;
 
 interface TruckData {
@@ -559,7 +564,6 @@ const GridPage = () => {
         
         <img src="Trucks.png" alt="An assortment of UCLA's food truck offerings." />
         
-        <br></br>
 
         "I think it's good because it gets to show a little slice of L.A. in terms of cuisine," fourth-year labor studies student Jason Xavier Osorio said. "It's just marvelous to see how L.A. has come to evolve with the food truck business."<br></br><br></br>
 
@@ -578,10 +582,11 @@ const GridPage = () => {
       </BodyText>
       <Section>
         <div style={{ 
-          width: "1200px", 
+          width: "min(1200px, 90vw)", 
           margin: "0 auto", 
-          padding: "20px",
-          background: "white"
+          padding: "clamp(10px, 2vw, 20px)",
+          background: "white",
+          aspectRatio: "1200/600"
         }}>
           <BarChartRace />
         </div>
@@ -683,7 +688,6 @@ const GridPage = () => {
         
         <img src="DinnerDecrease.png" alt="Daily Number of Food Trucks During Dinner Meal Period" />
         
-        <br></br>
 
         "I don't know if they're willing to accommodate all these students with dining halls only. Sometimes it gets too busy and there's no place to sit," Osorio said.<br></br><br></br>
 
@@ -775,11 +779,11 @@ const GridPage = () => {
       <BodyText>
       The data used in this article was provided by UCLA Public Records. We received two datasets: one covering the 2022-2023 academic year, and a more recent dataset spanning from June 2023 to January 1st, 2025. The former covers the 2023-2024 academic year and Fall Quarter 2024.<br></br><br></br>
 
-      14 food trucks listed were within UCLA’s datasets but did not have swipe data:<br></br><br></br>
+      14 food trucks listed were within UCLA's datasets but did not have swipe data:<br></br><br></br>
 
       Good Eats and Vibes, Manna From Heaven, Messi Burgers, Mikhuna, ML Eats Burger, Mumu's, Ohana Hibachi, Rice Balls Inc., Something Good LA, Stout Burgers, Taste Collective Burger, Trapiyaki, Veggie Bomb and White Rabbit.
 
-<br></br><br></br>
+<br></br><br></br><br></br>
 
       </BodyText>
       <CreditsContainer style={{ fontStyle: 'italic', marginBottom: '0px' }}>

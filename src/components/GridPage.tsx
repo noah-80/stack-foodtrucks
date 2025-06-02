@@ -6,14 +6,13 @@ import './BarChartRace/BarIndex.css';
 
 
 const GridContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  // padding-top: 70px;
-  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 const BarsAndLineWrapper = styled.div`
@@ -392,6 +391,7 @@ const FullWidthImage = styled.img`
 
 const FullWidthGreySection = styled.div`
   width: 100%;
+  max-width: 100%;
   background-color: #DBDBDB;
   padding: clamp(50px, 10vw, 100px) 0 clamp(40px, 8vw, 80px) 0;
   display: flex;
@@ -399,8 +399,7 @@ const FullWidthGreySection = styled.div`
   align-items: center;
   margin: 0;
   position: relative;
-  left: 0;
-  right: 0;
+  box-sizing: border-box;
 `;
 
 const GreySectionImage = styled.img`

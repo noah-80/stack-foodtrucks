@@ -196,6 +196,10 @@ const BodyText = styled.div`
   }
 `;
 
+const CenteredBodyText = styled(BodyText)`
+  text-align: center;
+`;
+
 const HeaderImageLeft = styled.img`
   position: absolute;
   left: clamp(17.5px, 2.5vw, 35px);
@@ -614,9 +618,9 @@ const GridPage = () => {
         <HeaderImageRight src="/image9.png" alt="Header decoration" />
         <HeaderTextItalic>FOOD TRUCK SHOWDOWN!</HeaderTextItalic>
       </HeaderSection>
-      <BodyText>
-        Compare the top 20 food trucks, based off all-time swipes (Fall 2022 - Fall 2024). 
-      </BodyText>
+      <CenteredBodyText>
+        Compare the top 20 food trucks,<br></br>based off all-time swipes (Fall 2022 - Fall 2024). 
+      </CenteredBodyText>
       <ThreeColumnSection>
         <Column>
           <ColumnTitle>TRUCK 1</ColumnTitle>

@@ -103,7 +103,7 @@ const BarChartRace: React.FC = () => {
     svg.select(".x-axis-title").remove();
     svg.append("text")
       .attr("class", "x-axis-title")
-      .attr("x", contentWidth / 2)
+      .attr("x", viewBoxWidth / 2)
       .attr("y", height - margin.bottom + 45)
       .attr("text-anchor", "middle")
       .style("font-size", "14px")

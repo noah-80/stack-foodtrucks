@@ -1,0 +1,30 @@
+.flex-container {
+    display: flex;
+    height: 400px;
+    padding: 15px;
+    width: 80%;
+    @media screen and (max-width: 600px) {
+        height: 200px;
+        
+    }
+}
+
+.flex-container>div {
+    padding: 8px;
+}
+
+
+.item1 {
+    /* flex:1 1 300px; */
+    flex-grow: 0;
+    flex-basis: 100px;
+    height: 100%;
+}
+
+.item2 {
+    /* flex:0 1 100px; */
+    flex-grow: 1;
+    flex-basis: 400px;
+    overflow-x: auto;
+    height: 100%;
+}

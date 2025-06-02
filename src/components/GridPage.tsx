@@ -705,7 +705,7 @@ const GridPage = () => {
 
         "Some people, especially freshmen in the beginning of the year, really wanted De Neve to have a takeout option. And so Dining is like, no, this is not how it works. It's not feasible," Connelly said.
       </BodyText>
-      <HeaderSection style={{ backgroundColor: '#FBAD79' }}>
+      <HeaderSection style={{ backgroundColor: '#fcbd92' }}>
         <HeaderImageRight src="/image1.png" alt="Header decoration" />
         <HeaderText>Behind the Bite</HeaderText>
       </HeaderSection>
@@ -758,7 +758,7 @@ const GridPage = () => {
 
         "I would love to have a say with the university ... to ask us what you think ... they just kind of let us know what they're planning to do," Parsons said.
       </BodyText>
-      <HeaderSection style={{ backgroundColor: '#EBB1EE' }}>
+      <HeaderSection style={{ backgroundColor: '#ecc8f7' }}>
         <HeaderImageLeft src="/image8.png" alt="Header decoration"  />
         <HeaderText>Food for Thought</HeaderText>
       </HeaderSection>
@@ -766,8 +766,22 @@ const GridPage = () => {
         The fate of food trucks at UCLA is uncertain. Despite the possible phasing out of food trucks, and difficulties serving students, food truck operations still add to UCLA's college dining experience.<br></br><br></br>
 
         "I always tell my grandma, I'm like, it's insane how people can wait so much for their donuts and they enjoy it so much. It makes me happy," Diaz said.
+        <img src="Donuts.png" alt="BittieBitez Mini-Donuts" style={{ marginBottom: '-40px' }} />
       </BodyText>
-      <BodyText></BodyText>
+      <HeaderSection style={{ backgroundColor: '#b3e5e6' }}>
+        <HeaderImageRight src="/image2.png" alt="Header decoration"  />
+        <HeaderText>About the Data</HeaderText>
+      </HeaderSection>
+      <BodyText>
+      The data used in this article was provided by UCLA Public Records. We received two datasets: one covering the 2022-2023 academic year, and a more recent dataset spanning from June 2023 to January 1st, 2025. The former covers the 2023-2024 academic year and Fall Quarter 2024.<br></br><br></br>
+
+      14 food trucks listed were within UCLA’s datasets but did not have swipe data:<br></br><br></br>
+
+      Good Eats and Vibes, Manna From Heaven, Messi Burgers, Mikhuna, ML Eats Burger, Mumu's, Ohana Hibachi, Rice Balls Inc., Something Good LA, Stout Burgers, Taste Collective Burger, Trapiyaki, Veggie Bomb and White Rabbit.
+
+<br></br><br></br>
+
+      </BodyText>
       <CreditsContainer style={{ fontStyle: 'italic', marginBottom: '0px' }}>
         Contributing reports from Sydney Tomsick and Cassidy Sadowski, Stack contributors.
       </CreditsContainer>

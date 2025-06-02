@@ -3,6 +3,10 @@ import styled from '@emotion/styled';
 import Section from "./Section";
 import BarChartRace from './BarChartRace/BarChartRace';
 import './BarChartRace/BarIndex.css';
+import Correlation from './Correlation';
+import InactiveChart from './InactiveChart';
+import AvailabilityChart from './AvailabilityChart';
+import WeeklyChart from './WeeklyChart';
 
 
 const GridContainer = styled.div`
@@ -59,7 +63,7 @@ const Grid = styled.div`
 `;
 
 const GridCell = styled.div<{ isHovered: boolean; isMerged?: boolean }>`
-  border: 2px solid #DBDBDB;
+  border: 0.1em solid #DBDBDB;
   position: relative;
   transition: background-color 0.3s ease;
   background-color: ${props => props.isHovered ? '#DBDBDB' : 'transparent'};
@@ -87,10 +91,10 @@ const TitleText = styled.div`
   text-align: center;
   color: rgb(39, 39, 39);
   font-family: 'Barlow', sans-serif;
-  font-size: clamp(20px, 3vw, 40px);
+  font-size: clamp(12px, 3vw, 40px);
   font-weight: 800;
   line-height: 1.2;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   letter-spacing: -0.02em;
 `;
 
@@ -98,7 +102,7 @@ const SubtitleText = styled.div`
   text-align: center;
   color: rgb(39, 39, 39);
   font-family: 'Hanken Grotesk', sans-serif;
-  font-size: clamp(14px, 2vw, 28px);
+  font-size: clamp(12px, 2vw, 28px);
   font-weight: 400;
   line-height: 1.2;
 `;
@@ -182,12 +186,15 @@ const HeaderText = styled.div`
 const BodyText = styled.div`
   color:rgb(39, 39, 39);
   font-family: 'Hanken Grotesk', sans-serif;
-  font-size: clamp(12px, 2vw, 26px);
+  font-size: clamp(14px, 2vw, 20px);
   line-height: 1.5em;
   font-weight: 400;
-  margin: clamp(25px, 4vw, 50px) 175px;
+  margin: clamp(20px, 4vw, 10%);
   text-align: left;
-  width: 50vw;
+  width: 60vw;
+  @media (max-width: 768px) {
+    width: 80vw;
+  }
 
   img {
     width: 100%;
@@ -365,6 +372,7 @@ const BarValue = styled.div`
 `;
 
 const FullWidthImageWrapper = styled.div`
+  min-width: 600px;  
   width: 100vw;
   position: relative;
   left: 50%;
@@ -376,6 +384,7 @@ const FullWidthImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   background-color: white;
+  overflow-x: auto;
 `;
 
 const FullWidthImage = styled.img`
@@ -597,6 +606,9 @@ const GridPage = () => {
         <br />
         Design & Illustration by Noah Hrung */}
       </CreditsContainer>
+      {/* <InactiveChart />
+      <AvailabilityChart />
+      <WeeklyChart /> */}
       <HeaderSection>
         <HeaderImageLeft src="/image11.png" alt="Header decoration" />
         <HeaderText>Rolling into Campus</HeaderText>
@@ -721,6 +733,7 @@ const GridPage = () => {
           )}
         </Column>
       </ThreeColumnSection>
+      <Correlation/>
       <HeaderSection style={{ backgroundColor: '#BFDDFC' }}>
         <HeaderImageLeft src="/image5.png" alt="Header decoration" style={{ height: 'clamp(150px, 25vw, 300px)' }} />
         <HeaderText>The Fate of Food Trucks</HeaderText>

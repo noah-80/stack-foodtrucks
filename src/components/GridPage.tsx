@@ -5,6 +5,8 @@ import BarChartRace from './BarChartRace/BarChartRace';
 import './BarChartRace/BarIndex.css';
 import Correlation from './Correlation';
 import InactiveChart from './InactiveChart';
+import AvailabilityChart from './AvailabilityChart';
+import WeeklyChart from './WeeklyChart';
 
 
 const GridContainer = styled.div`
@@ -604,7 +606,9 @@ const GridPage = () => {
         <br />
         Design & Illustration by Noah Hrung */}
       </CreditsContainer>
-      <InactiveChart />
+      {/* <InactiveChart />
+      <AvailabilityChart />
+      <WeeklyChart /> */}
       <HeaderSection>
         <HeaderImageLeft src="/image11.png" alt="Header decoration" />
         <HeaderText>Rolling into Campus</HeaderText>

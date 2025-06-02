@@ -130,6 +130,8 @@ const CreditsContainer = styled.div`
   margin-bottom: 40px;
   // max-width: 800px;
   padding-top: 19px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-bottom: 21px;
   width: 100%;
   background-color: #DBDBDB;
@@ -386,6 +388,43 @@ const FullWidthImage = styled.img`
   @media (max-width: 768px) {
     content: url("Top20Mobile.png");
   }
+`;
+
+const FullWidthGreySection = styled.div`
+  width: 100%;
+  background-color: #DBDBDB;
+  padding: clamp(50px, 10vw, 100px) 0 clamp(40px, 8vw, 80px) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  position: relative;
+  left: 0;
+  right: 0;
+`;
+
+const GreySectionImage = styled.img`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: clamp(100px, 15vw, 250px);
+  width: auto;
+  object-fit: contain;
+
+  @media (max-width: 768px) {
+    height: clamp(120px, 18vw, 220px);
+  }
+`;
+
+const GreySectionTitle = styled(TitleText)`
+  margin-bottom: clamp(20px, 4vw, 40px);
+`;
+
+const GreySectionText = styled(BodyText)`
+  margin: 0 auto;
+  text-align: left;
+  width: min(800px, 90vw);
 `;
 
 interface TruckData {
@@ -774,25 +813,23 @@ const GridPage = () => {
         The fate of food trucks at UCLA is uncertain. Despite the possible phasing out of food trucks, and difficulties serving students, food truck operations still add to UCLA's college dining experience.<br></br><br></br>
 
         "I always tell my grandma, I'm like, it's insane how people can wait so much for their donuts and they enjoy it so much. It makes me happy," Diaz said.
-        <img src="Donuts.png" alt="BittieBitez Mini-Donuts" style={{ marginBottom: '-30px' }} />
       </BodyText>
-      <HeaderSection style={{ backgroundColor: '#b3e5e6' }}>
-        <HeaderImageRight src="/image2.png" alt="Header decoration"  />
-        <HeaderText>About the Data</HeaderText>
-      </HeaderSection>
-      <BodyText>
-      The data used in this article was provided by UCLA Public Records. We received two datasets: one covering the 2022-2023 academic year, and a more recent dataset spanning from June 2023 to January 1st, 2025. The former covers the 2023-2024 academic year and Fall Quarter 2024.<br></br><br></br>
+      <BodyText></BodyText>
+      <FullWidthGreySection>
+        <GreySectionImage src="/image3.png" alt="BittieBitez Mini-Donuts" />
+        <CreditsContainer style={{ fontStyle: 'italic', marginBottom: '0px', backgroundColor: 'transparent', marginTop: '0px' }}>
+          Contributing reports from Sydney Tomsick and Cassidy Sadowski, Stack contributors.
+        </CreditsContainer>
+        <br></br>
+        <GreySectionTitle>About the Data</GreySectionTitle>
+        <GreySectionText>
+          The data used in this article was provided by UCLA Public Records. We received two datasets: one covering the 2022-2023 academic year, and a more recent dataset spanning from June 2023 to January 1st, 2025. The former covers the 2023-2024 academic year and Fall Quarter 2024.<br></br><br></br>
 
-      14 food trucks listed were within UCLA's datasets but did not have swipe data:<br></br><br></br>
+          14 food trucks listed were within UCLA's datasets but did not have swipe data:<br></br><br></br>
 
-      Good Eats and Vibes, Manna From Heaven, Messi Burgers, Mikhuna, ML Eats Burger, Mumu's, Ohana Hibachi, Rice Balls Inc., Something Good LA, Stout Burgers, Taste Collective Burger, Trapiyaki, Veggie Bomb and White Rabbit.
-
-<br></br><br></br><br></br>
-
-      </BodyText>
-      <CreditsContainer style={{ fontStyle: 'italic', marginBottom: '0px' }}>
-        Contributing reports from Sydney Tomsick and Cassidy Sadowski, Stack contributors.
-      </CreditsContainer>
+          Good Eats and Vibes, Manna From Heaven, Messi Burgers, Mikhuna, ML Eats Burger, Mumu's, Ohana Hibachi, Rice Balls Inc., Something Good LA, Stout Burgers, Taste Collective Burger, Trapiyaki, Veggie Bomb and White Rabbit.
+        </GreySectionText>
+      </FullWidthGreySection>
     </GridContainer>
   );
 };

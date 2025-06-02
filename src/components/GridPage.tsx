@@ -766,7 +766,7 @@ const GridPage = () => {
         The fate of food trucks at UCLA is uncertain. Despite the possible phasing out of food trucks, and difficulties serving students, food truck operations still add to UCLA's college dining experience.<br></br><br></br>
 
         "I always tell my grandma, I'm like, it's insane how people can wait so much for their donuts and they enjoy it so much. It makes me happy," Diaz said.
-        <img src="Donuts.png" alt="BittieBitez Mini-Donuts" style={{ marginBottom: '-40px' }} />
+        <img src="Donuts.png" alt="BittieBitez Mini-Donuts" style={{ marginBottom: '-30px' }} />
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#b3e5e6' }}>
         <HeaderImageRight src="/image2.png" alt="Header decoration"  />

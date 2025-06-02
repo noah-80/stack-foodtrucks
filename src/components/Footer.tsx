@@ -56,11 +56,33 @@ const Text = styled.div`
 `
 
 const Credits = styled.div`
-  margin-top: 3em;
+  margin-top: 2.5em;
+  margin-bottom: 1em;
   padding: 2em;
-`
+  font-family: 'Hanken Grotesk', monospace;
+  line-height: 1.5;
+
+  a {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 0.5em;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+`;
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <>
       <Container>
@@ -83,7 +105,9 @@ const Footer = () => {
           </a>
         </Socials>
         <Credits>
-            Built with Suzy’s <span className="heart">♥</span> in Kerckhoff 118 by Noah Hrung and Liam McGlynn. Designed and illustrated by Noah Hrung.
+          Built with Suzy's <span className="heart">♥</span> in Kerckhoff 118 by Noah Hrung and Liam McGlynn. Designed and illustrated by Noah Hrung.
+          <br />
+          <a onClick={scrollToTop}>Back to top</a>
         </Credits>
       </Container>
     </>

@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import Section from "./Section";
 import BarChartRace from './BarChartRace/BarChartRace';
 import './BarChartRace/BarIndex.css';
+import Correlation from './Correlation';
 
 
 const GridContainer = styled.div`
@@ -721,6 +722,7 @@ const GridPage = () => {
           )}
         </Column>
       </ThreeColumnSection>
+      <Correlation/>
       <HeaderSection style={{ backgroundColor: '#BFDDFC' }}>
         <HeaderImageLeft src="/image5.png" alt="Header decoration" style={{ height: 'clamp(150px, 25vw, 300px)' }} />
         <HeaderText>The Fate of Food Trucks</HeaderText>

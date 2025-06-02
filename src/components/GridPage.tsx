@@ -810,7 +810,7 @@ const GridPage = () => {
         <HeaderText>Food for Thought</HeaderText>
       </HeaderSection>
       <BodyText>
-        The fate of food trucks at UCLA is uncertain. Despite the possible phasing out of food trucks, and difficulties serving students, food truck operations still add to UCLA's college dining experience.<br></br><br></br>
+      The fate of food trucks at UCLA is uncertain. Despite the possible phasing out of food trucks, and difficulties serving students, food truck operations remain a key part of the UCLA dining experience.<br></br><br></br>
 
         "I always tell my grandma, I'm like, it's insane how people can wait so much for their donuts and they enjoy it so much. It makes me happy," Diaz said.
       </BodyText>

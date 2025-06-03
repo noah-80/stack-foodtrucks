@@ -21,14 +21,56 @@
     flex-grow: 0;
     flex-basis: 100px;
     height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: top;
 }
 
 .item2 {
     /* flex:0 1 100px; */
     flex-grow: 1;
     flex-basis: 400px;
+    height: calc(100% - 8px); /* Subtract scrollbar height */
+    position: relative;
     overflow-x: auto;
-    height: 100%;
+    overflow-y: hidden;
+    /* Hide default scrollbar for different browsers */
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+
+/* Hide default scrollbar for Chrome, Safari and Opera */
+.item2::-webkit-scrollbar {
+    display: none;
+}
+
+/* Custom scrollbar container */
+.item2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: #F5F5F5;
+    border-radius: 4px;
+}
+
+/* Custom scrollbar thumb */
+.item2::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    height: 8px;
+    background: #CBCBCB;
+    border-radius: 4px;
+    width: 30%; /* Default width, will be adjusted by JavaScript */
+    transition: background-color 0.2s;
+}
+
+.item2:hover::before {
+    background: #A9A9A9;
 }
 
 .inactive-chart {

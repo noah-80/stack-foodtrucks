@@ -621,8 +621,10 @@ const GridPage = () => {
 
         "I think it's good because it gets to show a little slice of L.A. in terms of cuisine," fourth-year labor studies student Jason Xavier Osorio said. "It's just marvelous to see how L.A. has come to evolve with the food truck business."<br></br><br></br>
 
-        Following students' return to on-campus housing in 2021, UCLA introduced food trucks to temporarily address staffing shortages, and to alleviate lines on the Hill. In the 2022-2023 school year, around 16% of dining swipes that were used on the Hill were used on food trucks, more than the amount of swipes used at Rendezvous, the second most popular take-out location on the Hill.<br></br><br></br>
-
+        Following students' return to on-campus housing in 2021, UCLA introduced food trucks to temporarily address staffing shortages, and to alleviate lines on the Hill. In the 2022-2023 school year, around 16% of dining swipes that were used on the Hill were used on food trucks, more than the amount of swipes used at Rendezvous, the second most popular take-out location on the Hill.
+        </BodyText>
+        <WeeklyChart/>
+        <BodyText>
         Throughout the past few years, food trucks have served a steady supply of students. However, in the time since they first arrived, their future on-campus operations have become uncertain. Cynthia Ho, a second-year mechanical engineering student and former On-Campus Housing Council Representative, described some of the conversations held between UCLA Dining, the OCHC and residents<br></br><br></br>
 
         "We actually talked about the phasing out of food trucks, and there were a lot of people frustrated," Ho said. "Ever since COVID, we had to lay off a lot of staff. The money that would've been going to that staff is going to food trucks instead. As we're going back to our pre-COVID levels, we're able to hire more people, but that means the money will have to be shifted to these new dining staff hires."
@@ -739,14 +741,16 @@ const GridPage = () => {
         <HeaderText>The Fate of Food Trucks</HeaderText>
       </HeaderSection>
       <BodyText>
-        Over time, UCLA Dining has decreased the presence of food trucks on the Hill. This decline in food trucks' availability is evident when looking at the number of food trucks in a given day's Dinner meal period. During Fall Quarter 2023, the number of food trucks during a Dinner meal period reached up to six food trucks. By the following Winter and Spring Quarters of the 2023-2024 academic year, this number was halved, with a maximum of three food trucks visiting during a single day's Dinner meal period. During Fall Quarter 2024, a new peak of four food trucks was reached on six different days, though a vast majority of days only received two food trucks.<br></br>
+        Over time, UCLA Dining has decreased the presence of food trucks on the Hill. This decline in food trucks' availability is evident when looking at the number of food trucks in a given day's Dinner meal period. During Fall Quarter 2023, the number of food trucks during a Dinner meal period reached up to six food trucks. By the following Winter and Spring Quarters of the 2023-2024 academic year, this number was halved, with a maximum of three food trucks visiting during a single day's Dinner meal period. During Fall Quarter 2024, a new peak of four food trucks was reached on six different days, though a vast majority of days only received two food trucks.
         
-        <img src="DinnerDecrease.png" alt="Daily Number of Food Trucks During Dinner Meal Period" />
-        
+        <img src="DinnerDecrease.png" alt="Daily Number of Food Trucks During Dinner Meal Period" style={{ width: '90%', margin: '20px auto', display: 'block' }} />
 
         "I don't know if they're willing to accommodate all these students with dining halls only. Sometimes it gets too busy and there's no place to sit," Osorio said.<br></br><br></br>
 
         While at least one food truck was regularly present during the Dinner and Extended Dinner periods throughout the 2023-2024 academic year, lunch offerings disappeared between Fall and Spring Quarter. During Spring Quarter 2024, a Lunch food truck was only present on May 2nd and May 3rd. Although the following Fall Quarter 2024 had a Lunch food truck present on 17 days, this availability was not as frequent nor as consistent as the previous year.<br></br><br></br>
+        </BodyText>
+        <AvailabilityChart/>
+        <BodyText>
 
         While food trucks have become a staple on campus over the past three years, their future remains uncertain due to financial constraints. Brendan Connelly, a second-year mathematics student and current president of Hedrick Hall Resident Government Council, cited their relative cost as a key issue for the university.<br></br><br></br>
 
@@ -804,6 +808,9 @@ const GridPage = () => {
         "Sometimes machinery acts weird, and it stops us from doing as many orders," Diaz said. "Sometimes one falls and we don't notice it, and then we gotta do it again. Or sometimes students don't come on time. Or we have the orders there, and then the ice cream starts melting, so we have to re-do it – but by that time, we are doing others."<br></br><br></br>
 
         Twelve out of the 37 food trucks active during the 2023-2024 academic year were inactive by the start of the 2024-2025 academic year. During Fall Quarter 2024, zero new food trucks were introduced. Notably, Dina's Dumpling became inactive at UCLA by Spring Quarter 2024, despite ranking third in average swipes per visit during the 2023-2024 school year.<br></br><br></br>
+        </BodyText>
+        <InactiveChart />
+        <BodyText>
 
         With UCLA Dining's quarter-long contracts with food trucks, a food truck may not necessarily be invited to return the following quarter.<br></br><br></br>
 

@@ -9,19 +9,19 @@ interface DataPoint {
 }
 
 const data2022: DataPoint[] = [
-  { name: "8e8 Thai Street Food", value: 1031 },
-  { name: "Aloha Fridays", value: 844 },
-  { name: "Dina's Dumpling", value: 718 },
-  { name: "Salpicon", value: 677 },
-  { name: "Smile Hotdog", value: 626 },
+  { name: "Aloha Fridays", value: 183 },
+  { name: "Dina's Dumpling", value: 164 },
+  { name: "8e8 Thai Street Food", value: 163 },
+  { name: "Salpicon", value: 161 },
+  { name: "Paradise Cookies & Ice Cream", value: 147 },
 ];
 
 const data2023: DataPoint[] = [
-  { name: "8e8 Thai Street Food", value: 889 },
-  { name: "(+2) Salpicon", value: 870 },
-  { name: "(+3) Perro 1-10 Tacos", value: 757 },
-  { name: "(NEW) Vchos Pupusería Moderna", value: 693 },
-  { name: "(+2) Yuna's Bob", value: 663 },
+  { name: "(+2) 8e8 Thai Street Food", value: 226 },
+  { name: "(+2) Salpicon", value: 209 },
+  { name: "(+9) Dulce Europa Shaved Ice", value: 194 },
+  { name: "(-2) Dina's Dumpling", value: 182 },
+  { name: "(+5) Perro 1-10 Tacos", value: 179 },
 ];
 
 const BarChartRace: React.FC = () => {
@@ -39,6 +39,8 @@ const BarChartRace: React.FC = () => {
     "Perro 1-10 Tacos": "#73524d",
     "Yuna's Bob": "#B76937",
     "Vchos Pupusería Moderna": "#54a9c4",
+    "Paradise Cookies & Ice Cream": "#00a3bf",
+    "Dulce Europa Shaved Ice": "#e7b959",
   };
 
   const imageMapping: { [key: string]: string } = {
@@ -49,7 +51,9 @@ const BarChartRace: React.FC = () => {
     "Smile Hotdog": "/image12.png",
     "Perro 1-10 Tacos": "/image9.png",
     "Yuna's Bob": "/image18.png",
-    "Vchos Pupusería Moderna": "/imagenew.png",  // Use base name without (NEW)
+    "Vchos Pupusería Moderna": "/imagenew.png",
+    "Paradise Cookies & Ice Cream": "/Cookie.png",
+    "Dulce Europa Shaved Ice": "/image19.png",
   };
 
   // Helper function to strip prefixes
@@ -76,10 +80,10 @@ const BarChartRace: React.FC = () => {
     // Calculate offset to center content in viewBox
     const offset = (viewBoxWidth - contentWidth) / 2;
 
-    // Keep xScale using the fixed content width but offset by the centering amount
+    // Update xScale domain to accommodate new max value
     const xScale = d3
       .scaleLinear()
-      .domain([0, 1100])
+      .domain([0, 240])  // Changed from 250 to 240
       .range([margin.left + offset, contentWidth - margin.right + offset]);
 
     const yScale = d3
@@ -89,7 +93,7 @@ const BarChartRace: React.FC = () => {
       .padding(0.1);
 
     const xAxis = d3.axisBottom(xScale)
-      .ticks(12) // This will create ticks at intervals of 100
+      .ticks(8)  // Changed from 12 to 8 for cleaner increments
       .tickFormat((d) => d.toString());
 
     svg.select(".x-axis")
@@ -108,7 +112,7 @@ const BarChartRace: React.FC = () => {
       .attr("text-anchor", "middle")
       .style("font-size", "14px")
       .style("font-family", "Hanken Grotesk")
-      .text("Average Swipes/Visit");
+      .text("Average Swipes/Hour");
 
     const yAxis = d3.axisLeft(yScale).tickSize(0).tickFormat(() => "");
 
@@ -190,23 +194,25 @@ const BarChartRace: React.FC = () => {
 
     salesLabels.exit().remove();
 
-    // Bind data to images
-    const images = svg.selectAll(".bar-image-group").data(currentData, (d: any) => stripPrefix(d.name)); // Use same key function as bars
+    // Add defs section at the start of the SVG
+    const defs = svg.append("defs");
+    
+    // Create image definitions
+    currentData.forEach(d => {
+      const imageId = `image-${stripPrefix(d.name).replace(/\s+/g, '-').toLowerCase()}`;
+      defs.append("image")
+        .attr("id", imageId)
+        .attr("width", yScale.bandwidth() * 1.8)
+        .attr("height", yScale.bandwidth() * 1.8)
+        .attr("href", getImagePath(d.name));
+    });
 
-    // Remove old images
+    // Bind data to images with use elements
+    const images = svg.selectAll(".bar-image-group")
+      .data(currentData, (d: any) => stripPrefix(d.name));
+
     images.exit().remove();
 
-    // Update existing images
-    images
-      .transition()
-      .duration(1000)
-      .attr("transform", (d) => {
-        const x = xScale(d.value) + 10;
-        const y = yScale(d.name)! + (yScale.bandwidth() - yScale.bandwidth() * 1.5) / 2;
-        return `translate(${x},${y})`;
-      });
-
-    // Add new images
     images
       .enter()
       .append("g")
@@ -216,17 +222,27 @@ const BarChartRace: React.FC = () => {
         const y = yScale(d.name)! + (yScale.bandwidth() - yScale.bandwidth() * 1.5) / 2;
         return `translate(${x},${y})`;
       })
-      .each(function(d) {
-        const g = d3.select(this);
-        const width = yScale.bandwidth() * 1.8;
-        const height = yScale.bandwidth() * 1.8;
-        
-        // Add image
-        g.append("image")
-          .attr("class", "bar-image")
-          .attr("width", width)
-          .attr("height", height)
-          .attr("href", (d) => getImagePath(d.name));
+      .append("use")
+      .attr("href", d => `#image-${stripPrefix(d.name).replace(/\s+/g, '-').toLowerCase()}`)
+      .attr("class", "bar-image");
+
+    // Move Aloha Fridays image to the back
+    svg.selectAll(".bar-image-group")
+      .filter(d => stripPrefix(d.name).includes("Aloha Fridays"))
+      .lower();
+
+    // Move 8e8 image to the front
+    svg.selectAll(".bar-image-group")
+      .filter(d => stripPrefix(d.name).includes("8e8 Thai Street Food"))
+      .raise();
+
+    images
+      .transition()
+      .duration(1000)
+      .attr("transform", (d) => {
+        const x = xScale(d.value) + 10;
+        const y = yScale(d.name)! + (yScale.bandwidth() - yScale.bandwidth() * 1.5) / 2;
+        return `translate(${x},${y})`;
       });
 
     // Bind data to names
@@ -242,9 +258,10 @@ const BarChartRace: React.FC = () => {
       .attr("text-anchor", "end")
       .attr("fill", "black")
       .html((d) => {
-        if (d.name.includes("(+2)") || d.name.includes("(-2)") || d.name.includes("(+3)")) {
+        if (d.name.includes("(+") || d.name.includes("(-")) {
           const [prefix, rest] = d.name.split(") ");
-          return `<tspan style="fill: ${prefix.includes("+") ? "#3CB371" : "#FF0000"}">${prefix})</tspan> ${rest}`;
+          const isPositive = prefix.includes("+");
+          return `<tspan style="fill: ${isPositive ? "#3CB371" : "#ad1d1d"}">${prefix})</tspan> ${rest}`;
         } else if (d.name.includes("(NEW)")) {
           const [prefix, rest] = d.name.split(") ");
           return `<tspan style="fill: #4A90E2">${prefix})</tspan> ${rest}`;

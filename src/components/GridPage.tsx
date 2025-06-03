@@ -504,17 +504,25 @@ const GridPage = () => {
     const rows = 6;
     const totalCells = cols * rows;
     const randomImages: string[] = [];
+    
+    // Define all possible images including the new ones
+    const allImages = [
+      ...Array.from({ length: 19 }, (_, i) => `/image${i + 1}.png`),
+      '/Poutine.png',
+      '/Cookie.png',
+      '/imagenew.png'
+    ];
 
     for (let i = 0; i < totalCells; i++) {
       const adjacentIndices = getAdjacentIndices(i, cols, rows);
       const usedImages = new Set(adjacentIndices.map(idx => randomImages[idx]));
       
-      let randomNum;
+      let randomImage;
       do {
-        randomNum = Math.floor(Math.random() * 20) + 1;
-      } while (usedImages.has(`/image${randomNum}.png`));
+        randomImage = allImages[Math.floor(Math.random() * allImages.length)];
+      } while (usedImages.has(randomImage));
       
-      randomImages.push(`/image${randomNum}.png`);
+      randomImages.push(randomImage);
     }
 
     setImages(randomImages);

@@ -37,6 +37,7 @@
     /* Hide default scrollbar for different browsers */
     scrollbar-width: none;  /* Firefox */
     -ms-overflow-style: none;  /* IE and Edge */
+    max-width: 100%;
 }
 
 /* Hide default scrollbar for Chrome, Safari and Opera */
@@ -94,10 +95,52 @@
     padding: 15px;
     width: 70%;
     gap: 15px;
+    overflow: hidden;
     @media screen and (max-width: 600px) {
         height: 150px;
         width: 90%;
     }
+}
+
+.scrollable-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #CBCBCB;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: #666;
+    z-index: 2;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-arrow:hover {
+    background: white;
+    border-color: #999;
+    color: #333;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.left-arrow {
+    left: 5px;
+}
+
+.right-arrow {
+    right: 5px;
 }
 
 .availability-chart {

@@ -670,9 +670,13 @@ const GridPage = () => {
 
         <FullWidthImageWrapper>
           <FullWidthImage src="Top20.png" alt="Top 20 food trucks, based off all-time swipes (Fall 2022 - Fall 2024)" />
-        </FullWidthImageWrapper>
+        </FullWidthImageWrapper> 
       </BodyText>
-
+        <BodyText>
+        For successful food trucks, there is a positive correlation between average swipes per hour and the total number of hours spent at UCLA, where frequently returning food trucks tend to be more efficient than others.
+        </BodyText>
+        <Correlation/>
+        <BodyText></BodyText>
       <HeaderSection style={{ backgroundColor: '#EDDCAE' }}>
         <HeaderImageLeft src="/7.png" alt="Header decoration" />
         <HeaderImageRight src="/6.png" alt="Header decoration" />
@@ -743,7 +747,6 @@ const GridPage = () => {
           )}
         </Column>
       </ThreeColumnSection>
-      <Correlation/>
       <HeaderSection style={{ backgroundColor: '#BFDDFC' }}>
         <HeaderImageLeft src="/3.png" alt="Header decoration" style={{ height: 'clamp(150px, 25vw, 300px)' }} />
         <HeaderText>The Fate of Food Trucks</HeaderText>

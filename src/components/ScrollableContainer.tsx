@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 interface ScrollableContainerProps {
     children: React.ReactNode;
@@ -7,6 +7,8 @@ interface ScrollableContainerProps {
 const ScrollableContainer: React.FC<ScrollableContainerProps> = ({ children }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const scrollbarRef = useRef<HTMLDivElement>(null);
+    const [showLeftArrow, setShowLeftArrow] = useState(false);
+    const [showRightArrow, setShowRightArrow] = useState(false);
 
     useEffect(() => {
         const container = containerRef.current;
@@ -20,6 +22,10 @@ const ScrollableContainer: React.FC<ScrollableContainerProps> = ({ children }) =
             
             scrollbar.style.width = `${scrollbarWidth}px`;
             scrollbar.style.transform = `translateX(${scrollbarLeft}px)`;
+
+            // Update arrow visibility
+            setShowLeftArrow(scrollLeft > 0);
+            setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 1); // -1 for rounding errors
         };
 
         const handleScroll = () => {
@@ -28,6 +34,18 @@ const ScrollableContainer: React.FC<ScrollableContainerProps> = ({ children }) =
 
         const handleResize = () => {
             requestAnimationFrame(updateScrollbar);
+        };
+
+        const scrollLeft = () => {
+            if (container) {
+                container.scrollBy({ left: -200, behavior: 'smooth' });
+            }
+        };
+
+        const scrollRight = () => {
+            if (container) {
+                container.scrollBy({ left: 200, behavior: 'smooth' });
+            }
         };
 
         container.addEventListener('scroll', handleScroll);
@@ -42,9 +60,27 @@ const ScrollableContainer: React.FC<ScrollableContainerProps> = ({ children }) =
 
     return (
         <div className="scrollable-wrapper" style={{ position: 'relative', width: '100%' }}>
+            {showLeftArrow && (
+                <button 
+                    className="scroll-arrow left-arrow"
+                    onClick={() => containerRef.current?.scrollBy({ left: -200, behavior: 'smooth' })}
+                    aria-label="Scroll left"
+                >
+                    ←
+                </button>
+            )}
             <div ref={containerRef} className="item2">
                 {children}
             </div>
+            {showRightArrow && (
+                <button 
+                    className="scroll-arrow right-arrow"
+                    onClick={() => containerRef.current?.scrollBy({ left: 200, behavior: 'smooth' })}
+                    aria-label="Scroll right"
+                >
+                    →
+                </button>
+            )}
             <div 
                 ref={scrollbarRef}
                 className="custom-scrollbar"

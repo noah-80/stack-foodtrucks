@@ -618,7 +618,7 @@ const GridPage = () => {
       <AvailabilityChart />
       <WeeklyChart /> */}
       <HeaderSection>
-        <HeaderImageLeft src="/image11.png" alt="Header decoration" />
+        <HeaderImageLeft src="/8.png" alt="Header decoration" />
         <HeaderText>Rolling into Campus</HeaderText>
       </HeaderSection>
       <BodyText>
@@ -638,7 +638,7 @@ const GridPage = () => {
         "We actually talked about the phasing out of food trucks, and there were a lot of people frustrated," Ho said. "Ever since COVID, we had to lay off a lot of staff. The money that would've been going to that staff is going to food trucks instead. As we're going back to our pre-COVID levels, we're able to hire more people, but that means the money will have to be shifted to these new dining staff hires."
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#FCBFD6' }}>
-        <HeaderImageRight src="/image4.png" alt="Header decoration" />
+        <HeaderImageRight src="/4.png" alt="Header decoration" />
         <HeaderText>Food Truck Performance</HeaderText>
       </HeaderSection>
       <BodyText>
@@ -674,8 +674,8 @@ const GridPage = () => {
       </BodyText>
 
       <HeaderSection style={{ backgroundColor: '#EDDCAE' }}>
-        <HeaderImageLeft src="/image12.png" alt="Header decoration" />
-        <HeaderImageRight src="/image9.png" alt="Header decoration" />
+        <HeaderImageLeft src="/7.png" alt="Header decoration" />
+        <HeaderImageRight src="/6.png" alt="Header decoration" />
         <HeaderTextItalic>FOOD TRUCK SHOWDOWN!</HeaderTextItalic>
       </HeaderSection>
       <CenteredBodyText>
@@ -745,7 +745,7 @@ const GridPage = () => {
       </ThreeColumnSection>
       <Correlation/>
       <HeaderSection style={{ backgroundColor: '#BFDDFC' }}>
-        <HeaderImageLeft src="/image5.png" alt="Header decoration" style={{ height: 'clamp(150px, 25vw, 300px)' }} />
+        <HeaderImageLeft src="/3.png" alt="Header decoration" style={{ height: 'clamp(150px, 25vw, 300px)' }} />
         <HeaderText>The Fate of Food Trucks</HeaderText>
       </HeaderSection>
       <BodyText>
@@ -777,7 +777,7 @@ const GridPage = () => {
         "Some people, especially freshmen in the beginning of the year, really wanted De Neve to have a takeout option. And so Dining is like, no, this is not how it works. It's not feasible," Connelly said.
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#fcbd92' }}>
-        <HeaderImageRight src="/image1.png" alt="Header decoration" />
+        <HeaderImageRight src="/1.png" alt="Header decoration" />
         <HeaderText>Behind the Bite</HeaderText>
       </HeaderSection>
       <BodyText>
@@ -833,7 +833,7 @@ const GridPage = () => {
         "I would love to have a say with the university ... to ask us what you think ... they just kind of let us know what they're planning to do," Parsons said.
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#ecc8f7' }}>
-        <HeaderImageLeft src="/image8.png" alt="Header decoration"  />
+        <HeaderImageLeft src="/6.png" alt="Header decoration"  />
         <HeaderText>Food for Thought</HeaderText>
       </HeaderSection>
       <BodyText>
@@ -843,7 +843,7 @@ const GridPage = () => {
       </BodyText>
       <BodyText></BodyText>
       <FullWidthGreySection>
-        <GreySectionImage src="/image3.png" alt="BittieBitez Mini-Donuts" />
+        <GreySectionImage src="/2.png" alt="BittieBitez Mini-Donuts" />
         <CreditsContainer style={{ fontStyle: 'italic', marginBottom: '0px', backgroundColor: 'transparent', marginTop: '0px' }}>
           Contributing reports from Sydney Tomsick and Cassidy Sadowski, Stack contributors.
         </CreditsContainer>

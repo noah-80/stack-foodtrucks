@@ -261,7 +261,7 @@ const BarChartRace: React.FC = () => {
         if (d.name.includes("(+") || d.name.includes("(-")) {
           const [prefix, rest] = d.name.split(") ");
           const isPositive = prefix.includes("+");
-          return `<tspan style="fill: ${isPositive ? "#3CB371" : "#ad1d1d"}">${prefix})</tspan> ${rest}`;
+          return `<tspan style="fill: ${isPositive ? "#3CB371" : "#ff3333"}">${prefix})</tspan> ${rest}`;
         } else if (d.name.includes("(NEW)")) {
           const [prefix, rest] = d.name.split(") ");
           return `<tspan style="fill: #4A90E2">${prefix})</tspan> ${rest}`;

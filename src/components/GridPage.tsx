@@ -836,7 +836,7 @@ const GridPage = () => {
         "I would love to have a say with the university ... to ask us what you think ... they just kind of let us know what they're planning to do," Parsons said.
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#ecc8f7' }}>
-        <HeaderImageLeft src="/6.png" alt="Header decoration"  />
+        <HeaderImageLeft src="/5.png" alt="Header decoration"  />
         <HeaderText>Food for Thought</HeaderText>
       </HeaderSection>
       <BodyText>

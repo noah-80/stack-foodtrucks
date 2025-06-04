@@ -11,13 +11,13 @@ interface DataPoint {
 const data2022: DataPoint[] = [
   { name: "Aloha Fridays", value: 183 },
   { name: "Dina's Dumpling", value: 164 },
-  { name: "8e8 Thai Street Food", value: 163 },
+  { name: "8E8 Thai Street Food", value: 163 },
   { name: "Salpicon", value: 161 },
   { name: "Paradise Cookies & Ice Cream", value: 147 },
 ];
 
 const data2023: DataPoint[] = [
-  { name: "(+2) 8e8 Thai Street Food", value: 226 },
+  { name: "(+2) 8E8 Thai Street Food", value: 226 },
   { name: "(+2) Salpicon", value: 209 },
   { name: "(+9) Dulce Europa Shaved Ice", value: 194 },
   { name: "(-2) Dina's Dumpling", value: 182 },
@@ -31,7 +31,7 @@ const BarChartRace: React.FC = () => {
 
   // Define color mapping for each food truck
   const colorMapping: { [key: string]: string } = {
-    "8e8 Thai Street Food": "#D59616",
+    "8E8 Thai Street Food": "#D59616",
     "Aloha Fridays": "#c75168",
     "Dina's Dumpling": "#f287b7",
     "Salpicon": "#a6b83a",
@@ -44,7 +44,7 @@ const BarChartRace: React.FC = () => {
   };
 
   const imageMapping: { [key: string]: string } = {
-    "8e8 Thai Street Food": "/image1.png",
+    "8E8 Thai Street Food": "/image1.png",
     "Aloha Fridays": "/image2.png",
     "Dina's Dumpling": "/image5.png",
     "Salpicon": "/image11.png",
@@ -233,7 +233,7 @@ const BarChartRace: React.FC = () => {
 
     // Move 8e8 image to the front
     svg.selectAll(".bar-image-group")
-      .filter(d => stripPrefix(d.name).includes("8e8 Thai Street Food"))
+      .filter(d => stripPrefix(d.name).includes("8E8 Thai Street Food"))
       .raise();
 
     images
@@ -290,7 +290,7 @@ const BarChartRace: React.FC = () => {
       .style("font-size", "16px")
       .style("font-family", "Barlow")
       .style("font-weight", "800")
-      .text("Top 5 Food Trucks");
+      .text("Top 5 Performing Food Trucks");
 
     // Update button position
     svg.select("foreignObject")

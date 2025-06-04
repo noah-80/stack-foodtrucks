@@ -34,8 +34,30 @@ const backgroundColorPlugin = {
 
 const Correlation: React.FC = () => {
   const [chartData, setChartData] = useState<ChartData<'scatter', TruckDataPoint[]> | null>(null);
+  const [pointRadius, setPointRadius] = useState(5);
 
-  
+  useEffect(() => {
+    // Update point radius based on screen width
+    const updatePointRadius = () => {
+      const width = window.innerWidth;
+      if (width <= 480) { // Mobile
+        setPointRadius(3);
+      } else if (width <= 768) { // Tablet
+        setPointRadius(4);
+      } else { // Desktop
+        setPointRadius(5);
+      }
+    };
+
+    // Initial update
+    updatePointRadius();
+
+    // Add resize listener
+    window.addEventListener('resize', updatePointRadius);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', updatePointRadius);
+  }, []);
 
   useEffect(() => {
     Papa.parse('/foodtruckCorrelationData.csv', {
@@ -57,14 +79,16 @@ const Correlation: React.FC = () => {
           datasets: [{
             data: parsedData,
             backgroundColor: 'rgba(103, 81, 150, 1)',
-            pointRadius: 5,
+            pointRadius: pointRadius,
           }]
         });
       }
     });
-  }, []);
+  }, [pointRadius]); // Add pointRadius as a dependency
 
   const options: ChartOptions<'scatter'> = {
+    responsive: true,
+    maintainAspectRatio: true,
     plugins: {
       legend: {
         display: false
@@ -74,7 +98,7 @@ const Correlation: React.FC = () => {
         text: 'Food Trucks: Hours vs. Swipes',
         font: {
           family: 'Barlow',
-          size: 18,
+          size: window.innerWidth <= 768 ? 16 : 18,
           weight: 'bold',
         },
         color: '#231F20',
@@ -99,18 +123,18 @@ const Correlation: React.FC = () => {
           text: 'Hours',
           font: {
             family: 'Hanken Grotesk',
-            size: 16,
+            size: window.innerWidth <= 768 ? 14 : 16,
           },
         },
         ticks: {
           font: {
             family: 'Hanken Grotesk',
-            size: 12,
+            size: window.innerWidth <= 768 ? 10 : 12,
           },
         },
         border: {
-           dash: [5, 5],
-         },
+          dash: [5, 5],
+        },
       },
       y: {
         max: 180000,
@@ -119,26 +143,41 @@ const Correlation: React.FC = () => {
           text: 'Swipes',
           font: {
             family: 'Hanken Grotesk',
-            size: 16,
+            size: window.innerWidth <= 768 ? 14 : 16,
           },
         },
         ticks: {
           font: {
             family: 'Hanken Grotesk',
-            size: 12,
+            size: window.innerWidth <= 768 ? 10 : 12,
           },
         },
         border: {
-           dash: [5, 5],
-         },
+          dash: [5, 5],
+        },
       },
     },
-    
   };
 
   return (
-    <div style={{ position: 'relative', width: '60%', height: '100%', display: 'flex', justifyContent: 'center', }}>
-      {chartData ? <Scatter data={chartData}  options={options} plugins={[backgroundColorPlugin]} /> : <p>Loading chart...</p>}
+    <div style={{ 
+      position: 'relative', 
+      width: 'min(800px, 90vw)', 
+      height: 'min(600px, 70vh)',
+      margin: '0 auto',
+      display: 'flex', 
+      justifyContent: 'center',
+      alignItems: 'center'
+    }}>
+      {chartData ? (
+        <Scatter 
+          data={chartData} 
+          options={options} 
+          plugins={[backgroundColorPlugin]} 
+        />
+      ) : (
+        <p>Loading chart...</p>
+      )}
     </div>
   );
 };

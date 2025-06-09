@@ -320,9 +320,9 @@ const BarChartRace: React.FC = () => {
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", background: "white", overflow: "hidden" }}>
-      <div style={{ height: "500px" }}>
-        <svg ref={svgRef} style={{ width: "100%", height: "100%" }}>
+    <div style={{ position: "relative", width: "80%", background: "white", overflow: "hidden", marginTop: "20px", marginBottom: "20px", padding: "0" }}>
+      <div style={{ height: "auto" }}>
+        <svg ref={svgRef} style={{ width: "100%", height: "auto" }}>
           <g className="x-axis" />
           <g className="y-axis" />
           <text className="chart-title" />
@@ -344,7 +344,7 @@ const BarChartRace: React.FC = () => {
                   padding: "5px 10px",
                   fontSize: "14px",
                   fontFamily: "Hanken Grotesk",
-                  backgroundColor: currentData === data2022 ? "#CBCBCB" : "white",
+                  backgroundColor: currentData === data2022 ? "white" : "#CBCBCB",
                   color: "black",
                   border: "2px solid #CBCBCB",
                   borderRadius: "5px",
@@ -360,7 +360,7 @@ const BarChartRace: React.FC = () => {
                   padding: "5px 10px",
                   fontSize: "14px",
                   fontFamily: "Hanken Grotesk",
-                  backgroundColor: currentData === data2023 ? "#CBCBCB" : "white",
+                  backgroundColor: currentData === data2023 ? "white" : "#CBCBCB",
                   color: "black",
                   border: "2px solid #CBCBCB",
                   borderRadius: "5px",

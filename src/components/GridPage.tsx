@@ -226,9 +226,11 @@ const BodyText = styled.div`
   font-size: clamp(14px, 2vw, 20px);
   line-height: 1.5em;
   font-weight: 400;
-  margin: clamp(20px, 4vw, 10%);
+  margin-left: clamp(20px, 4vw, 10%);
+  margin-right: clamp(20px, 4vw, 10%);
   text-align: left;
   width: 60vw;
+  z-index: 99;
   @media (max-width: 768px) {
     width: 80vw;
   }
@@ -418,8 +420,8 @@ const FullWidthImageWrapper = styled.div`
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  margin-top: clamp(20px, 3vw, 40px);
-  margin-bottom: clamp(20px, 3vw, 40px);
+  // margin-top: clamp(20px, 3vw, 40px);
+  // margin-bottom: clamp(20px, 3vw, 40px);
   display: flex;
   justify-content: center;
   background-color: white;
@@ -436,6 +438,7 @@ const FullWidthImage = styled.img`
   height: auto;
   max-width: 100vw;
   content: {top20};
+  margin: 0;
 
   @media (max-width: 768px) {
     content: {top20Mobile};
@@ -451,10 +454,11 @@ const FullWidthGreySection = styled.div`
   max-width: 100%;
   background-color: #DBDBDB;
   padding: clamp(50px, 10vw, 100px) 0 clamp(40px, 8vw, 80px) 0;
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0;
+  // margin: 0;
   position: relative;
   box-sizing: border-box;
 `;
@@ -489,27 +493,6 @@ interface TruckData {
   sales: number;
 }
 
-
-// import image1 from '../Img/image1.png';
-// import image2 from '../Img/image2.png';
-// import image3 from '../Img/image3.png';
-// import image4 from '../Img/image4.png';
-// import image5 from '../Img/image5.png';
-// import image6 from '../Img/image6.png';
-// import image7 from '../Img/image7.png';
-// import image8 from '../Img/image8.png';
-// import image9 from '../Img/image9.png';
-// import image10 from '../Img/image10.png';
-// import image11 from '../Img/image11.png';
-// import image12 from '../Img/image12.png';
-// import image13 from '../Img/image13.png';
-// import image14 from '../Img/image14.png';
-// import image15 from '../Img/image15.png';
-// import image16 from '../Img/image16.png';
-// import image17 from '../Img/image17.png';
-// import image18 from '../Img/image18.png';
-// import image19 from '../Img/image19.png';
-// import image20 from '../Img/Poutine.png';
 const TRUCK_DATA: TruckData[] = [
   { name: "8e8 Thai Street Food", image: image1, sales: 159928 },
   { name: "Perro 1-10 Tacos", image: image9, sales: 141064 },
@@ -674,6 +657,21 @@ const GridPage = () => {
     return (sales / maxSales) * 60;
   };
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+
+    const handleResize = () => setIsMobile(mediaQuery.matches);
+
+    mediaQuery.addEventListener('change', handleResize);
+
+    // Cleanup
+    return () => {
+      mediaQuery.removeEventListener('change', handleResize);
+    };
+  }, []);
+
   return (
     <GridContainer>
       <Grid>
@@ -694,68 +692,63 @@ const GridPage = () => {
         <HeaderText>Rolling into Campus</HeaderText>
       </HeaderSection>
       <BodyText>
-        For over half a decade, UCLA has defended its #1 placement in the Niche Best College Food in America ranking. The UCLA Dining experience, however, extends beyond traditional college dining halls. Tapping into Los Angeles food truck culture, UCLA Dining invites a variety of food trucks onto campus. From international flavors to late-night sweets, students exchange a meal swipe for a food truck's take-out meal.<br></br>
+        For over half a decade, UCLA has defended its #1 placement in the Niche Best College Food in America ranking. The UCLA Dining experience, however, extends beyond traditional college dining halls. Tapping into Los Angeles food truck culture, UCLA Dining invites a variety of food trucks onto campus. From international flavors to late-night sweets, students can exchange a meal swipe for take-out meals at food trucks.<br></br>
         
-        <img src={trucks} alt="An assortment of UCLA's food truck offerings." />
+        <img src={trucks} alt="An assortment of UCLA's food truck offerings." style={{ marginTop: "0px" }} />
         
 
-        "I think it's good because it gets to show a little slice of L.A. in terms of cuisine," fourth-year labor studies student Jason Xavier Osorio said. "It's just marvelous to see how L.A. has come to evolve with the food truck business."<br></br><br></br>
+        “I think it’s good because it gets to show a little slice of LA in terms of cuisine,” fourth-year labor studies student Jason Xavier Osorio said. “It’s just marvelous to see how LA has come to evolve with the food truck business.” <br></br><br></br>
 
-        Following students' return to on-campus housing in 2021, UCLA introduced food trucks to temporarily address staffing shortages, and to alleviate lines on the Hill. In the 2022-2023 school year, around 16% of dining swipes that were used on the Hill were used on food trucks, more than the amount of swipes used at Rendezvous, the second most popular take-out location on the Hill.
-        </BodyText>
-        <WeeklyChart/>
-        <BodyText>
-        Throughout the past few years, food trucks have served a steady supply of students. However, in the time since they first arrived, their future on-campus operations have become uncertain. Cynthia Ho, a second-year mechanical engineering student and former On-Campus Housing Council Representative, described some of the conversations held between UCLA Dining, the OCHC and residents<br></br><br></br>
+        Following students’ return to on-campus housing in 2021, UCLA introduced food trucks to temporarily address staffing shortages and to alleviate lines on the Hill. In the 2022-2023 school year, around 18% of dining swipes that were used on the Hill were used on food trucks, making them more popular than any take-out location on the Hill. 
+      </BodyText>
+      <WeeklyChart/>
+      <BodyText>
+        Throughout the past few years, food trucks have served a steady supply of students. However, in the time since they first arrived, their future role on campus has come under question. Cynthia Ho, a second-year mechanical engineering student and former On-Campus Housing Council Representative, described some of the conversations held between UCLA Dining, the OCHC and residents.<br></br><br></br>
 
-        "We actually talked about the phasing out of food trucks, and there were a lot of people frustrated," Ho said. "Ever since COVID, we had to lay off a lot of staff. The money that would've been going to that staff is going to food trucks instead. As we're going back to our pre-COVID levels, we're able to hire more people, but that means the money will have to be shifted to these new dining staff hires."
+        “We actually talked about the phasing out of food trucks, and there were a lot of people frustrated,” Ho said. “Ever since COVID, we had to lay off a lot of staff. The money that would’ve been going to that staff is now going to the food trucks instead. As we’re going back to our pre-COVID levels, we’re able to hire more people, but that means the money will have to be shifted to these new dining staff hires.” 
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#FCBFD6' }}>
         <HeaderImageRight src={i4} alt="Header decoration" />
         <HeaderText>Food Truck Performance</HeaderText>
       </HeaderSection>
       <BodyText>
-        From September 2022 to December 2024, 66 different food trucks served UCLA students on the Hill. These are the top five food trucks based on average swipes per visit for the 2022-2023 and 2023-2024 academic years:
+        From September 2022 to December 2024, over 65 food trucks served UCLA students on the Hill. These are the top five food trucks based on average swipes per hour for the 2022-2023 and 2023-2024 academic years:
       </BodyText>
-      <Section>
-        <div style={{ 
-          width: "min(1200px, 90vw)", 
-          margin: "0 auto", 
-          padding: "clamp(10px, 2vw, 20px)",
-          background: "white",
-          aspectRatio: "1200/600"
-        }}>
-          <BarChartRace />
-        </div>
-      </Section>
+      <BarChartRace />
       <BodyText>
-        In both the 2022-23 and 2023-24 academic years, 8E8 Thai Street Food held the crown as UCLA's most popular food truck.<br></br><br></br>
+        In both the 2022-23 and 2023-24 academic years, 8E8 Thai Street Food held the crown as UCLA’s most popular food truck, having raked in the highest total number of meal swipes each year.<br></br><br></br>
 
-        Salpicon, one of Extended Dinner period's dessert food trucks and known for its açaí bowls, rose two positions to become the second on the list.<br></br><br></br>
+        However, when it comes to average swipes per hour, Aloha Fridays ranked first in the 2022-2023 academic year. In the following 2023-2024 academic year, Aloha Fridays dropped six positions to rank seventh.<br></br><br></br>
 
-        Aloha Fridays and Smile Hotdog dropped out of the top five between years, with Aloha Fridays dropping five positions to rank seventh, and Smile Hotdog dropping seven positions to rank twelfth in the 2023-2024 academic year.<br></br><br></br>
+        8E8 Thai Street Food ranked third in the 2022-2023 academic year but rose two positions to rank first the following year.<br></br><br></br>
 
-        Perro 1-10 Tacos rose three positions to rank third, and Yuna's Bob rose two positions to rank fifth the 2023-2024 academic year.<br></br><br></br>
+        Salpicon, the most popular dessert food truck known for its açaí bowls, rose two positions to become second on the list.<br></br><br></br>
 
-        Dina's Dumpling ranked third in average swipes per visit during the 2022-2023 academic year, despite not visiting during Spring Quarter 2023. In the following 2023-2024 school year, Dina's Dumpling's operations were inactive.<br></br><br></br>
+        Dina’s Dumpling ranked second in average swipes per hour during the 2022-2023 academic year. In the 2023-2024 academic year, it dropped two positions to rank fourth. During spring 2024, it did not visit UCLA. Dina’s Dumpling never returned to campus in the 2024-2025 school year.<br></br><br></br>
 
-        Vchos Pupuseria Moderna ranked fourth in the 2023-2024 academic year, its first year visiting UCLA.
+        Paradise Cookies & Ice Cream ranked fifth in the 2022-2023 academic year but became inactive by the following 2023-2024 academic year.<br></br><br></br>
+
+        Dulce Europa Shaved Ice rose nine positions from the previous year to rank third, and Perro 1-10 Tacos rose five positions to rank fifth the 2023-2024 academic year. 
 
         <FullWidthImageWrapper>
-          <FullWidthImage src={top20} alt="Top 20 food trucks, based off all-time swipes (Fall 2022 - Fall 2024)" />
-        </FullWidthImageWrapper> 
+          <FullWidthImage
+            src={isMobile ? top20Mobile : top20}
+            alt="Top 20 food trucks, based off all-time swipes (Fall 2022 - Fall 2024)"
+            style={{ marginTop: '-10px' }}
+          />
+        </FullWidthImageWrapper>
       </BodyText>
         <BodyText>
-        For successful food trucks, there is a positive correlation between average swipes per hour and the total number of hours spent at UCLA, where frequently returning food trucks tend to be more efficient than others.
+        For successful food trucks, there is a positive correlation between average swipes per hour and the total number of hours spent at UCLA, where frequently returning food trucks tend to be more efficient than others. 
         </BodyText>
         <Correlation/>
-        <BodyText></BodyText>
       <HeaderSection style={{ backgroundColor: '#EDDCAE' }}>
         <HeaderImageLeft src={i7} alt="Header decoration" />
         <HeaderImageRight src={i6} alt="Header decoration" />
         <HeaderTextItalic>FOOD TRUCK SHOWDOWN!</HeaderTextItalic>
       </HeaderSection>
       <CenteredBodyText>
-        Compare the top 20 food trucks,<br></br>based off all-time swipes (Fall 2022 - Fall 2024). 
+        Comparing the top 20 food trucks,<br></br>based on all-time swipes (Fall 2022 - Fall 2024). 
       </CenteredBodyText>
       <ThreeColumnSection>
         <Column>
@@ -824,97 +817,93 @@ const GridPage = () => {
         <HeaderText>The Fate of Food Trucks</HeaderText>
       </HeaderSection>
       <BodyText>
-        Over time, UCLA Dining has decreased the presence of food trucks on the Hill. This decline in food trucks' availability is evident when looking at the number of food trucks in a given day's Dinner meal period. During Fall Quarter 2023, the number of food trucks during a Dinner meal period reached up to six food trucks. By the following Winter and Spring Quarters of the 2023-2024 academic year, this number was halved, with a maximum of three food trucks visiting during a single day's Dinner meal period. During Fall Quarter 2024, a new peak of four food trucks was reached on six different days, though a vast majority of days only received two food trucks.
+        Over time, UCLA Dining has decreased the presence of food trucks on the Hill. During fall 2023, dinner meal periods had up to six food trucks at a time. By the following winter and spring quarters of the 2023-2024 academic year, this number was halved, with a maximum of three food trucks visiting during a single day’s dinner meal period. During fall of 2024, a new peak of four dinner food trucks was reached on six days, though a majority of days only received two.
         
-        <img src={dinnerDecrease} alt="Daily Number of Food Trucks During Dinner Meal Period" style={{ width: '90%', margin: '20px auto', display: 'block' }} />
+        <img src={dinnerDecrease} alt="Daily Number of Food Trucks During Dinner Meal Period" style={{ width: '80%', marginBottom: '-10px', marginTop: '-5px', display: 'block', zIndex: '1', justifySelf: 'center' }} />
 
-        "I don't know if they're willing to accommodate all these students with dining halls only. Sometimes it gets too busy and there's no place to sit," Osorio said.<br></br><br></br>
+        “I don’t know if they’re willing to accommodate all these students with dining halls only. Sometimes it gets too busy, and there’s no place to sit,” Osorio said.<br></br><br></br>
 
-        While at least one food truck was regularly present during the Dinner and Extended Dinner periods throughout the 2023-2024 academic year, lunch offerings disappeared between Fall and Spring Quarter. During Spring Quarter 2024, a Lunch food truck was only present on May 2nd and May 3rd. Although the following Fall Quarter 2024 had a Lunch food truck present on 17 days, this availability was not as frequent nor as consistent as the previous year.<br></br><br></br>
+        While at least one food truck was regularly present during the dinner and extended dinner periods throughout the 2023-2024 academic year, lunch offerings started to disappear during the winter. In spring 2024, a food truck was only present May 2 and May 3 during lunch. Although the following quarter had a food truck present on 17 days, this availability was not as frequent nor as consistent as the previous year.<br></br><br></br>
+
+        Despite the decrease in availability of food trucks on the Hill, students spent meal swipes at food trucks at virtually the same rate, with only a 0.2% decline between the two years in total swipes.
         </BodyText>
         <AvailabilityChart/>
         <BodyText>
 
-        While food trucks have become a staple on campus over the past three years, their future remains uncertain due to financial constraints. Brendan Connelly, a second-year mathematics student and current president of Hedrick Hall Resident Government Council, cited their relative cost as a key issue for the university.<br></br><br></br>
+        While food trucks have become a staple on campus over the past three years, their future remains uncertain due to financial constraints. Brendan Connelly, a second-year mathematics student and president of Hedrick Hall Resident Government Council, cited their relative cost as a key issue for the university.<br></br><br></br>
 
-        "The only issue with food trucks, I think with UCLA Dining, lies in financial. It's a financial burden for them. UCLA Dining, they would like to not have to contract like they did, because, before the pandemic, of course they didn't have food trucks and they would have more dining hall options open later," Connelly said. "As soon as you take them away, I think students' voices will be loud enough that they will try to get them back, because, they used to come at lunch, there was some resistance to them going away."<br></br><br></br>
+        “It's a financial burden for them. UCLA Dining, they would like to not have to contract like they did. Because before the pandemic, they didn't have food trucks and they would have more dining hall options open later,” Connelly said. “As soon as you take them away, I think students' voices will be loud enough that they will try to get them back.”<br></br><br></br>
 
         As a part of Resident Government Council, Connelly attends policy review board meetings with UCLA Dining directors.<br></br><br></br>
 
-        "They're talking about how it's just so hard to hire people, and that's part of the reason that they still have food trucks," Connelly said.<br></br><br></br>
+        “They're talking about how it's just so hard to hire people, and that's part of the reason that they still have food trucks, part of the reason that things were slow to open,” Connelly said.<br></br><br></br>
 
-        One part of policy review meetings is UCLA Dining's review of student feedback.<br></br><br></br>
+        One part of policy review board meetings is UCLA Dining’s review of student feedback.<br></br><br></br>
 
-        "Most of the feedback or compliments are all about Dining ... about specific things that people want to change, and Dining is really receptive to many of the small things," Connelly said.<br></br><br></br>
-
-        Nevertheless, he acknowledged limitations to student advocacy, where UCLA Dining declines student requests.<br></br><br></br>
-
-        "Some people, especially freshmen in the beginning of the year, really wanted De Neve to have a takeout option. And so Dining is like, no, this is not how it works. It's not feasible," Connelly said.
+        “Most of the complaints, feedback or compliments are all about Dining ... about specific things that people want to change, and Dining is really receptive to many of the small things,” Connelly said.
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#fcbd92' }}>
         <HeaderImageRight src={i1} alt="Header decoration" />
         <HeaderText>Behind the Bite</HeaderText>
       </HeaderSection>
       <BodyText>
-        Not just any food truck can serve UCLA students. Michael Gray, the owner of Fat Boys food truck, described the process food trucks go through which includes a food tasting and truck inspection process before they are approved to serve students.<br></br><br></br>
+        Not just any food truck can serve UCLA students. Michael Gray, the chef of Fat Boys food truck, described the process food trucks go through, which includes a food tasting and truck inspection process before they are approved to serve students.<br></br><br></br>
 
-        "[UCLA Dining] asked for portion size. Kind of give us feedback on, this is what the students are looking for. Here's what's been going well so far, here are the food trucks that we have already. They kind of are looking for a variety of foods, so that way, you're not getting the same thing," Gray said.<br></br><br></br>
+        “They (UCLA Dining) asked for portion size, give us feedback on what the students are looking for, here's what's been going well so far, here are the food trucks that we have already. They are looking for a variety of foods, so that way, you're not getting the same thing,” Gray said. <br></br><br></br>
 
-        Gray explained that UCLA Dining offers quarter-long contracts to food trucks. In return, food trucks send availability on a week-by-week basis.<br></br><br></br>
+        Gray said UCLA Dining offers quarter-long contracts to food trucks. In return, food trucks send availability on a week-by-week basis.<br></br><br></br>
 
-        "We submit our availability to them, and they basically pick and fill us in, and then let us know what date they need us," Gray said. "We are the ones submitting our availability, so I think we do have a say. You don't have to say that you're available."<br></br><br></br>
+        “We submit our availability to them, and they basically pick and fill us in and then let us know what date they need us,” Gray said. “We are the ones submitting our availability, so I think yeah, we do have a say. You don't have to say that you're available.”<br></br><br></br>
 
-        Gray described the restrictions in creating a campus menu, including a three-item maximum menu. Meanwhile, other trucks have offered four menu items, such as at 8e8 Thai Street Food and BittieBitez Mini-Donuts. When informed of this, Gray said UCLA Dining told him the limit was three items across all food trucks.<br></br><br></br>
+        Gray described the restrictions in creating a campus menu, including a three-item maximum menu. Meanwhile, other trucks have offered four menu items, including 8E8 Thai Street Food and BittieBitez Mini-Donuts. When informed of this, Gray said UCLA Dining told him the limit was three items across all food trucks.<br></br><br></br>
 
         With each item being exchanged for a meal swipe, food trucks must create a product within a $9 valuation range of a standard portion while staying profitable.<br></br><br></br>
 
-        "That's a very tight budget," Gray said. "As the market lets the prices go up, it's trying to find a product that still allows you to continue that item at a quality that you're okay with serving."<br></br><br></br>
+        “That's a very tight budget,” Gray said. “As the market lets the prices go up, it’s trying to find a product that still allows you to continue that item at a quality that you're OK with serving.”<br></br><br></br>
 
-        Gray discussed how Fat Boys has changed menu items over its time at UCLA.<br></br><br></br>
+        Gray described how Fat Boys has changed menu items and UCLA’s control over its decisions.<br></br><br></br>
 
-        "We have made changes to our menu to allow us to keep up with speed and pricing." These changes must go through UCLA Dining. "The menu is not supposed to change unless it's approved by UCLA," Gray said.<br></br><br></br>
+        “We have made changes to our menu to allow us to keep up with speed and pricing,” Gray said. “The menu is not supposed to change unless it's approved by UCLA. … There’s a lot of red tape and a lot of processes that slows everything down, but I guess that’s what they’ve been doing, and that works for them. So you just try to govern yourself within that.”<br></br><br></br>
 
         Formulating a menu is one battle. Then, the queues of students hit.<br></br><br></br>
 
-        "The idea is to get you guys the food within three to five minutes. But, if you have 100 people hitting the truck at one time, that's kind of impossible," Gray shared.<br></br><br></br>
+        “The idea is to get you guys the food within three to five minutes. But, if you have 100 people hitting the truck at one time, that's kind of impossible,” Gray said.<br></br><br></br>
 
-        Duncan Parsons, the owner of Creamy Boys food truck, commented on accommodating student demand in advance.<br></br><br></br>
+        Duncan Parsons, the owner of the Creamy Boys food truck, commented on accommodating student demand in advance.<br></br><br></br>
 
-        "For all of the food trucks, so much of the preparation is done before we get to campus because we only have 15 minutes to set up before we serve hundreds of students," Parsons said.<br></br><br></br>
+        “For all of the food trucks, so much of the prep and the organization and preparations is done before we get to campus because we only have 15 minutes to set up before we serve hundreds and hundreds of students,” Parsons said.<br></br><br></br>
 
-        Angel Diaz, truck driver and server at BittieBitez Mini-Donuts food truck, also commented on food preparation. Diaz works alongside his family, as nephew of BittieBitez's owner.<br></br><br></br>
+        Angel Diaz, truck driver and server at BittieBitez Mini-Donuts food truck, also commented on food preparation. Diaz works alongside his family, as he is the nephew of BittieBitez’s owner.<br></br><br></br>
 
-        "We start getting glaze, all the toppings that we're gonna serve on the day, ready before the shift and after the shift. We start making the donuts, we do some in advance," Diaz said.<br></br><br></br>
+        “We start getting glaze, all the toppings that we're going to serve on the day, ready before the shift and after the shift. We start making the donuts. We do some in advance,” Diaz said.<br></br><br></br>
 
         Even with preparation, food trucks can run into difficulties during their shifts.<br></br><br></br>
 
-        "Sometimes machinery acts weird, and it stops us from doing as many orders," Diaz said. "Sometimes one falls and we don't notice it, and then we gotta do it again. Or sometimes students don't come on time. Or we have the orders there, and then the ice cream starts melting, so we have to re-do it – but by that time, we are doing others."<br></br><br></br>
+        “Sometimes machinery acts weird, and it stops us from doing as many orders,” Diaz said. “Sometimes one falls and we don't notice it, and then we gotta do it again. Or sometimes students don't come on time, or we have the orders there, and then the ice cream starts melting, so we have to re-do it – but by that time, we are doing others.”<br></br><br></br>
 
-        Twelve out of the 37 food trucks active during the 2023-2024 academic year were inactive by the start of the 2024-2025 academic year. During Fall Quarter 2024, zero new food trucks were introduced. Notably, Dina's Dumpling became inactive at UCLA by Spring Quarter 2024, despite ranking third in average swipes per visit during the 2023-2024 school year.<br></br><br></br>
+        While several food trucks have shown steady success building a consistent customer base, others have struggled to gain traction, with some dropping out of rotation after only a short period of time.<br></br><br></br>
+
+        Twelve out of the 37 food trucks active during the 2023-2024 academic year were inactive by the start of the 2024-2025 academic year. During fall 2024, no new food trucks were introduced. Notably, Dina’s Dumpling became inactive at UCLA by spring 2024, despite ranking second in average swipes per hour during the 2022-2023 school year and fourth in the 2023-2024 school year.<br></br><br></br>
         </BodyText>
         <InactiveChart />
         <BodyText>
 
-        With UCLA Dining's quarter-long contracts with food trucks, a food truck may not necessarily be invited to return the following quarter.<br></br><br></br>
+        With UCLA Dining’s quarterlong contracts with food trucks, a food truck may not necessarily be invited to return the following quarter.<br></br><br></br>
 
-        "If you don't get an invite back from UCLA, you have to go back through the entire process of the food tasting and for the inspection," Gray said. "If you don't see a truck, they may have got too many complaints from a student, right? And may not have nothing to do with their food. It could be timing."<br></br><br></br>
+        “If you don't get an invite back from UCLA, you have to go back through the entire process of the food tasting and food inspection,” Gray said. “If you don't see a truck, they may have got too many complaints from a student, and it may not have nothing to do with their food. It could be timing.”<br></br><br></br>
 
-        Diaz also commented on food trucks that are now inactive.<br></br><br></br>
+        When asked about the potential phasing out of food trucks, Parsons felt the decision was up to the university.<br></br><br></br>
 
-        "I'm not sure the reason why other trucks left ... I know other trucks take longer, because you take longer preparing meat and doing stuff like that," Diaz said.<br></br><br></br>
-
-        When asked about the potential phasing out of food trucks, staff felt the decision was up to the university.<br></br><br></br>
-
-        "I would love to have a say with the university ... to ask us what you think ... they just kind of let us know what they're planning to do," Parsons said.
+        “It’s obvious the students love it (food trucks), and you get a great variety of food, and it complements the existing eateries on campus,” Parsons said. “I would love to have a say with the university, or for them to ask us what we think, but there’s not really any of that. They just kind of let us know what they’re planning to do.”
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#ecc8f7' }}>
         <HeaderImageLeft src={i6} alt="Header decoration"  />
         <HeaderText>Food for Thought</HeaderText>
       </HeaderSection>
-      <BodyText>
-      The fate of food trucks at UCLA is uncertain. Despite the possible phasing out of food trucks, and difficulties serving students, food truck operations remain a key part of the UCLA dining experience.<br></br><br></br>
+      <BodyText style={{ marginBottom: '50px' }}>
+      The fate of food trucks at UCLA is unclear for now. Despite the possible phasing out of food trucks and difficulties serving students, food truck operations remain a key part of the UCLA dining experience.<br></br><br></br>
 
-        "I always tell my grandma, I'm like, it's insane how people can wait so much for their donuts and they enjoy it so much. It makes me happy," Diaz said.
+      “I always tell my crew, I'm like, it's insane how people can wait so much for their donuts, and they enjoy it so much. It makes me happy,” Diaz said.
       </BodyText>
       <BodyText></BodyText>
       <FullWidthGreySection>
@@ -925,11 +914,9 @@ const GridPage = () => {
         <br></br>
         <GreySectionTitle>About the Data</GreySectionTitle>
         <GreySectionText>
-          The data used in this article was provided by UCLA Public Records. We received two datasets: one covering the 2022-2023 academic year, and a more recent dataset spanning from June 2023 to January 1st, 2025. The former covers the 2023-2024 academic year and Fall Quarter 2024.<br></br><br></br>
+          The data used in this article were provided by UCLA Dining through public records requests as two datasets: one covering the 2022-2023 academic year and a more recent dataset spanning from June 2023 to Jan. 1, 2025. The former covers the 2023-2024 academic year and fall 2024.<br></br><br></br>
 
-          14 food trucks listed were within UCLA's datasets but did not have swipe data:<br></br><br></br>
-
-          Good Eats and Vibes, Manna From Heaven, Messi Burgers, Mikhuna, ML Eats Burger, Mumu's, Ohana Hibachi, Rice Balls Inc., Something Good LA, Stout Burgers, Taste Collective Burger, Trapiyaki, Veggie Bomb and White Rabbit.
+          Fourteen food trucks listed were within UCLA’s datasets but did not have swipe data: Good Eats and Vibes, Manna From Heaven, Messi Burgers, Mikhuna, ML Eats Burger, Mumu's, Ohana Hibachi, Rice Balls Inc., Something Good LA, Stout Burgers, Taste Collective Burger, Trapiyaki, Veggie Bomb and White Rabbit.
         </GreySectionText>
       </FullWidthGreySection>
     </GridContainer>

@@ -89,7 +89,7 @@ const Correlation: React.FC = () => {
 
   const options: ChartOptions<'scatter'> = {
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false
@@ -133,9 +133,6 @@ const Correlation: React.FC = () => {
             size: window.innerWidth <= 768 ? 10 : 12,
           },
         },
-        border: {
-          dash: [5, 5],
-        },
       },
       y: {
         max: 180000,
@@ -153,9 +150,6 @@ const Correlation: React.FC = () => {
             size: window.innerWidth <= 768 ? 10 : 12,
           },
         },
-        border: {
-          dash: [5, 5],
-        },
       },
     },
   };
@@ -163,18 +157,22 @@ const Correlation: React.FC = () => {
   return (
     <div style={{ 
       position: 'relative', 
-      width: 'min(800px, 90vw)', 
-      height: 'min(600px, 70vh)',
+      width: '80%',
+      minHeight: '300px', 
       margin: '0 auto',
       display: 'flex', 
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      maxHeight: '500px',
+      marginTop: '20px',
+      maxWidth: '800px',
     }}>
       {chartData ? (
         <Scatter 
           data={chartData} 
           options={options} 
-          plugins={[backgroundColorPlugin]} 
+          plugins={[backgroundColorPlugin]}
+          style={{ width: '100%', height: '100%' }} 
         />
       ) : (
         <p>Loading chart...</p>

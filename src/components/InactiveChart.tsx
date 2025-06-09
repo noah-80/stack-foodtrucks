@@ -15,7 +15,7 @@ const InactiveChart: React.FC = () => {
                     <img src={inactiveBody} height={"95%"}></img>
                 </ScrollableContainer>
             </div>
-            <img src={inactiveKey} height={"80vh"} style={{ marginTop: '20px' }}></img>
+            <img className='inactive-key' src={inactiveKey}  style={{ marginTop: '-20px', height: 'clamp(40px, 12vw, 80px)', marginBottom:'30px' }}></img>
         </div>
     );
 }

@@ -5,6 +5,7 @@
     width: 80%;
     gap: 15px;
     justify-content: center;
+    /* transform: translate(-40px, 0); */
     @media screen and (max-width: 600px) {
         height: 200px;
         width: 90%;
@@ -85,9 +86,11 @@
 
 .inactive-header {
     font-family: 'Barlow';
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
+    font-size: clamp(14px, 2vw, 20px);
     font-weight: 800;
     text-align: center;
+    margin-top: 20px;
 }
 
 .availability-container {
@@ -151,6 +154,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .weekly-container {
@@ -162,11 +166,12 @@
     @media screen and (max-width: 600px) {
         height: 200px;
         width: 90%;
+        transform: translate(-10%,0);
     }
 }
 
 .weekly-chart {
-    width: 100%;
+    width: 90%;
     height: 100%;
     display: flex;
     flex-direction: column;

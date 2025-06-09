@@ -41,7 +41,7 @@ const Correlation: React.FC = () => {
     Papa.parse('/foodtruckCorrelationData.csv', {
       download: true,
       header: true,
-      complete: (results) => {
+      complete: (results: { data: Record<string, string>[]; }) => {
         const rawData = results.data as Record<string, string>[];
 
         const parsedData: TruckDataPoint[] = rawData.map(row => ({

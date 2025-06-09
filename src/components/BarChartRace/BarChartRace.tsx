@@ -228,12 +228,12 @@ const BarChartRace: React.FC = () => {
 
     // Move Aloha Fridays image to the back
     svg.selectAll(".bar-image-group")
-      .filter(d => stripPrefix(d.name).includes("Aloha Fridays"))
+      .filter((d: any) => stripPrefix((d as DataPoint).name).includes("Aloha Fridays"))
       .lower();
 
     // Move 8e8 image to the front
     svg.selectAll(".bar-image-group")
-      .filter(d => stripPrefix(d.name).includes("8e8 Thai Street Food"))
+      .filter((d: any) => stripPrefix(d.name).includes("8e8 Thai Street Food"))
       .raise();
 
     images

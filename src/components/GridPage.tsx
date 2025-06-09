@@ -7,6 +7,43 @@ import Correlation from './Correlation';
 import InactiveChart from './InactiveChart';
 import AvailabilityChart from './AvailabilityChart';
 import WeeklyChart from './WeeklyChart';
+import top20 from '../Img/Top20.png';
+import trucks from '../Img/Trucks.png';
+
+import image1 from '../Img/image1.png';
+import image2 from '../Img/image2.png';
+import image3 from '../Img/image3.png';
+import image4 from '../Img/image4.png';
+import image5 from '../Img/image5.png';
+import image6 from '../Img/image6.png';
+import image7 from '../Img/image7.png';
+import image8 from '../Img/image8.png';
+import image9 from '../Img/image9.png';
+import image10 from '../Img/image10.png';
+import image11 from '../Img/image11.png';
+import image12 from '../Img/image12.png';
+import image13 from '../Img/image13.png';
+import image14 from '../Img/image14.png';
+import image15 from '../Img/image15.png';
+import image16 from '../Img/image16.png';
+import image17 from '../Img/image17.png';
+import image18 from '../Img/image18.png';
+import image19 from '../Img/image19.png';
+import image20 from '../Img/Poutine.png';
+import image21 from '../Img/Cookie.png';
+import image22 from '../Img/imagenew.png';
+
+import i1 from '../Img/1.png';
+import i2 from '../Img/2.png';
+import i3 from '../Img/3.png';
+import i4 from '../Img/4.png';
+import i5 from '../Img/5.png';
+import i6 from '../Img/6.png';
+import i7 from '../Img/7.png';
+import i8 from '../Img/8.png';
+
+import top20Mobile from '../Img/Top20Mobile.png';
+import dinnerDecrease from '../Img/dinnerDecrease.png';
 
 
 const GridContainer = styled.div`
@@ -391,10 +428,10 @@ const FullWidthImage = styled.img`
   width: 100%;
   height: auto;
   max-width: 100vw;
-  content: url("Top20.png");
+  content: {top20};
 
   @media (max-width: 768px) {
-    content: url("Top20Mobile.png");
+    content: {top20Mobile};
   }
 `;
 
@@ -441,27 +478,48 @@ interface TruckData {
   sales: number;
 }
 
+
+// import image1 from '../Img/image1.png';
+// import image2 from '../Img/image2.png';
+// import image3 from '../Img/image3.png';
+// import image4 from '../Img/image4.png';
+// import image5 from '../Img/image5.png';
+// import image6 from '../Img/image6.png';
+// import image7 from '../Img/image7.png';
+// import image8 from '../Img/image8.png';
+// import image9 from '../Img/image9.png';
+// import image10 from '../Img/image10.png';
+// import image11 from '../Img/image11.png';
+// import image12 from '../Img/image12.png';
+// import image13 from '../Img/image13.png';
+// import image14 from '../Img/image14.png';
+// import image15 from '../Img/image15.png';
+// import image16 from '../Img/image16.png';
+// import image17 from '../Img/image17.png';
+// import image18 from '../Img/image18.png';
+// import image19 from '../Img/image19.png';
+// import image20 from '../Img/Poutine.png';
 const TRUCK_DATA: TruckData[] = [
-  { name: "8e8 Thai Street Food", image: "/image1.png", sales: 159928 },
-  { name: "Perro 1-10 Tacos", image: "/image9.png", sales: 141064 },
-  { name: "Salpicon", image: "/image11.png", sales: 109679 },
-  { name: "Aloha Fridays", image: "/image2.png", sales: 93387 },
-  { name: "Smile Hotdog", image: "/image12.png", sales: 91440 },
-  { name: "Creamy Boys", image: "/image4.png", sales: 80032 },
-  { name: "Pinch of Flavor", image: "/image10.png", sales: 79432 },
-  { name: "Dina's Dumpling", image: "/image5.png", sales: 72623 },
-  { name: "Cerda Vega Tacos", image: "/image16.png", sales: 65050 },
-  { name: "BittieBitez Mini-Donuts", image: "/image3.png", sales: 61013 },
-  { name: "Kalamaki Greek Street Food", image: "/image8.png", sales: 59409 },
-  { name: "Wafl", image: "/image17.png", sales: 57724 },
-  { name: "Yuna's Bob", image: "/image18.png", sales: 54997 },
-  { name: "The Taco Cartel", image: "/image14.png", sales: 53978 },
-  { name: "StopBye Cafe", image: "/image13.png", sales: 53300 },
-  { name: "Flamin' Hot Chicken", image: "/image6.png", sales: 42913 },
-  { name: "Habibi Shack", image: "/image7.png", sales: 34416 },
-  { name: "Dulce Europa Shaved Ice", image: "/image19.png", sales: 31604 },
-  { name: "Uncle Al's BBQ", image: "/image15.png", sales: 30372 },
-  { name: "Poutine Brothers", image: "/Poutine.png", sales: 24253 }
+  { name: "8e8 Thai Street Food", image: image1, sales: 159928 },
+  { name: "Perro 1-10 Tacos", image: image9, sales: 141064 },
+  { name: "Salpicon", image: image11, sales: 109679 },
+  { name: "Aloha Fridays", image: image2, sales: 93387 },
+  { name: "Smile Hotdog", image: image12, sales: 91440 },
+  { name: "Creamy Boys", image: image4, sales: 80032 },
+  { name: "Pinch of Flavor", image: image10, sales: 79432 },
+  { name: "Dina's Dumpling", image: image5, sales: 72623 },
+  { name: "Cerda Vega Tacos", image: image16, sales: 65050 },
+  { name: "BittieBitez Mini-Donuts", image: image3, sales: 61013 },
+  { name: "Kalamaki Greek Street Food", image: image8, sales: 59409 },
+  { name: "Wafl", image: image17, sales: 57724 },
+  { name: "Yuna's Bob", image: image18, sales: 54997 },
+  { name: "The Taco Cartel", image: image14, sales: 53978 },
+  { name: "StopBye Cafe", image: image13, sales: 53300 },
+  { name: "Flamin' Hot Chicken", image: image6, sales: 42913 },
+  { name: "Habibi Shack", image: image7, sales: 34416 },
+  { name: "Dulce Europa Shaved Ice", image: image19, sales: 31604 },
+  { name: "Uncle Al's BBQ", image: image15, sales: 30372 },
+  { name: "Poutine Brothers", image: image20, sales: 24253 }
 ];
 
 const formatCurrency = (value: number) => {
@@ -506,12 +564,15 @@ const GridPage = () => {
     const randomImages: string[] = [];
     
     // Define all possible images including the new ones
-    const allImages = [
-      ...Array.from({ length: 19 }, (_, i) => `/image${i + 1}.png`),
-      '/Poutine.png',
-      '/Cookie.png',
-      '/imagenew.png'
-    ];
+    const allImages = [image1, image2, image3, image4, image5, image6, image7, image8,
+      image9, image10, image11, image12, image13, image14, image15, image16,
+      image17, image18, image19, image20, image21, image22];
+    // const allImages = [
+    //   ...Array.from({ length: 19 }, (_, i) => `./Img/image${i + 1}.png`),
+    //   '/Poutine.png',
+    //   '/Cookie.png',
+    //   '/imagenew.png'
+    // ];
 
     for (let i = 0; i < totalCells; i++) {
       const adjacentIndices = getAdjacentIndices(i, cols, rows);
@@ -618,13 +679,13 @@ const GridPage = () => {
       <AvailabilityChart />
       <WeeklyChart /> */}
       <HeaderSection>
-        <HeaderImageLeft src="/8.png" alt="Header decoration" />
+        <HeaderImageLeft src={i8} alt="Header decoration" />
         <HeaderText>Rolling into Campus</HeaderText>
       </HeaderSection>
       <BodyText>
         For over half a decade, UCLA has defended its #1 placement in the Niche Best College Food in America ranking. The UCLA Dining experience, however, extends beyond traditional college dining halls. Tapping into Los Angeles food truck culture, UCLA Dining invites a variety of food trucks onto campus. From international flavors to late-night sweets, students exchange a meal swipe for a food truck's take-out meal.<br></br>
         
-        <img src="Trucks.png" alt="An assortment of UCLA's food truck offerings." />
+        <img src={trucks} alt="An assortment of UCLA's food truck offerings." />
         
 
         "I think it's good because it gets to show a little slice of L.A. in terms of cuisine," fourth-year labor studies student Jason Xavier Osorio said. "It's just marvelous to see how L.A. has come to evolve with the food truck business."<br></br><br></br>
@@ -638,7 +699,7 @@ const GridPage = () => {
         "We actually talked about the phasing out of food trucks, and there were a lot of people frustrated," Ho said. "Ever since COVID, we had to lay off a lot of staff. The money that would've been going to that staff is going to food trucks instead. As we're going back to our pre-COVID levels, we're able to hire more people, but that means the money will have to be shifted to these new dining staff hires."
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#FCBFD6' }}>
-        <HeaderImageRight src="/4.png" alt="Header decoration" />
+        <HeaderImageRight src={i4} alt="Header decoration" />
         <HeaderText>Food Truck Performance</HeaderText>
       </HeaderSection>
       <BodyText>
@@ -669,7 +730,7 @@ const GridPage = () => {
         Vchos Pupuseria Moderna ranked fourth in the 2023-2024 academic year, its first year visiting UCLA.
 
         <FullWidthImageWrapper>
-          <FullWidthImage src="Top20.png" alt="Top 20 food trucks, based off all-time swipes (Fall 2022 - Fall 2024)" />
+          <FullWidthImage src={top20} alt="Top 20 food trucks, based off all-time swipes (Fall 2022 - Fall 2024)" />
         </FullWidthImageWrapper> 
       </BodyText>
         <BodyText>
@@ -678,8 +739,8 @@ const GridPage = () => {
         <Correlation/>
         <BodyText></BodyText>
       <HeaderSection style={{ backgroundColor: '#EDDCAE' }}>
-        <HeaderImageLeft src="/7.png" alt="Header decoration" />
-        <HeaderImageRight src="/6.png" alt="Header decoration" />
+        <HeaderImageLeft src={i7} alt="Header decoration" />
+        <HeaderImageRight src={i6} alt="Header decoration" />
         <HeaderTextItalic>FOOD TRUCK SHOWDOWN!</HeaderTextItalic>
       </HeaderSection>
       <CenteredBodyText>
@@ -748,13 +809,13 @@ const GridPage = () => {
         </Column>
       </ThreeColumnSection>
       <HeaderSection style={{ backgroundColor: '#BFDDFC' }}>
-        <HeaderImageLeft src="/3.png" alt="Header decoration" style={{ height: 'clamp(150px, 25vw, 300px)' }} />
+        <HeaderImageLeft src={i3} alt="Header decoration" style={{ height: 'clamp(150px, 25vw, 300px)' }} />
         <HeaderText>The Fate of Food Trucks</HeaderText>
       </HeaderSection>
       <BodyText>
         Over time, UCLA Dining has decreased the presence of food trucks on the Hill. This decline in food trucks' availability is evident when looking at the number of food trucks in a given day's Dinner meal period. During Fall Quarter 2023, the number of food trucks during a Dinner meal period reached up to six food trucks. By the following Winter and Spring Quarters of the 2023-2024 academic year, this number was halved, with a maximum of three food trucks visiting during a single day's Dinner meal period. During Fall Quarter 2024, a new peak of four food trucks was reached on six different days, though a vast majority of days only received two food trucks.
         
-        <img src="DinnerDecrease.png" alt="Daily Number of Food Trucks During Dinner Meal Period" style={{ width: '90%', margin: '20px auto', display: 'block' }} />
+        <img src={dinnerDecrease} alt="Daily Number of Food Trucks During Dinner Meal Period" style={{ width: '90%', margin: '20px auto', display: 'block' }} />
 
         "I don't know if they're willing to accommodate all these students with dining halls only. Sometimes it gets too busy and there's no place to sit," Osorio said.<br></br><br></br>
 
@@ -780,7 +841,7 @@ const GridPage = () => {
         "Some people, especially freshmen in the beginning of the year, really wanted De Neve to have a takeout option. And so Dining is like, no, this is not how it works. It's not feasible," Connelly said.
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#fcbd92' }}>
-        <HeaderImageRight src="/1.png" alt="Header decoration" />
+        <HeaderImageRight src={i1} alt="Header decoration" />
         <HeaderText>Behind the Bite</HeaderText>
       </HeaderSection>
       <BodyText>
@@ -836,7 +897,7 @@ const GridPage = () => {
         "I would love to have a say with the university ... to ask us what you think ... they just kind of let us know what they're planning to do," Parsons said.
       </BodyText>
       <HeaderSection style={{ backgroundColor: '#ecc8f7' }}>
-        <HeaderImageLeft src="/6.png" alt="Header decoration"  />
+        <HeaderImageLeft src={i6} alt="Header decoration"  />
         <HeaderText>Food for Thought</HeaderText>
       </HeaderSection>
       <BodyText>
@@ -846,7 +907,7 @@ const GridPage = () => {
       </BodyText>
       <BodyText></BodyText>
       <FullWidthGreySection>
-        <GreySectionImage src="/2.png" alt="BittieBitez Mini-Donuts" />
+        <GreySectionImage src={i2} alt="BittieBitez Mini-Donuts" />
         <CreditsContainer style={{ fontStyle: 'italic', marginBottom: '0px', backgroundColor: 'transparent', marginTop: '0px' }}>
           Contributing reports from Sydney Tomsick and Cassidy Sadowski, Stack contributors.
         </CreditsContainer>

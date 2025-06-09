@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["vite/client"],
     "target": "ESNext",
     "module": "ESNext",
     "jsx": "react-jsx",
@@ -8,7 +9,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "baseUrl": "/wp-content/themes/caeruleum/js/dist/",
   },
   "include": ["src"]
 }

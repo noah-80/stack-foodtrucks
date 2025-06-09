@@ -11,6 +11,7 @@ import {
   ChartOptions,
   ChartData
 } from 'chart.js';
+import foodtruckCorrelationData from './foodtruckCorrelationData.csv?url';
 
 ChartJS.register(Tooltip, Title, Legend, PointElement, LinearScale);
 
@@ -60,10 +61,10 @@ const Correlation: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    Papa.parse('/foodtruckCorrelationData.csv', {
+    Papa.parse(foodtruckCorrelationData, {
       download: true,
       header: true,
-      complete: (results) => {
+      complete: (results: { data: Record<string, string>[]; }) => {
         const rawData = results.data as Record<string, string>[];
 
         const parsedData: TruckDataPoint[] = rawData.map(row => ({

@@ -3,6 +3,17 @@ import * as d3 from "d3";
 import "@fontsource/hanken-grotesk/500.css";
 import "./BarIndex.css"; // Import custom styles for the font
 
+import image1 from '../../Img/image1.png';
+import image2 from '../../Img/image2.png';
+import image5 from '../../Img/image5.png';
+import image11 from '../../Img/image11.png';
+import image12 from '../../Img/image12.png';
+import image9 from '../../Img/image9.png';
+import image18 from '../../Img/image18.png';
+import imagenew from '../../Img/imagenew.png';
+import cookie from '../../Img/Cookie.png';
+import image19 from '../../Img/image19.png';
+
 interface DataPoint {
   name: string;
   value: number;
@@ -44,16 +55,16 @@ const BarChartRace: React.FC = () => {
   };
 
   const imageMapping: { [key: string]: string } = {
-    "8E8 Thai Street Food": "/image1.png",
-    "Aloha Fridays": "/image2.png",
-    "Dina's Dumpling": "/image5.png",
-    "Salpicon": "/image11.png",
-    "Smile Hotdog": "/image12.png",
-    "Perro 1-10 Tacos": "/image9.png",
-    "Yuna's Bob": "/image18.png",
-    "Vchos Pupusería Moderna": "/imagenew.png",
-    "Paradise Cookies & Ice Cream": "/Cookie.png",
-    "Dulce Europa Shaved Ice": "/image19.png",
+    "8e8 Thai Street Food": image1,
+    "Aloha Fridays": image2,
+    "Dina's Dumpling": image5,
+    "Salpicon": image11,
+    "Smile Hotdog": image12,
+    "Perro 1-10 Tacos": image9,
+    "Yuna's Bob": image18,
+    "Vchos Pupusería Moderna": imagenew,
+    "Paradise Cookies & Ice Cream": cookie,
+    "Dulce Europa Shaved Ice": image19,
   };
 
   // Helper function to strip prefixes
@@ -228,12 +239,12 @@ const BarChartRace: React.FC = () => {
 
     // Move Aloha Fridays image to the back
     svg.selectAll(".bar-image-group")
-      .filter(d => stripPrefix(d.name).includes("Aloha Fridays"))
+      .filter((d: any) => stripPrefix((d as DataPoint).name).includes("Aloha Fridays"))
       .lower();
 
     // Move 8e8 image to the front
     svg.selectAll(".bar-image-group")
-      .filter(d => stripPrefix(d.name).includes("8E8 Thai Street Food"))
+      .filter((d: any) => stripPrefix(d.name).includes("8e8 Thai Street Food"))
       .raise();
 
     images

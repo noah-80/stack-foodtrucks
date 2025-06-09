@@ -1,7 +1,13 @@
 // Section.tsx
 import React from "react";
 
-const Section = ({ children }) => (
+import { ReactNode } from "react";
+
+interface SectionProps {
+  children: ReactNode;
+}
+
+const Section = ({ children }: SectionProps) => (
   <section style={{ margin: "40px 0" }}>
     {children}
   </section>

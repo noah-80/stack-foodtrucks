@@ -256,6 +256,7 @@ const HeaderImageLeft = styled.img`
 
   @media (max-width: 768px) {
     height: clamp(120px, 18vw, 220px);
+    left: -20px;
   }
 `;
 
@@ -270,6 +271,7 @@ const HeaderImageRight = styled.img`
 
   @media (max-width: 768px) {
     height: clamp(120px, 18vw, 220px);
+    right: -20px;
   }
 `;
 
@@ -422,6 +424,11 @@ const FullWidthImageWrapper = styled.div`
   justify-content: center;
   background-color: white;
   overflow-x: auto;
+
+  @media (max-width: 768px) {
+    min-width: 100%;
+    overflow-x: hidden;
+  }
 `;
 
 const FullWidthImage = styled.img`
@@ -432,6 +439,10 @@ const FullWidthImage = styled.img`
 
   @media (max-width: 768px) {
     content: {top20Mobile};
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
   }
 `;
 

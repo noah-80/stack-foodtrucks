@@ -716,13 +716,13 @@ const GridPage = () => {
       </BodyText>
       <BarChartRace />
       <BodyText>
-        In both the 2022-23 and 2023-24 academic years, 8E8 Thai Street Food held the crown as UCLA’s most popular food truck, having raked in the highest total number of meal swipes each year.<br></br><br></br>
+        In both the 2022-23 and 2023-24 academic years, <a target="_blank" href='https://dailybruin.com/2024/04/16/8e8-thai-street-foods-rise-to-the-top-of-the-ucla-food-truck-chain'>8E8 Thai Street Food</a> held the crown as UCLA’s most popular food truck, having raked in the highest total number of meal swipes each year.<br></br><br></br>
 
         However, when it comes to average swipes per hour, Aloha Fridays ranked first in the 2022-2023 academic year. In the following 2023-2024 academic year, Aloha Fridays dropped six positions to rank seventh.<br></br><br></br>
 
         8E8 Thai Street Food ranked third in the 2022-2023 academic year but rose two positions to rank first the following year.<br></br><br></br>
 
-        Salpicon, the most popular dessert food truck known for its açaí bowls, rose two positions to become second on the list.<br></br><br></br>
+        Salpicon, the most popular <a target="_blank" href='https://dailybruin.com/2024/01/16/dessert-food-trucks'>dessert food truck</a> known for its açaí bowls, rose two positions to become second on the list.<br></br><br></br>
 
         Dina’s Dumpling ranked second in average swipes per hour during the 2022-2023 academic year. In the 2023-2024 academic year, it dropped two positions to rank fourth. During spring 2024, it did not visit UCLA. Dina’s Dumpling never returned to campus in the 2024-2025 school year.<br></br><br></br>
 
@@ -869,7 +869,7 @@ const GridPage = () => {
 
         “The idea is to get you guys the food within three to five minutes. But, if you have 100 people hitting the truck at one time, that's kind of impossible,” Gray said.<br></br><br></br>
 
-        Duncan Parsons, the owner of the Creamy Boys food truck, commented on accommodating student demand in advance.<br></br><br></br>
+        Duncan Parsons, the owner of the <a target="_blank" href='https://prime.dailybruin.com/foodtrucks'>Creamy Boys</a> food truck, commented on accommodating student demand in advance.<br></br><br></br>
 
         “For all of the food trucks, so much of the prep and the organization and preparations is done before we get to campus because we only have 15 minutes to set up before we serve hundreds and hundreds of students,” Parsons said.<br></br><br></br>
 

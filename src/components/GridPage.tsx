@@ -494,7 +494,7 @@ interface TruckData {
 }
 
 const TRUCK_DATA: TruckData[] = [
-  { name: "8e8 Thai Street Food", image: image1, sales: 159928 },
+  { name: "8E8 Thai Street Food", image: image1, sales: 159928 },
   { name: "Perro 1-10 Tacos", image: image9, sales: 141064 },
   { name: "Salpicon", image: image11, sales: 109679 },
   { name: "Aloha Fridays", image: image2, sales: 93387 },

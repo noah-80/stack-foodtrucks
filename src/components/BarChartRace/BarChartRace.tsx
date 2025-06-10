@@ -55,7 +55,7 @@ const BarChartRace: React.FC = () => {
   };
 
   const imageMapping: { [key: string]: string } = {
-    "8e8 Thai Street Food": image1,
+    "8E8 Thai Street Food": image1,
     "Aloha Fridays": image2,
     "Dina's Dumpling": image5,
     "Salpicon": image11,

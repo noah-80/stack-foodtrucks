@@ -133,6 +133,9 @@ const TitleText = styled.div`
   line-height: 1.2;
   margin-bottom: 0.3rem;
   letter-spacing: -0.02em;
+    @media (max-width: 360px) {
+    font-size: 8px;
+  }
 `;
 
 const SubtitleText = styled.div`
@@ -142,6 +145,9 @@ const SubtitleText = styled.div`
   font-size: clamp(12px, 2vw, 28px);
   font-weight: 400;
   line-height: 1.2;
+    @media (max-width: 360px) {
+    font-size: 8px;
+  }
 `;
 
 const TextContainer = styled.div`

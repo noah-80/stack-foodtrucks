@@ -23,9 +23,9 @@ const ScrollableContainer: React.FC<ScrollableContainerProps> = ({ children }) =
             scrollbar.style.width = `${scrollbarWidth}px`;
             scrollbar.style.transform = `translateX(${scrollbarLeft}px)`;
 
-            // Update arrow visibility
-            setShowLeftArrow(scrollLeft > 0);
-            setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 1); // -1 for rounding errors
+            // Update arrow visibility with a small buffer
+            setShowLeftArrow(scrollLeft > 5); // Buffer of 5px
+            setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 5); // Buffer of 5px
         };
 
         const handleScroll = () => {

@@ -23,8 +23,8 @@
     flex-basis: 100px;
     height: 100%;
     display: flex;
-    justify-content: flex-end;
-    align-items: top;
+    justify-content: center;
+    align-items: center;
 }
 
 .item2 {
@@ -163,6 +163,7 @@
     padding: 15px;
     width: 70%;
     gap: 15px;
+    margin: 0 auto;
     @media screen and (max-width: 600px) {
         height: 200px;
         width: 90%;

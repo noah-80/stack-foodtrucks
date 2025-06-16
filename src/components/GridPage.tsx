@@ -429,6 +429,7 @@ const BarValue = styled.div`
 `;
 
 const FullWidthImageWrapper = styled.div`
+  min-width: 600px;  
   width: 100vw;
   position: relative;
   left: 50%;
@@ -438,10 +439,15 @@ const FullWidthImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   background-color: white;
-  overflow-x: hidden;
+  overflow-x: auto;
 
   @media (max-width: 768px) {
+    min-width: unset;
     width: 100%;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    margin-right: 0;
     overflow-x: hidden;
   }
 `;
@@ -450,11 +456,9 @@ const FullWidthImage = styled.img`
   width: 100%;
   height: auto;
   max-width: 100vw;
-  content: {top20};
   margin: 0;
 
   @media (max-width: 768px) {
-    content: {top20Mobile};
     width: 100%;
     max-width: 100%;
     display: block;

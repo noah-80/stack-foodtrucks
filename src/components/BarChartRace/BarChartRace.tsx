@@ -50,7 +50,7 @@ const BarChartRace: React.FC = () => {
     "Perro 1-10 Tacos": "#73524d",
     "Yuna's Bob": "#B76937",
     "Vchos Pupusería Moderna": "#54a9c4",
-    "Paradise Cookies & Ice Cream": "#00a3bf",
+    "Paradise Cookies & Ice Cream": "#ad7734",
     "Dulce Europa Shaved Ice": "#e7b959",
   };
 

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import "@fontsource/hanken-grotesk/500.css";
 import "./BarIndex.css"; // Import custom styles for the font
+import styled from "styled-components";
 
 import image1 from '../../Img/image1.png';
 import image2 from '../../Img/image2.png';
@@ -34,6 +35,20 @@ const data2023: DataPoint[] = [
   { name: "(-2) Dina's Dumpling", value: 182 },
   { name: "(+5) Perro 1-10 Tacos", value: 179 },
 ];
+
+const ChartContainer = styled.div`
+  position: relative;
+  width: 80%;
+  background: white;
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
 
 const BarChartRace: React.FC = () => {
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -320,7 +335,7 @@ const BarChartRace: React.FC = () => {
   };
 
   return (
-    <div style={{ position: "relative", width: "80%", background: "white", overflow: "hidden", marginTop: "20px", marginBottom: "20px", padding: "0" }}>
+    <ChartContainer>
       <div style={{ height: "auto" }}>
         <svg ref={svgRef} style={{ width: "100%", height: "auto" }}>
           <g className="x-axis" />
@@ -374,7 +389,7 @@ const BarChartRace: React.FC = () => {
           </foreignObject>
         </svg>
       </div>
-    </div>
+    </ChartContainer>
   );
 };
 

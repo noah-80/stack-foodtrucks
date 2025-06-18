@@ -36,25 +36,58 @@ const ScrollableContainer: React.FC<ScrollableContainerProps> = ({ children }) =
             requestAnimationFrame(updateScrollbar);
         };
 
-        const scrollLeft = () => {
-            if (container) {
-                container.scrollBy({ left: -200, behavior: 'smooth' });
+        // Function to check if images are loaded and update arrows
+        const checkImagesAndUpdate = () => {
+            const images = container.querySelectorAll('img');
+            if (images.length === 0) {
+                // No images, update immediately
+                updateScrollbar();
+                return;
             }
+
+            let loadedImages = 0;
+            const totalImages = images.length;
+
+            const onImageLoad = () => {
+                loadedImages++;
+                if (loadedImages === totalImages) {
+                    // All images loaded, update arrows
+                    setTimeout(updateScrollbar, 100); // Small delay to ensure layout is complete
+                }
+            };
+
+            images.forEach(img => {
+                if (img.complete) {
+                    onImageLoad();
+                } else {
+                    img.addEventListener('load', onImageLoad);
+                    img.addEventListener('error', onImageLoad); // Handle error cases too
+                }
+            });
         };
 
-        const scrollRight = () => {
-            if (container) {
-                container.scrollBy({ left: 200, behavior: 'smooth' });
-            }
-        };
+        // Initial update with a small delay to allow for initial layout
+        setTimeout(checkImagesAndUpdate, 50);
+
+        // Set up MutationObserver to detect when content changes
+        const observer = new MutationObserver(() => {
+            setTimeout(checkImagesAndUpdate, 50);
+        });
+
+        observer.observe(container, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['src']
+        });
 
         container.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleResize);
-        updateScrollbar(); // Initial update
 
         return () => {
             container.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleResize);
+            observer.disconnect();
         };
     }, []);
 
